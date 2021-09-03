@@ -1,4 +1,6 @@
-{ username, user-email, config, lib, pkgs, home-dir, enable-gui ? true, ... }:
+{ config, lib, pkgs, ... }:
+{ username, user-email, home-dir }:
+{ enable-gui ? true, ... }:
 
 with lib;
 let
