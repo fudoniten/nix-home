@@ -100,7 +100,7 @@ let
 
 in {
 
-  overlays = [
+  nixpkgs.overlays = [
     (pkgs.callPackage ./package-overlay.nix {})
   ];
   
