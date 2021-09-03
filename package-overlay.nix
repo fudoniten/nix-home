@@ -13,13 +13,13 @@
   };
 
   user-doom-emacs = pkgs.callPackage doom-emacs-pkg {
-    doomPrivateDir = doom-emacs-cfg;
+    doomPrivateDir = doom-emacs-pkg;
     extraPackages = with pkgs.emacsPackages; [
       elpher
       use-package
     ];
     emacsPackagesOverlay = final: prev: {
-      irony = prev.irony.overrideAttrs (eprev: {
+      irony = prev.irony.overrideAttrs (esuper: {
         buildInputs = esuper.buildInputs
                       ++ [ pkgs.cmake pkgs.libclang pkgs.clang ];
       });
