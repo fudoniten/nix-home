@@ -101,7 +101,7 @@ let
 in {
 
   overlays = [
-    (callPackage ./package-overlay.nix)
+    (pkgs.callPackage ./package-overlay.nix {})
   ];
   
   programs = {
