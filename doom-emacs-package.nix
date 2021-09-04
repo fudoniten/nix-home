@@ -24,7 +24,7 @@ in pkgs.callPackage doom-emacs-pkg {
                     ++ [ prev.cmake prev.libclang prev.clang ];
     });
     spinner = let version = "1.7.4";
-              in prev.emacsPackages.trivialBuild {
+              in prev.trivialBuild {
                 inherit version;
                 pname = "spinner";
                 src = builtins.fetchTarball {
