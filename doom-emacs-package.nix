@@ -12,8 +12,8 @@
     sha256 = "1g0izscjh5nv4n0n1m58jc6z27i9pkbxs17mnb05a83ffdbmmva6";
   };
 
-in pkgs.callPackage pkgs.doom-emacs-pkg {
-  doomPrivateDir = pkgs.doom-emacs-config;
+in pkgs.callPackage doom-emacs-pkg {
+  doomPrivateDir = doom-emacs-config;
   extraPackages = with pkgs.emacsPackages; [
     elpher
     use-package
