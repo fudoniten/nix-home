@@ -4,6 +4,8 @@
 
 with lib;
 let
+
+  doom-emacs-package = pkgs.callPackage ./doom-emacs-package.nix {};
   
   gui-packages = with pkgs;
     let
@@ -46,10 +48,10 @@ let
     clj2nix
     cmake
     curl
-    user-doom-emacs
     enca
     file
     fortune
+    doom-emacs-package
     git
     gnutls
     gnupg
@@ -99,10 +101,6 @@ let
   ensure-directories = [ ".emacs.d/.local/etc/eshell" ];
 
 in {
-
-  nixpkgs.overlays = [
-    (import ./package-overlay.nix)
-  ];
   
   programs = {
     bash.enable = true;
@@ -127,7 +125,7 @@ in {
   services = {
     emacs = {
       enable = true;
-      package = doom-emacs;
+      package = doom-emacs-package;
       client = {
         enable = true;
         arguments = [ "-t" ];
