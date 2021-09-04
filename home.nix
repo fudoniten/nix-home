@@ -101,7 +101,7 @@ let
 in {
 
   nixpkgs.overlays = [
-    (import ./package-overlay.nix { inherit pkgs; })
+    (import ./package-overlay.nix)
   ];
   
   programs = {
