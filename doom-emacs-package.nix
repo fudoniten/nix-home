@@ -21,7 +21,7 @@ in pkgs.callPackage doom-emacs-pkg {
   emacsPackagesOverlay = final: prev: {
     irony = prev.irony.overrideAttrs (esuper: {
       buildInputs = esuper.buildInputs
-                    ++ [ prev.cmake prev.libclang prev.clang ];
+                    ++ [ pkgs.cmake pkgs.libclang pkgs.clang ];
     });
     spinner = let version = "1.7.4";
               in prev.trivialBuild {
