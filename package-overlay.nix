@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: final: prev: {
+{ pkgs, ... }: final: prev: {
 
   doom-emacs-config = pkgs.fetchgit {
     url = "https://git.fudo.org/niten/doom-emacs.git";

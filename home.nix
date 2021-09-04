@@ -100,9 +100,13 @@ let
 
 in {
 
-  nixpkgs.overlays = [
-    (pkgs.callPackage ./package-overlay.nix {})
-  ];
+  nixpkgs = {
+    allowUnfree = true;
+    
+    overlays = [
+      (import ./package-overlay.nix { inherit pkgs; })
+    ];
+  };
   
   programs = {
     bash.enable = true;
