@@ -182,5 +182,5 @@ in {
   };
 
   systemd.user.tmpfiles.rules =
-    map (dir: "d ${homedir}/${dir} 700 niten - - -") ensure-directories;
+    map (dir: "d ${home-dir}/${dir} 700 niten - - -") ensure-directories;
 }
