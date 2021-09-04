@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: (final: prev: rec {
+{ config, lib, pkgs, ... }: (final: prev: {
 
   doom-emacs-config = pkgs.fetchgit {
     url = "https://git.fudo.org/niten/doom-emacs.git";
@@ -12,8 +12,8 @@
     sha256 = "1g0izscjh5nv4n0n1m58jc6z27i9pkbxs17mnb05a83ffdbmmva6";
   };
 
-  user-doom-emacs = pkgs.callPackage doom-emacs-pkg {
-    doomPrivateDir = doom-emacs-pkg;
+  user-doom-emacs = pkgs.callPackage final.doom-emacs-pkg {
+    doomPrivateDir = final.doom-emacs-config;
     extraPackages = with pkgs.emacsPackages; [
       elpher
       use-package
