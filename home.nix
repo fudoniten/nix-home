@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 { username, user-email, home-dir }:
-{ enable-gui ? true, ... }:
+{ enable-gui ? false, ... }:
 
 with lib;
 let
 
-  doom-emacs-package = pkgs.callPackage ./doom-emacs-package.nix {};
+  doom-emacs-packages = pkgs.callPackage ./doom-emacs-package.nix {};
   
   gui-packages = with pkgs;
     let
@@ -51,7 +51,7 @@ let
     enca
     file
     fortune
-    doom-emacs-package
+    doom-emacs-packages.doom-emacs-package
     git
     gnutls
     gnupg
@@ -116,7 +116,7 @@ in {
   xresources.properties = mkIf enable-gui {
     "Xft.antialias" = 1;
     "Xft.autohint" = 0;
-    "Xft.dpi" = 192;
+    # "Xft.dpi" = 192;
     "Xft.hinting" = 1;
     "Xft.hintstyle" = "hintfull";
     "Xft.lcdfilter" = "lcddefault";
@@ -125,7 +125,7 @@ in {
   services = {
     emacs = {
       enable = true;
-      package = doom-emacs-package;
+      package = doom-emacs-packages.doom-emacs-package;
       client = {
         enable = true;
         arguments = [ "-t" ];
@@ -173,7 +173,7 @@ in {
       # EDITOR = "${doom-emacs}/bin/emacsclient -t";
       ALTERNATE_EDITOR = "";
 
-      DOOM_EMACS_SITE_PATH = "${doom-emacs-config}/site.d";
+      DOOM_EMACS_SITE_PATH = "${doom-emacs-packages.doom-emacs-config}/site.d";
 
       HISTCONTROL = "ignoredups:ignorespace";
     };

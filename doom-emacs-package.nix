@@ -12,26 +12,30 @@
     sha256 = "1g0izscjh5nv4n0n1m58jc6z27i9pkbxs17mnb05a83ffdbmmva6";
   };
 
-in pkgs.callPackage doom-emacs-pkg {
-  doomPrivateDir = doom-emacs-config;
-  extraPackages = with pkgs.emacsPackages; [
-    elpher
-    use-package
-  ];
-  emacsPackagesOverlay = final: prev: {
-    irony = prev.irony.overrideAttrs (esuper: {
-      buildInputs = esuper.buildInputs
-                    ++ [ pkgs.cmake pkgs.libclang pkgs.clang ];
-    });
-    spinner = let version = "1.7.4";
-              in prev.trivialBuild {
-                inherit version;
-                pname = "spinner";
-                src = builtins.fetchTarball {
-                  url = "https://elpa.gnu.org/packages/spinner-${version}.tar";
-                  sha256 = "1jj40d68lmz91ynzwqg0jqdjpa9cn5md1hmvjfhy0cr3l16qpfw5";
+in {
+  doom-emacs-package = pkgs.callPackage doom-emacs-pkg {
+    doomPrivateDir = doom-emacs-config;
+    extraPackages = with pkgs.emacsPackages; [
+      elpher
+      use-package
+    ];
+    emacsPackagesOverlay = final: prev: {
+      irony = prev.irony.overrideAttrs (esuper: {
+        buildInputs = esuper.buildInputs
+                      ++ [ pkgs.cmake pkgs.libclang pkgs.clang ];
+      });
+      spinner = let version = "1.7.4";
+                in prev.trivialBuild {
+                  inherit version;
+                  pname = "spinner";
+                  src = builtins.fetchTarball {
+                    url = "https://elpa.gnu.org/packages/spinner-${version}.tar";
+                    sha256 = "1jj40d68lmz91ynzwqg0jqdjpa9cn5md1hmvjfhy0cr3l16qpfw5";
+                  };
+                  buildPhase = ":";
                 };
-                buildPhase = ":";
-              };
+    };
   };
+
+  doom-emacs-config = doom-emacs-config;
 }
