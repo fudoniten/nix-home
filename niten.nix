@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-{ username, user-email, home-dir }:
-{ enable-gui ? false, ... }:
+{ config, lib, pkgs, username, user-email, home-dir, enable-gui, ... }:
 
 with lib;
 let
@@ -9,8 +7,8 @@ let
   
   gui-packages = with pkgs;
     let
-      steam-with-pipewire =
-        (steam.override { extraLibraries = pkgs: [ pkgs.pipewire ]; });
+      # steam-with-pipewire =
+      #   (steam.override { extraLibraries = pkgs: [ pkgs.pipewire ]; });
     in [
       exodus
       firefox
@@ -128,11 +126,49 @@ in {
       package = doom-emacs-packages.doom-emacs-package;
       client = {
         enable = true;
-        arguments = [ "-t" ];
       };
     };
 
     gpg-agent.enable = true;
+
+    gnome-keyring.enable = true;
+
+    redshift = {
+      enable = true;
+      latitude = 47;
+      longitude = 122;
+    };
+  };
+
+  accounts.email.accounts = {
+    Fudo = {
+      primary = true;
+      address = "niten@fudo.org";
+      aliases = [ "peter@selby.ca" ];
+      userName = "niten";
+      realName = "Niten";
+      imap = {
+        host = "mail.fudo.org";
+        tls = {
+          enable = true;
+          port = 993;
+        };
+      };
+      smtp = {
+        host = "mail.fudo.org";
+        tls = {
+          enable = true;
+          useStartTls = true;
+          port = 587;
+        };
+      };
+    };
+
+    GMail = {
+      address = "pselby@gmail.com";
+      flavor = "gmail.com";
+      realName = "Peter Selby";
+    };
   };
 
   home = {
