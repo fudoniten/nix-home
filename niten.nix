@@ -135,8 +135,8 @@ in {
 
     redshift = {
       enable = true;
-      latitude = 47;
-      longitude = 122;
+      latitude = "47";
+      longitude = "122";
     };
   };
 
@@ -149,17 +149,15 @@ in {
       realName = "Niten";
       imap = {
         host = "mail.fudo.org";
-        tls = {
-          enable = true;
-          port = 993;
-        };
+        port = 993;
+        tls.enable = true;
       };
       smtp = {
         host = "mail.fudo.org";
+        port = 587;
         tls = {
           enable = true;
           useStartTls = true;
-          port = 587;
         };
       };
     };

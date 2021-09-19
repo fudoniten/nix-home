@@ -2,8 +2,9 @@
 
 with lib; if !enable-gui then {} else {
   home = {
-    programs = with pkgs; [
+    packages = with pkgs; [
       fcitx5-configtool
+      fcitx5-gtk
       firefox
       gnome.gnome-tweaks
       google-chrome
@@ -23,10 +24,11 @@ with lib; if !enable-gui then {} else {
     username = username;
   };
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = [ pkgs.fcitx5-rime ];
-  };
+  ## Sigh...have to wait for this
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5.addons = [ pkgs.fcitx5-rime ];
+  # };
 
   programs = {
     firefox.enable = true;
@@ -43,8 +45,8 @@ with lib; if !enable-gui then {} else {
 
     redshift = {
       enable = true;
-      latitude = 47;
-      longitude = 122;
+      latitude = "47";
+      longitude = "122";
     };
   };
 
@@ -57,17 +59,15 @@ with lib; if !enable-gui then {} else {
       realName = "Xiaoxuan Jin";
       imap = {
         host = "mail.fudo.org";
-        tls = {
-          enable = true;
-          port = 993;
-        };
+        tls.enable = true;
+        port = 993;
       };
       smtp = {
         host = "mail.fudo.org";
+        port = 587;
         tls = {
           enable = true;
           useStartTls = true;
-          port = 587;
         };
       };
     };

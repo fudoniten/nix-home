@@ -24,16 +24,6 @@ in {
         buildInputs = esuper.buildInputs
                       ++ [ pkgs.cmake pkgs.libclang pkgs.clang ];
       });
-      spinner = let version = "1.7.4";
-                in prev.trivialBuild {
-                  inherit version;
-                  pname = "spinner";
-                  src = builtins.fetchTarball {
-                    url = "https://elpa.gnu.org/packages/spinner-${version}.tar";
-                    sha256 = "1jj40d68lmz91ynzwqg0jqdjpa9cn5md1hmvjfhy0cr3l16qpfw5";
-                  };
-                  buildPhase = ":";
-                };
     };
   };
 
