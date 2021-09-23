@@ -10,7 +10,8 @@ let
   
 in {
   generate-config = { username, user-email, home-dir, ... }:
-    { enable-gui ? false, ... }: import user-configs.${username} {
+    { enable-gui ? false, ... }:
+    import user-configs.${username} {
       inherit config lib pkgs username user-email home-dir enable-gui;
     };
 }
