@@ -5,7 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     doom-emacs.url = "github:vlaci/nix-doom-emacs";
     niten-doom-config = {
-      url = "https://git.fudo.org/niten/doom-emacs.git";
+      url = "git+https://git.fudo.org/niten/doom-emacs.git";
       flake = false;
     };
   };

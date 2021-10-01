@@ -1,4 +1,6 @@
-{ doom-emacs, niten-doom-config, config, lib, pkgs, ... }:
+{ doom-emacs, niten-doom-config, ... }:
+
+{ config, lib, pkgs, ... }:
 
 with lib;
 let
