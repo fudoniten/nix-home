@@ -1,15 +1,35 @@
-{ config, lib, pkgs, username, user-email, home-dir, enable-gui, ... }:
+{
+  doom-emacs,
+  niten-doom-config,
+  config,
+  lib,
+  pkgs,
+  username,
+  user-email,
+  home-dir,
+  enable-gui,
+  ...
+}:
 
 with lib;
 let
 
-  doom-emacs-packages = pkgs.callPackage ./doom-emacs-package.nix {};
+  doom-emacs-package = pkgs.callPackage doom-emacs {
+    doomPrivateDir = niten-doom-config;
+    extraPackages = with pkgs.emacsPackages; [
+      elpher
+      use-package
+    ];
+    emacsPackagesOverlay = final: prev: {
+      irony = prev.irony.overrideAttrs (esuper: {
+        buildInputs = with pkgs;
+          esuper.buildInputs ++
+          [ cmake libclang clang ];
+      });
+    };
+  };
   
-  gui-packages = with pkgs;
-    let
-      # steam-with-pipewire =
-      #   (steam.override { extraLibraries = pkgs: [ pkgs.pipewire ]; });
-    in [
+  gui-packages = with pkgs; [
       exodus
       firefox
       gnome.gnome-tweaks
@@ -24,11 +44,6 @@ let
       redshift
       signal-desktop
       spotify
-      # steam-with-pipewire
-      # steam-with-pipewire.run
-      # steamPackages.steamcmd
-      # steamPackages.steam-fonts
-      # steamPackages.steam-runtime
       xclip
     ];
 
@@ -49,7 +64,7 @@ let
     enca
     file
     fortune
-    doom-emacs-packages.doom-emacs-package
+    doom-emacs-package
     git
     gnutls
     gnupg
@@ -123,7 +138,7 @@ in {
   services = {
     emacs = {
       enable = true;
-      package = doom-emacs-packages.doom-emacs-package;
+      package = doom-emacs-package;
       client = {
         enable = true;
       };
@@ -183,7 +198,6 @@ in {
         (load "default.el")
 
         (setq package-archives nil)
-        ;; (add-to-list 'package-directory-list "~/.nix-profile/share/emacs/site-lisp/elpa")
         (package-initialize)
       '';
 
@@ -207,7 +221,7 @@ in {
       # EDITOR = "${doom-emacs}/bin/emacsclient -t";
       ALTERNATE_EDITOR = "";
 
-      DOOM_EMACS_SITE_PATH = "${doom-emacs-packages.doom-emacs-config}/site.d";
+      DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
 
       HISTCONTROL = "ignoredups:ignorespace";
     };
