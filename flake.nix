@@ -17,7 +17,7 @@
     nixosModule = {
       imports = [
         home-manager.nixosModules.home-manager
-        (import ./default.nix { inherit doom-emacs niten-doom-config; })
+        (import ./module.nix { inherit doom-emacs niten-doom-config; })
       ];
     };
   };
