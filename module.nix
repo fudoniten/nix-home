@@ -36,8 +36,9 @@ in {
     users = let
       generate-config = username: config-file: let
         user-cfg = config.fudo.users.${username};
-        user-email = user-cfg.email;
-        home-dir = user-cfg.home-directory;
+        user-email = if (user-cfg.email != null) then
+          user-cfg.email else "${username}@${config.instance.local-domain}";
+        home-dir = config.users.users.${username}.home;
       in (import user-configs.${username} {
         inherit
           config
