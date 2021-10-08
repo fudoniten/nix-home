@@ -29,7 +29,6 @@ let
     user-config-map;
 
 in {
-
   config.home-manager = {
     useGlobalPkgs = true;
 
