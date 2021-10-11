@@ -81,7 +81,6 @@ let
     mtr
     nixfmt
     nix-index
-    nixops
     nix-prefetch-git
     nmap
     opencv-java
