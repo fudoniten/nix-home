@@ -114,13 +114,26 @@ let
 in {
   
   programs = {
-    bash.enable = true;
+    bash = {
+      enable = true;
+      enableVteIntegration = true;
+    };
+
     git = {
       enable = true;
       userName = username;
       userEmail = user-email;
       ignores = [ "*~" ];
       extraConfig.pull.rebase = false;
+    };
+
+    firefox = {
+      enable = true;
+      package = (pkgs.firefox.override {
+        cfg = {
+          enableGnomeExtensions = true;
+        };
+      });
     };
   };
 
@@ -186,17 +199,6 @@ in {
     packages = if enable-gui then (common-packages ++ gui-packages)
                else
                  common-packages;
-
-    programs = {
-      firefox = {
-        enable = true;
-        package = (pkgs.firefox.override {
-          cfg = {
-            enableGnomeExtensions = true;
-          };
-        });
-      };
-    };
 
     file = {
       ".local/share/openttd/baseset" =
