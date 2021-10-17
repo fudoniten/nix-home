@@ -31,7 +31,6 @@ let
   
   gui-packages = with pkgs; [
       exodus
-      firefox
       gnome.gnome-tweaks
       google-chrome
       imagemagick
@@ -187,6 +186,17 @@ in {
     packages = if enable-gui then (common-packages ++ gui-packages)
                else
                  common-packages;
+
+    programs = {
+      firefox = {
+        enable = true;
+        package = (pkgs.firefox.override {
+          cfg = {
+            enableGnomeExtensions = true;
+          };
+        });
+      };
+    };
 
     file = {
       ".local/share/openttd/baseset" =
