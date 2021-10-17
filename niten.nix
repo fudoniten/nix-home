@@ -129,11 +129,12 @@ in {
 
     firefox = {
       enable = true;
-      package = (pkgs.firefox.override {
-        cfg = {
-          enableGnomeExtensions = true;
-        };
-      });
+      ## Some perm change error?
+      # package = (pkgs.firefox.override {
+      #   cfg = {
+      #     enableGnomeExtensions = true;
+      #   };
+      # });
     };
   };
 
