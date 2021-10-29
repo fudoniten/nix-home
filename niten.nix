@@ -60,6 +60,7 @@ let
     clj2nix
     cmake
     curl
+    element-desktop
     enca
     file
     fortune
