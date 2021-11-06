@@ -161,7 +161,13 @@ in {
 
     gnome-keyring.enable = true;
 
-    redshift = {
+    # redshift = {
+    #   enable = true;
+    #   latitude = "47";
+    #   longitude = "122";
+    # };
+
+    gammastep = {
       enable = true;
       latitude = "47";
       longitude = "122";
