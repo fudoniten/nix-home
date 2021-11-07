@@ -97,6 +97,7 @@ let
     texlive.combined.scheme-basic
     tmux
     unzip
+    winetricks
     yubikey-manager
     yubikey-personalization
     youtube-dl
