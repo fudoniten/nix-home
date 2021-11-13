@@ -60,11 +60,12 @@ let
     clj2nix
     cmake
     curl
+    doom-emacs-package
     element-desktop
     enca
+    faudio
     file
     fortune
-    doom-emacs-package
     git
     gnutls
     gnupg
