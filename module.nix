@@ -17,7 +17,7 @@ let
   user-config-map = {
     niten = ./niten.nix;
     # FIXME: Root shouldn't have all this stuff installed!
-    root = ./niten.nix;
+    root = ./root.nix;
     viator = ./niten.nix;
     xiaoxuan = ./xiaoxuan.nix;
   };
@@ -60,7 +60,6 @@ in {
           niten-doom-config;
         username = "root";
         user-email = "root@${config.instance.local-domain}";
-        enable-gui = false;
         home-dir = "/root";
       };
     };

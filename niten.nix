@@ -30,21 +30,23 @@ let
   };
   
   gui-packages = with pkgs; [
-      exodus
-      gnome.gnome-tweaks
-      google-chrome
-      imagemagick
-      jq
-      minecraft
-      mplayer
-      nyxt
-      openttd
-      pv
-      redshift
-      signal-desktop
-      spotify
-      xclip
-    ];
+    element-desktop
+    exodus
+    faudio
+    gnome.gnome-tweaks
+    google-chrome
+    imagemagick
+    jq
+    minecraft
+    mplayer
+    nyxt
+    openttd
+    pv
+    redshift
+    signal-desktop
+    spotify
+    xclip
+  ];
 
   common-packages = with pkgs; [
     ant
@@ -61,9 +63,7 @@ let
     cmake
     curl
     doom-emacs-package
-    element-desktop
     enca
-    faudio
     file
     fortune
     git
@@ -131,7 +131,7 @@ in {
     };
 
     firefox = {
-      enable = true;
+      enable = enable-gui;
       ## Some perm change error?
       # package = (pkgs.firefox.override {
       #   cfg = {
@@ -161,13 +161,7 @@ in {
 
     gpg-agent.enable = true;
 
-    gnome-keyring.enable = true;
-
-    # redshift = {
-    #   enable = true;
-    #   latitude = "47";
-    #   longitude = "122";
-    # };
+    gnome-keyring.enable = enable-gui;
 
     gammastep = {
       enable = true;
