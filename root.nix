@@ -80,9 +80,7 @@ in {
   };
 
   home = {
-    packages = if enable-gui then (common-packages ++ gui-packages)
-               else
-                 common-packages;
+    packages = common-packages;
 
     file = {
       # For nixified emacs
