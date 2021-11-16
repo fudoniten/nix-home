@@ -18,7 +18,7 @@ let
     local-usernames = attrNames config.instance.local-users;
   in filterAttrs
     (username: userOpts: elem username local-usernames)
-    user-config-map;
+    user-configs;
 
 in {
   config.home-manager = {
