@@ -23,7 +23,7 @@ let
   };
 
   local-users = let
-    local-usernames = attrNames config.instance.local-users ++ [ "root" ];
+    local-usernames = attrNames config.instance.local-users;
   in filterAttrs
     (username: userOpts: elem username local-usernames)
     user-config-map;
@@ -50,6 +50,19 @@ in {
           home-dir
           enable-gui;
       });
-    in mapAttrs generate-config local-users;
+    in (mapAttrs generate-config local-users) // {
+      root = import user-configs.root {
+        inherit
+          config
+          lib
+          pkgs
+          doom-emacs
+          niten-doom-config;
+        username = "root";
+        user-email = "root@${config.instance.local-domain}";
+        enable-gui = false;
+        home-dir = "/root";
+      };
+    };
   };
 }
