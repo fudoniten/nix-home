@@ -23,7 +23,7 @@ let
   };
 
   local-users = let
-    local-usernames = attrNames config.instance.local-users;
+    local-usernames = attrNames config.instance.local-users ++ [ "root" ];
   in filterAttrs
     (username: userOpts: elem username local-usernames)
     user-config-map;
