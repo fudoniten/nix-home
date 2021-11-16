@@ -6,21 +6,13 @@ with lib;
 let
   user-configs = {
     niten = ./niten.nix;
-    root = ./niten.nix;
+    root = ./root.nix;
     viator = ./niten.nix;
     xiaoxuan = ./xiaoxuan.nix;
   };
 
   hostname = config.instance.hostname;
   enable-gui = config.fudo.hosts.${hostname}.enable-gui;
-
-  user-config-map = {
-    niten = ./niten.nix;
-    # FIXME: Root shouldn't have all this stuff installed!
-    root = ./root.nix;
-    viator = ./niten.nix;
-    xiaoxuan = ./xiaoxuan.nix;
-  };
 
   local-users = let
     local-usernames = attrNames config.instance.local-users;

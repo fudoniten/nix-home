@@ -170,35 +170,6 @@ in {
     };
   };
 
-  accounts.email.accounts = {
-    Fudo = {
-      primary = true;
-      address = "niten@fudo.org";
-      aliases = [ "peter@selby.ca" ];
-      userName = "niten";
-      realName = "Niten";
-      imap = {
-        host = "mail.fudo.org";
-        port = 993;
-        tls.enable = true;
-      };
-      smtp = {
-        host = "mail.fudo.org";
-        port = 587;
-        tls = {
-          enable = true;
-          useStartTls = true;
-        };
-      };
-    };
-
-    GMail = {
-      address = "pselby@gmail.com";
-      flavor = "gmail.com";
-      realName = "Peter Selby";
-    };
-  };
-
   home = {
     packages = if enable-gui then (common-packages ++ gui-packages)
                else
@@ -243,5 +214,5 @@ in {
   };
 
   systemd.user.tmpfiles.rules =
-    map (dir: "d ${home-dir}/${dir} 700 niten - - -") ensure-directories;
+    map (dir: "d ${home-dir}/${dir} 700 ${username} - - -") ensure-directories;
 }
