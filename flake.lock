@@ -182,14 +182,16 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1633291410,
-        "narHash": "sha256-IxUzCGwj+s2Rn/+u0NtY36ix5I8MopMOO8Ip59PnBlw=",
+        "lastModified": 1637019201,
+        "narHash": "sha256-lq4gz51fx4m5FXfx1SCB444aEBeaYtLMVm3P18Wi9ls=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "382505714d10c6791a96712e0554587c75c5bf8b",
+        "rev": "bcf03fa16a1f06b8a0abb27bf49afa8d6fffe8f1",
         "type": "github"
       },
       "original": {
@@ -202,11 +204,11 @@
     "niten-doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1628274414,
-        "narHash": "sha256-EIGqjTHcYnjVXceY1tpjaYxNmORh8NNiL2FVWCI5sBo=",
+        "lastModified": 1633712607,
+        "narHash": "sha256-6PAw7Xvoj4JROeTqK1nhT2zv7bPpiQlm9t7H5HQ0f2k=",
         "ref": "master",
-        "rev": "0ab1532c856ccdb6ce46c5948054279f439eb1f2",
-        "revCount": 34,
+        "rev": "0a4f8ce4121ba3d64d29b0d52733c08febfb83d8",
+        "revCount": 35,
         "type": "git",
         "url": "https://git.fudo.org/niten/doom-emacs.git"
       },
@@ -249,15 +251,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1633381874,
-        "narHash": "sha256-RkoVeo4K1IKqQzCI9W28UOyw4ic3Lhb3XoMDFDp7X74=",
+        "lastModified": 1636944046,
+        "narHash": "sha256-74KLDsiWSBsYXKj/ql9EGbw1TbIJRE7clFkhl30HV/c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "35b808214a1ca158a04d6980cb95cc1a77ce1f94",
+        "rev": "46251a79f752ae1d46ef733e8e9760b6d3429da4",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
+        "ref": "nixos-21.05",
         "type": "indirect"
       }
     },
@@ -377,7 +380,8 @@
       "inputs": {
         "doom-emacs": "doom-emacs",
         "home-manager": "home-manager",
-        "niten-doom-config": "niten-doom-config"
+        "niten-doom-config": "niten-doom-config",
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "rotate-text": {
