@@ -78,6 +78,7 @@ let
     lispPackages.quicklisp
     lsof
     lshw
+    manix
     mkpasswd
     mtr
     nixfmt
