@@ -23,8 +23,7 @@ let
     emacsPackagesOverlay = final: prev: {
       irony = prev.irony.overrideAttrs (esuper: {
         buildInputs = with pkgs;
-          esuper.buildInputs ++
-          [ cmake libclang clang ];
+          esuper.buildInputs ++ [ clang libclang ];
       });
     };
   };
