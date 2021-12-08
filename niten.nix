@@ -58,7 +58,6 @@ let
     cdrtools
     cargo
     clojure
-    clj2nix
     cmake
     curl
     doom-emacs-package
