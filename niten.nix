@@ -188,8 +188,7 @@ in {
 
       ".xsessions" = mkIf enable-gui {
         executable = true;
-        text = ''
-          # -*-bash-*-
+        source = pkgs.writeShellScript "${username}-xsessions" ''
           gdmauth=$XAUTHORITY
           unset  XAUTHORITY
           export XAUTHORITY
