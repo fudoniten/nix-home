@@ -68,6 +68,7 @@ let
     git
     gnutls
     gnupg
+    graphviz
     guile
     ipfs
     iptables
