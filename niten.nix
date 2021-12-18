@@ -1,7 +1,6 @@
 {
   doom-emacs,
   niten-doom-config,
-  config,
   lib,
   pkgs,
   username,
