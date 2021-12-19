@@ -19,12 +19,12 @@ let
       elpher
       use-package
     ];
-    emacsPackagesOverlay = final: prev: {
-      irony = prev.irony.overrideAttrs (esuper: {
-        buildInputs = with pkgs;
-          esuper.buildInputs ++ [ clang libclang ];
-      });
-    };
+    # emacsPackagesOverlay = final: prev: {
+    #   irony = prev.irony.overrideAttrs (esuper: {
+    #     buildInputs = with pkgs;
+    #       esuper.buildInputs ++ [ clang libclang ];
+    #   });
+    # };
   };
   
   gui-packages = with pkgs; [
