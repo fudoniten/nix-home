@@ -69,6 +69,7 @@ let
     gnupg
     graphviz
     guile
+    home-manager
     ipfs
     iptables
     jdk
