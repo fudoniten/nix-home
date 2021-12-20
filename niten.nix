@@ -6,7 +6,8 @@
   username,
   user-email,
   home-dir,
-  enable-gui,
+  enable-gui ? false,
+  localOverlays ? [],
   ...
 }:
 
@@ -115,6 +116,11 @@ let
   ensure-directories = [ ".emacs.d/.local/etc/eshell" ];
 
 in {
+
+   nixpkgs = {
+     config.allowUnfree = true;
+     overlays = localOverlays;
+   };
   
   programs = {
     bash = {
