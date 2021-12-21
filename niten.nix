@@ -118,10 +118,10 @@ let
 
 in {
 
-   nixpkgs = {
-     config.allowUnfree = true;
-     overlays = localOverlays;
-   };
+  nixpkgs = mkIf (! config.home-manager.useGlobalPkgs) {
+    config.allowUnfree = true;
+    overlays = localOverlays;
+  };
   
   programs = {
     bash = {
