@@ -7,7 +7,7 @@
   user-email,
   home-dir,
   enable-gui ? false,
-  localOverlays ? [],
+  localOverlays ? null,
   ...
 }:
 
@@ -104,6 +104,7 @@ let
     yubikey-manager
     yubikey-personalization
     youtube-dl
+    yq
 
     # Check and pick a favorite
     molly-brown
@@ -118,7 +119,7 @@ let
 
 in {
 
-  nixpkgs = mkIf (! config.home-manager.useGlobalPkgs) {
+  nixpkgs = mkIf (localOverlays != null) {
     config.allowUnfree = true;
     overlays = localOverlays;
   };
