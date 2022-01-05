@@ -6,7 +6,8 @@
   username,
   user-email,
   home-dir,
-  enable-gui,
+  enable-gui ? false,
+  localOverlays ? null,
   ...
 }:
 
@@ -103,6 +104,7 @@ let
     yubikey-manager
     yubikey-personalization
     youtube-dl
+    yq
 
     # Check and pick a favorite
     molly-brown
@@ -116,6 +118,11 @@ let
   ensure-directories = [ ".emacs.d/.local/etc/eshell" ];
 
 in {
+
+  nixpkgs = mkIf (localOverlays != null) {
+    config.allowUnfree = true;
+    overlays = localOverlays;
+  };
   
   programs = {
     bash = {
