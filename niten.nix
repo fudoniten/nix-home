@@ -44,7 +44,7 @@ let
     redshift
     signal-desktop
     spotify
-    unstableNyxt
+    nyxt
     xclip
   ];
 
