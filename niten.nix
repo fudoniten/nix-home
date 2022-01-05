@@ -37,13 +37,13 @@ let
     jq
     minecraft
     mplayer
-    nyxt
     openttd
     pidgin
     pv
     redshift
     signal-desktop
     spotify
+    unstableNyxt
     xclip
   ];
 
