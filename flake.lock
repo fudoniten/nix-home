@@ -182,11 +182,11 @@
     },
     "fudo-pkgs": {
       "locked": {
-        "lastModified": 1641414330,
-        "narHash": "sha256-UzfvtfrZJ0gCpKmackBRRibfFatnkrrUjWYp1MVNSe8=",
+        "lastModified": 1641415967,
+        "narHash": "sha256-7HFT/uUEnMj5PSwfBHNvP3PHWzG2QwZiCNFRH9aOz50=",
         "ref": "master",
-        "rev": "9256b199d385e1348ddb577e383295cbdeab3e4c",
-        "revCount": 23,
+        "rev": "05f4d710c8c1b0451515d02fa9a089abb5df6ce6",
+        "revCount": 24,
         "type": "git",
         "url": "https://git.fudo.org/fudo-nix/pkgs.git"
       },
