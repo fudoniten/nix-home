@@ -181,12 +181,15 @@
       }
     },
     "fudo-pkgs": {
+      "inputs": {
+        "unstableNixpkgs": "unstableNixpkgs"
+      },
       "locked": {
-        "lastModified": 1639072539,
-        "narHash": "sha256-ezF6GF5JaJgQ7C4ZbzK4VWXl8DrDRO1gsvv/SOckmZ8=",
+        "lastModified": 1641413309,
+        "narHash": "sha256-FPLBuS9714BxkU6uLJSoRL7VQUj3yvTK4xkl7+RSzaM=",
         "ref": "master",
-        "rev": "99319e33c6e17476225c1d939e656c6ae6c8152f",
-        "revCount": 18,
+        "rev": "042aa2f4cea9ad8acdf93b4b54196aefd94c0408",
+        "revCount": 22,
         "type": "git",
         "url": "https://git.fudo.org/fudo-nix/pkgs.git"
       },
@@ -427,6 +430,21 @@
         "owner": "debug-ito",
         "repo": "rotate-text.el",
         "type": "github"
+      }
+    },
+    "unstableNixpkgs": {
+      "locked": {
+        "lastModified": 1641230035,
+        "narHash": "sha256-hFyqihERaTbLxCOlugy/rpp22VLtLh8SPRnA2uu3F/8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "78cd22c1b8604de423546cd49bfe264b786eca13",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
       }
     }
   },
