@@ -130,8 +130,6 @@ in {
       enableVteIntegration = true;
     };
 
-    doom-emacs.enable = true;
-
     git = {
       enable = true;
       userName = username;
