@@ -61,6 +61,7 @@ in {
           config
           lib
           pkgs
+          niten-doom-config
           doom-emacs-package;
         username = "root";
         user-email = "root@${config.instance.local-domain}";
