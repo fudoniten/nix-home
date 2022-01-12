@@ -2,10 +2,12 @@
   description = "Fudo Home Manager Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?rev=971b383a28f4baee8ea3931af4840fa221929fd6";
+    #nixpkgs.url = "github:NixOS/nixpkgs?rev=971b383a28f4baee8ea3931af4840fa221929fd6";
+    nixpkgs.url = "nixpkgs/nixos-21.11";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.11";
-      inputs.nixpkgs.url = "github:NixOS/nixpkgs?rev=971b383a28f4baee8ea3931af4840fa221929fd6";
+      #inputs.nixpkgs.url = "github:NixOS/nixpkgs?rev=971b383a28f4baee8ea3931af4840fa221929fd6";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     niten-doom-config = {
       url = "git+https://git.fudo.org/niten/doom-emacs.git";
@@ -19,7 +21,8 @@
     };
     doom-emacs = {
       url = "github:vlaci/nix-doom-emacs";
-      inputs.nixpkgs.url = "github:NixOS/nixpkgs?rev=971b383a28f4baee8ea3931af4840fa221929fd6";
+      # inputs.nixpkgs.url = "github:NixOS/nixpkgs?rev=971b383a28f4baee8ea3931af4840fa221929fd6";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.emacs-overlay.follows = "emacs-overlay";
     };
   };
