@@ -25,6 +25,19 @@ in {
     useGlobalPkgs = true;
 
     users = let
+      doom-emacs-package = pkgs.callPackage doom-emacs {
+        doomPrivateDir = niten-doom-config;
+        extraPackages = with pkgs.emacsPackages; [
+          elpher
+          use-package
+        ];
+        # For https://github.com/vlaci/nix-doom-emacs/issues/401
+        emacsPackagesOverlay = final: prev: {
+          gitignore-mode = pkgs.emacsPackages.git-modes;
+          gitconfig-mode = pkgs.emacsPackages.git-modes;
+        };
+      };
+
       generate-config = username: config-file: let
         user-cfg = config.fudo.users.${username};
         user-email = if (user-cfg.email != null) then
@@ -35,8 +48,7 @@ in {
           config
           lib
           pkgs
-          doom-emacs
-          niten-doom-config
+          doom-emacs-package
           username
           user-email
           home-dir
@@ -48,8 +60,7 @@ in {
           config
           lib
           pkgs
-          doom-emacs
-          niten-doom-config;
+          doom-emacs-package;
         username = "root";
         user-email = "root@${config.instance.local-domain}";
         home-dir = "/root";

@@ -1,6 +1,5 @@
 {
-  doom-emacs,
-  niten-doom-config,
+  doom-emacs-package,
   config,
   lib,
   pkgs,
@@ -12,25 +11,11 @@
 
 with lib;
 let
-  doom-emacs-package = pkgs.callPackage doom-emacs {
-    doomPrivateDir = niten-doom-config;
-    extraPackages = with pkgs.emacsPackages; [
-      elpher
-      use-package
-    ];
-    # For https://github.com/vlaci/nix-doom-emacs/issues/401
-    emacsPackagesOverlay = final: prev: {
-      gitignore-mode = pkgs.emacsPackages.git-modes;
-      gitconfig-mode = pkgs.emacsPackages.git-modes;
-    };
-  };
-
   common-packages = with pkgs; [
     atop
     btrfs-progs
     cdrtools
     curl
-    doom-emacs-package
     file
     git
     gnutls
@@ -91,7 +76,6 @@ in {
     };
 
     sessionVariables = {
-      # EDITOR = "${doom-emacs}/bin/emacsclient -t";
       ALTERNATE_EDITOR = "";
 
       DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";

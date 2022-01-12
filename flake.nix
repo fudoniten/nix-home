@@ -28,7 +28,7 @@
               nixpkgs,
               home-manager,
               doom-emacs,
-	      fudo-pkgs,
+              fudo-pkgs,
               niten-doom-config, ... }: {
     nixosModule = {
       imports = [
@@ -44,13 +44,26 @@
       in home-manager.lib.homeManagerConfiguration {
         inherit system username;
         homeDirectory = "/home/niten";
-        configuration = { pkgs, lib, ... }: (import ./niten.nix {
-          inherit system pkgs lib username doom-emacs niten-doom-config;
+        configuration = { pkgs, lib, ... }: let
+          doom-emacs-package = pkgs.callPackage doom-emacs {
+            doomPrivateDir = niten-doom-config;
+            extraPackages = with pkgs.emacsPackages; [
+              elpher
+              use-package
+            ];
+            # For https://github.com/vlaci/nix-doom-emacs/issues/401
+            emacsPackagesOverlay = final: prev: {
+              gitignore-mode = pkgs.emacsPackages.git-modes;
+              gitconfig-mode = pkgs.emacsPackages.git-modes;
+            };
+          };
+        in (import ./niten.nix {
+          inherit system pkgs lib username doom-emacs-package;
 
           user-email = "niten@fudo.org";
           home-dir = "/home/niten";
           enable-gui = true;
-	  localOverlays = [ fudo-pkgs.overlay ];
+          localOverlays = [ fudo-pkgs.overlay ];
         });
       };
     };
