@@ -1,5 +1,6 @@
 {
   doom-emacs-package,
+  niten-doom-config,
   config,
   lib,
   pkgs,
