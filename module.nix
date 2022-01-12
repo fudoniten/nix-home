@@ -49,6 +49,7 @@ in {
           lib
           pkgs
           doom-emacs-package
+          niten-doom-config
           username
           user-email
           home-dir

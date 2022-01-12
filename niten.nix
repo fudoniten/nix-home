@@ -1,5 +1,6 @@
 {
   doom-emacs-package,
+  niten-doom-config,
   lib,
   pkgs,
   username,
@@ -165,9 +166,9 @@ in {
   };
 
   home = {
-    packages = if enable-gui then (common-packages ++ gui-packages)
-               else
-                 common-packages;
+    packages = if enable-gui then
+      (common-packages ++ gui-packages) else
+        common-packages;
 
     file = {
       ".local/share/openttd/baseset" =

@@ -61,7 +61,7 @@
             };
           };
         in (import ./niten.nix {
-          inherit system pkgs lib username doom-emacs-package;
+          inherit system pkgs lib username niten-doom-config doom-emacs-package;
 
           user-email = "niten@fudo.org";
           home-dir = "/home/niten";
