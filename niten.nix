@@ -60,7 +60,7 @@ let
     clojure
     cmake
     curl
-    doom-emacs-package
+    # doom-emacs-package
     duf
     enca
     file
