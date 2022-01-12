@@ -20,12 +20,11 @@ let
       elpher
       use-package
     ];
-    # emacsPackagesOverlay = final: prev: {
-    #   irony = prev.irony.overrideAttrs (esuper: {
-    #     buildInputs = with pkgs;
-    #       esuper.buildInputs ++ [ clang libclang ];
-    #   });
-    # };
+    # For https://github.com/vlaci/nix-doom-emacs/issues/401
+    emacsPackagesOverlay = final: prev: {
+      gitignore-mode = pkgs.emacsPackages.git-modes;
+      gitconfig-mode = pkgs.emacsPackages.git-modes;
+    };
   };
   
   gui-packages = with pkgs; [
@@ -62,6 +61,7 @@ let
     cmake
     curl
     doom-emacs-package
+    duf
     enca
     file
     fortune
@@ -129,6 +129,8 @@ in {
       enable = true;
       enableVteIntegration = true;
     };
+
+    doom-emacs.enable = true;
 
     git = {
       enable = true;
