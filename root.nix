@@ -18,12 +18,10 @@ let
       elpher
       use-package
     ];
+    # For https://github.com/vlaci/nix-doom-emacs/issues/401
     emacsPackagesOverlay = final: prev: {
-      irony = prev.irony.overrideAttrs (esuper: {
-        buildInputs = with pkgs;
-          esuper.buildInputs ++
-          [ cmake libclang clang ];
-      });
+      gitignore-mode = pkgs.emacsPackages.git-modes;
+      gitconfig-mode = pkgs.emacsPackages.git-modes;
     };
   };
 
