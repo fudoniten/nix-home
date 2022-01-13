@@ -176,7 +176,8 @@ in {
 
       # For nixified emacs
       ".emacs.d/init.el".text = ''
-        (load "default.el")
+        ;; No longer works?
+        ;; (load "default.el")
 
         (setq package-archives nil)
         (package-initialize)
