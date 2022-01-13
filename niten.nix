@@ -47,7 +47,7 @@ let
     clojure
     cmake
     curl
-    # doom-emacs-package
+    doom-emacs-package
     duf
     enca
     file
@@ -176,8 +176,7 @@ in {
 
       # For nixified emacs
       ".emacs.d/init.el".text = ''
-        ;; No longer works?
-        ;; (load "default.el")
+        (load "default.el")
 
         (setq package-archives nil)
         (package-initialize)
