@@ -24,6 +24,7 @@ let
     jq
     minecraft
     mplayer
+    multimc
     openttd
     pidgin
     pv
