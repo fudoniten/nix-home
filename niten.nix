@@ -88,6 +88,7 @@ let
     texlive.combined.scheme-basic
     tmux
     unzip
+    usbutils
     winetricks
     yubikey-manager
     yubikey-personalization
