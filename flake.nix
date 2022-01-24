@@ -2,7 +2,6 @@
   description = "Fudo Home Manager Configuration";
 
   inputs = {
-    #nixpkgs.url = "github:NixOS/nixpkgs?rev=971b383a28f4baee8ea3931af4840fa221929fd6";
     nixpkgs.url = "nixpkgs/nixos-21.11";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.11";
