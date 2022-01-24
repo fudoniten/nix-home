@@ -151,9 +151,7 @@ in {
     emacs = {
       enable = true;
       package = doom-emacs-package;
-      client = {
-        enable = true;
-      };
+      client.enable = true;
     };
 
     gpg-agent.enable = true;
