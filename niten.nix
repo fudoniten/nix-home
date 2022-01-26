@@ -39,6 +39,7 @@ let
     ant
     asdf
     atop
+    bind # for dig
     binutils
     btrfs-progs
     bundix
