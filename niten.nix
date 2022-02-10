@@ -54,6 +54,7 @@ let
     enca
     file
     fortune
+    gcc
     git
     gnutls
     gnupg
@@ -78,6 +79,7 @@ let
     opencv-java
     openldap
     openssl
+    openssl.out
     pciutils
     pwgen
     python
