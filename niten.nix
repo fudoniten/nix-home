@@ -92,6 +92,7 @@ let
     tmux
     unzip
     usbutils
+    wget
     winetricks
     yubikey-manager
     yubikey-personalization
