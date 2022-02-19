@@ -80,6 +80,7 @@ let
     openldap
     openssl
     openssl.out
+    parted
     pciutils
     pwgen
     python
