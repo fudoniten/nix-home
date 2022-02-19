@@ -58,6 +58,7 @@ let
     git
     gnutls
     gnupg
+    gparted
     graphviz
     guile
     home-manager
