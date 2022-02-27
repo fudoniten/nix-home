@@ -4,9 +4,7 @@
       "inputs": {
         "doom-emacs": "doom-emacs_2",
         "doom-snippets": "doom-snippets",
-        "emacs-overlay": [
-          "emacs-overlay"
-        ],
+        "emacs-overlay": "emacs-overlay",
         "emacs-so-long": "emacs-so-long",
         "evil-markdown": "evil-markdown",
         "evil-org-mode": "evil-org-mode",
@@ -76,11 +74,11 @@
     "emacs-overlay": {
       "flake": false,
       "locked": {
-        "lastModified": 1643049498,
-        "narHash": "sha256-5kqiGt59QP0A1E9waSv2CKyR4nrOD6LBimYNDzR/iSc=",
+        "lastModified": 1626972035,
+        "narHash": "sha256-YhBtnKmLDYiEzP5ZEMEQMg6oMP5EV+ToCkku7ZYfL+A=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "bbbbdf7e2add19093cb7373afdbe38917106ef22",
+        "rev": "be04b45efb35db58e6ac6aa86b84f850c85b5dfe",
         "type": "github"
       },
       "original": {
@@ -186,11 +184,11 @@
     },
     "fudo-pkgs": {
       "locked": {
-        "lastModified": 1641415967,
-        "narHash": "sha256-7HFT/uUEnMj5PSwfBHNvP3PHWzG2QwZiCNFRH9aOz50=",
+        "lastModified": 1643841844,
+        "narHash": "sha256-rmTIL94RQQaFhMHCopmeFUVAoP71nSA6sB46riDq2Ik=",
         "ref": "master",
-        "rev": "05f4d710c8c1b0451515d02fa9a089abb5df6ce6",
-        "revCount": 24,
+        "rev": "7e02ad0e7d9ac42605ed318e9d76364ec1d339ec",
+        "revCount": 41,
         "type": "git",
         "url": "https://git.fudo.org/fudo-nix/pkgs.git"
       },
@@ -206,11 +204,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1642653493,
-        "narHash": "sha256-22mGPjiHUo2Jmze4IjXCJLjeK2mbvvCztHmUyUMr4yw=",
+        "lastModified": 1643933536,
+        "narHash": "sha256-yRmsWAG4DnLxLIUtlaZsl0kH7rN5xSoyNRlf0YZrcH4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "28b9ae40c45c5e7711c353fee1b7af734e293979",
+        "rev": "2860d7e3bb350f18f7477858f3513f9798896831",
         "type": "github"
       },
       "original": {
@@ -255,11 +253,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1642961095,
-        "narHash": "sha256-RLatktZmvwFBOyqdoIk4qdS4OGKB7aKIvvs4ZP2L8D8=",
+        "lastModified": 1645885043,
+        "narHash": "sha256-wDATA3Tks+fG91q3XL673rPQDl58zLRmjdJXpmrUwXU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "604c44137d97b5111be1ca5c0d97f6e24fbc5c2c",
+        "rev": "1622abf0e7890a3dac995f6eb5a92f56819ae38e",
         "type": "github"
       },
       "original": {
@@ -383,7 +381,6 @@
     "root": {
       "inputs": {
         "doom-emacs": "doom-emacs",
-        "emacs-overlay": "emacs-overlay",
         "fudo-pkgs": "fudo-pkgs",
         "home-manager": "home-manager",
         "niten-doom-config": "niten-doom-config",
