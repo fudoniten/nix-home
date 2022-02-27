@@ -19,7 +19,7 @@
     # };
     doom-emacs = {
       url = "github:vlaci/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.emacs-overlay.follows = "emacs-overlay";
     };
   };
