@@ -36,6 +36,7 @@ let
   ];
 
   common-packages = with pkgs; [
+    alacritty
     ant
     asdf
     atop
@@ -65,6 +66,7 @@ let
     ipfs
     iptables
     jdk
+    kitty
     leiningen
     libisofs
     lispPackages.quicklisp
