@@ -1,19 +1,11 @@
-{
-  doom-emacs-package,
-  niten-doom-config,
-  lib,
-  pkgs,
-  username,
-  user-email,
-  home-dir,
-  enable-gui ? false,
-  localOverlays ? null,
-  ...
-}:
+{ doom-emacs-package, niten-doom-config, lib, pkgs, username, user-email
+, home-dir, enable-gui ? false, localOverlays ? null, ... }:
 
 with lib;
 let
-  
+
+  use-kitty-term = true;
+
   gui-packages = with pkgs; [
     element-desktop
     exodus
@@ -120,7 +112,7 @@ in {
     config.allowUnfree = true;
     overlays = localOverlays;
   };
-  
+
   programs = {
     bash = {
       enable = true;
@@ -133,6 +125,22 @@ in {
       userEmail = user-email;
       ignores = [ "*~" ];
       extraConfig.pull.rebase = false;
+    };
+
+    kitty = {
+      enable = use-kitty-term;
+      settings = {
+        copy_on_select = "clipboard";
+        strip_trailing_spaces = "always";
+        editor = "emacsclient -t";
+        enable_audio_bell = false;
+        scrollback_lines = 10000;
+        theme = "Obsidian";
+      };
+      font = {
+        package = pkgs.nerdfonts;
+        name = "ShureTechMono Nerd Font";
+      };
     };
 
     firefox = {
@@ -174,9 +182,10 @@ in {
   };
 
   home = {
-    packages = if enable-gui then
-      (common-packages ++ gui-packages) else
-        common-packages;
+    packages =
+      if enable-gui then (common-packages ++ gui-packages) else common-packages;
+
+    shellAliases = mkIf use-kitty-term { ssh = "kitty +kitten ssh"; };
 
     file = {
       ".local/share/openttd/baseset" =
