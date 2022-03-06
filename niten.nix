@@ -140,6 +140,7 @@ in {
       font = {
         package = pkgs.nerdfonts;
         name = "ShureTechMono Nerd Font";
+        size = "10";
       };
     };
 
