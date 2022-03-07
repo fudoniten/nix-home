@@ -136,13 +136,24 @@ in {
         enable_audio_bell = false;
         scrollback_lines = 10000;
         theme = "Obsidian";
+        disable_ligatures = "always";
       };
       font = {
-        #package = pkgs.nerdfonts;
-        #name = "TerminessTTF Nerd Font Bold";
-        package = pkgs.inconsolata;
-        name = "Incosolata";
-        size = 10;
+        package = pkgs.nerdfonts;
+        name = "ShureTechMono Nerd Font";
+        size = 12;
+        #package = pkgs.inconsolata;
+        #name = "Incosolata";
+        #size = 10;
+      };
+      keybindings = {
+        "ctrl+shift+plus" = "no_op";
+        "ctrl+shift+minus" = "no_op";
+        "ctrl+shift+backspace" = "no_op";
+        "ctrl+super+plus" = "change_font_size all +2.0";
+        "ctrl+super+minus" = "change_font_size all -2.0";
+        "ctrl+super+backspace" = "change_font_size all 0";
+        "ctrl+c" = "copy_or_interrupt";
       };
     };
 
