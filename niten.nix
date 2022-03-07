@@ -138,9 +138,10 @@ in {
         theme = "Obsidian";
       };
       font = {
-        package = pkgs.nerdfonts;
-        name = "TerminessTTF Nerd Font Bold";
-        size = 14;
+        #package = pkgs.nerdfonts;
+        #name = "TerminessTTF Nerd Font Bold";
+        font = pkgs.inconsolata;
+        size = 12;
       };
     };
 
