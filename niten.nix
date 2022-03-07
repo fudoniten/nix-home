@@ -140,7 +140,8 @@ in {
       font = {
         #package = pkgs.nerdfonts;
         #name = "TerminessTTF Nerd Font Bold";
-        font = pkgs.inconsolata;
+        package = pkgs.inconsolata;
+        name = "Incosolata";
         size = 12;
       };
     };
