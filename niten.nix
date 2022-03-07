@@ -140,7 +140,7 @@ in {
       font = {
         package = pkgs.nerdfonts;
         name = "TerminessTTF Nerd Font";
-        size = 12;
+        size = 14;
       };
     };
 
