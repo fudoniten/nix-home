@@ -139,7 +139,7 @@ in {
       };
       font = {
         package = pkgs.nerdfonts;
-        name = "TerminessTTF Nerd Font";
+        name = "TerminessTTF Nerd Font Bold";
         size = 14;
       };
     };
