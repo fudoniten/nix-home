@@ -142,7 +142,7 @@ in {
         #name = "TerminessTTF Nerd Font Bold";
         package = pkgs.inconsolata;
         name = "Incosolata";
-        size = 12;
+        size = 10;
       };
     };
 
