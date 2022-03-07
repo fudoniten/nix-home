@@ -136,11 +136,11 @@ in {
         enable_audio_bell = false;
         scrollback_lines = 10000;
         theme = "Obsidian";
-        font_features = "ShureTechMono Nerd Font Complete Mono -liga";
+        font_features = "ShureTechMono Nerd Font -liga";
       };
       font = {
         package = pkgs.nerdfonts;
-        name = "ShureTechMono Nerd Font Complete Mono";
+        name = "ShureTechMono Nerd Font";
         size = 12;
         #package = pkgs.inconsolata;
         #name = "Incosolata";
