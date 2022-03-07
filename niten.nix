@@ -139,7 +139,7 @@ in {
       };
       font = {
         package = pkgs.nerdfonts;
-        name = "ShureTechMono Nerd Font";
+        name = "ShureTechMono Nerd Font Mono Regular";
         size = 12;
       };
     };
