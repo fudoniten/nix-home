@@ -139,7 +139,7 @@ in {
       };
       font = {
         package = pkgs.nerdfonts;
-        name = "ShureTechMono Nerd Font Regular";
+        name = "TerminessTTF Nerd Font";
         size = 12;
       };
     };
