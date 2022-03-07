@@ -136,15 +136,15 @@ in {
         enable_audio_bell = false;
         scrollback_lines = 10000;
         theme = "Obsidian";
-        font_features = "ShureTechMono Nerd Font -liga";
+        #font_features = "ShureTechMono Nerd Font -liga";
       };
       font = {
-        package = pkgs.nerdfonts;
-        name = "ShureTechMono Nerd Font";
-        size = 12;
-        #package = pkgs.inconsolata;
-        #name = "Incosolata";
-        #size = 10;
+        # package = pkgs.nerdfonts;
+        # name = "ShureTechMono Nerd Font";
+        # size = 12;
+        package = pkgs.inconsolata;
+        name = "Incosolata";
+        size = 10;
       };
       keybindings = {
         "ctrl+shift+plus" = "no_op";
