@@ -146,13 +146,22 @@ in {
         name = "Incosolata";
         size = 10;
       };
-      keybindings = {
+      keybindings = let lead = "ctrl+super";
+      in {
         "ctrl+shift+plus" = "no_op";
         "ctrl+shift+minus" = "no_op";
         "ctrl+shift+backspace" = "no_op";
-        "ctrl+super+plus" = "change_font_size all +2.0";
-        "ctrl+super+minus" = "change_font_size all -2.0";
-        "ctrl+super+backspace" = "change_font_size all 0";
+
+        "${lead}+plus" = "change_font_size all +2.0";
+        "${lead}+minus" = "change_font_size all -2.0";
+        "${lead}+backspace" = "change_font_size all 0";
+
+        "${lead}+left" = "previous_tab";
+        "${lead}+right" = "next_tab";
+        "${lead}+t" = "new_tab";
+        "${lead}+alt+t" = "set_tab_title";
+        "${lead}+x" = "detach_tab";
+
         "ctrl+c" = "copy_or_interrupt";
       };
     };
