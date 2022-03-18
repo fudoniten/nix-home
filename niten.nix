@@ -6,26 +6,33 @@ let
 
   use-kitty-term = true;
 
-  gui-packages = with pkgs; [
-    element-desktop
-    exodus
-    faudio
-    gnome.gnome-tweaks
-    google-chrome
-    imagemagick
-    jq
-    minecraft
-    mplayer
-    multimc
-    openttd
-    pidgin
-    pv
-    redshift
-    signal-desktop
-    spotify
-    nyxt
-    xclip
-  ];
+  gui-packages = with pkgs;
+    [
+      element-desktop
+      exodus
+      faudio
+      gnome.gnome-tweaks
+      google-chrome
+      imagemagick
+      jq
+      minecraft
+      mplayer
+      multimc
+      openttd
+      pidgin
+      pv
+      redshift
+      signal-desktop
+      spotify
+      nyxt
+      xclip
+    ] ++ [
+      gnomeExtensions.espresso
+      gnomeExtensions.focus
+      gnomeExtensions.forge
+      gnomeExtensions.tweaks-in-system-menu
+      gnomeExtensions.vitals
+    ];
 
   common-packages = with pkgs; [
     alacritty
