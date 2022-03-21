@@ -20,6 +20,7 @@ let
       multimc
       openttd
       pidgin
+      playerctl
       pv
       redshift
       signal-desktop
@@ -30,6 +31,7 @@ let
       gnomeExtensions.espresso
       gnomeExtensions.focus
       gnomeExtensions.forge
+      gnomeExtensions.mpris-indicator-button
       gnomeExtensions.tweaks-in-system-menu
       gnomeExtensions.vitals
     ];
@@ -146,12 +148,12 @@ in {
         #font_features = "ShureTechMono Nerd Font -liga";
       };
       font = {
-        # package = pkgs.nerdfonts;
-        # name = "ShureTechMono Nerd Font";
-        # size = 12;
-        package = pkgs.inconsolata;
-        name = "Incosolata";
-        size = 10;
+        package = pkgs.terminus_font;
+        name = "Terminus Regular";
+        size = 14;
+        #package = pkgs.inconsolata;
+        #name = "Incosolata";
+        #size = 10;
       };
       keybindings = let lead = "ctrl+super";
       in {
@@ -168,8 +170,6 @@ in {
         "${lead}+t" = "new_tab";
         "${lead}+alt+t" = "set_tab_title";
         "${lead}+x" = "detach_tab";
-
-        "ctrl+c" = "copy_or_interrupt";
       };
     };
 
