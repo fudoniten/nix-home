@@ -149,8 +149,8 @@ in {
       };
       font = {
         package = pkgs.nerdfonts;
-        # name = "Terminess (TTF) Nerd Font Complete Mono";
-        name = "Shure Tech Mono Nerd Font Complete Mono";
+        name = "Terminess (TTF) Nerd Font Complete Mono";
+        # name = "Shure Tech Mono Nerd Font Complete Mono";
         size = 14;
         #package = pkgs.inconsolata;
         #name = "Incosolata";
