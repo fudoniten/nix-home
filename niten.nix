@@ -149,7 +149,7 @@ in {
       };
       font = {
         package = pkgs.terminus_font;
-        name = "Terminus Regular";
+        name = "Terminus";
         size = 14;
         #package = pkgs.inconsolata;
         #name = "Incosolata";
