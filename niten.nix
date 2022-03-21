@@ -148,8 +148,8 @@ in {
         #font_features = "ShureTechMono Nerd Font -liga";
       };
       font = {
-        package = pkgs.terminus_font;
-        name = "Terminus";
+        package = pkgs.nerdfonts;
+        name = "Terminess (TTF) Nerd Font Complete Mono";
         size = 14;
         #package = pkgs.inconsolata;
         #name = "Incosolata";
