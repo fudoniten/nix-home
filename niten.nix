@@ -80,6 +80,7 @@ let
     nixfmt
     nix-index
     nix-prefetch-git
+    nix-prefetch-github
     nmap
     opencv-java
     openldap
