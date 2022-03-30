@@ -48,6 +48,7 @@ let
     byobu
     cdrtools
     cargo
+    clj2nix
     clojure
     cmake
     curl
