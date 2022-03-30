@@ -67,6 +67,7 @@ let
     home-manager
     ipfs
     iptables
+    jack2Full
     jdk
     kitty
     leiningen
