@@ -139,7 +139,7 @@ in {
       extraConfig.pull.rebase = false;
     };
 
-    kitty = {
+    kitty = mkIf enable-gui {
       enable = use-kitty-term;
       settings = {
         copy_on_select = "clipboard";
