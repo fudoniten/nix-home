@@ -13,6 +13,7 @@ let
       faudio
       gnome.gnome-tweaks
       google-chrome
+      helvum
       imagemagick
       jq
       minecraft
