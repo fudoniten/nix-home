@@ -95,6 +95,7 @@ let
     rustc
     sbcl
     stdenv
+    supercollider
     telnet
     texlive.combined.scheme-basic
     tmux
