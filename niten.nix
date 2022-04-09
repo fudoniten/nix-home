@@ -215,6 +215,11 @@ in {
       latitude = "47";
       longitude = "122";
     };
+
+    supercollider = {
+      enable = true;
+      port = 30300;
+    };
   };
 
   home = {

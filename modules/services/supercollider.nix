@@ -18,13 +18,6 @@ in {
         "IP address on which to listen for connections. 0.0.0.0 for all addresses.";
       default = "127.0.0.1";
     };
-
-    socket-activated = mkOption {
-      type = bool;
-      description =
-        "Start the server on demand when a connection is attempted.";
-      default = true;
-    };
   };
 
   config = mkIf cfg.enable {
