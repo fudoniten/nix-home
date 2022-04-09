@@ -41,10 +41,14 @@ in {
           else
             "${username}@${config.instance.local-domain}";
           home-dir = config.users.users.${username}.home;
-        in (import user-configs.${username} {
-          inherit config lib pkgs doom-emacs-package niten-doom-config username
-            user-email home-dir enable-gui;
-        });
+        in {
+          imports = [ ./modules ];
+
+          config = (import user-configs.${username} {
+            inherit config lib pkgs doom-emacs-package niten-doom-config
+              username user-email home-dir enable-gui;
+          });
+        };
     in (mapAttrs generate-config local-users) // {
       root = import user-configs.root {
         inherit config lib pkgs niten-doom-config doom-emacs-package;
