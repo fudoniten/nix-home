@@ -33,7 +33,7 @@ in {
       Service = {
         ExecStart = concatStringsSep " " [
           "${pkgs.supercollider}/bin/scsynth"
-          "-t ${toString cfg.port}"
+          "-u ${toString cfg.port}"
           "-B ${cfg.listen-address}"
         ];
         Restart = "on-failure";
