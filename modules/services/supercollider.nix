@@ -23,18 +23,22 @@ in {
   config = mkIf cfg.enable {
     systemd.user.services.supercollider = {
 
-      description = "SuperCollider Audio Synthesis Server.";
-      restartIfChanged = false;
+      Unit = {
+        Description = "SuperCollider Audio Synthesis Server.";
+        RestartIfChanged = false;
+        WantedBy = "default.target";
+      };
 
-      serviceConfig = {
+      Service = {
         ExecStart =
           "${pkgs.supercollider}/bin/scsynth -t ${cfg.port} -B ${cfg.listen-address}";
         Restart = "on-failure";
       };
-
-      wantedBy = "default.target";
     };
 
-    home.sessionVariables.SUPERCOLLIDER_PORT = cfg.port;
+    home.sessionVariables = {
+      SUPERCOLLIDER_HOST = cfg.listen-address;
+      SUPERCOLLIDER_PORT = cfg.port;
+    };
   };
 }
