@@ -25,9 +25,10 @@ in {
 
       Unit = {
         Description = "SuperCollider Audio Synthesis Server.";
-        RestartIfChanged = false;
-        WantedBy = "default.target";
+        X-RestartIfChanged = true;
       };
+
+      Install.WantedBy = [ "default.target" ];
 
       Service = {
         ExecStart = concatStringsSep " " [
