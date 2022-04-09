@@ -30,8 +30,11 @@ in {
       };
 
       Service = {
-        ExecStart =
-          "${pkgs.supercollider}/bin/scsynth -t ${cfg.port} -B ${cfg.listen-address}";
+        ExecStart = concatStringsSep " " [
+          "${pkgs.supercollider}/bin/scsynth"
+          "-t ${toString cfg.port}"
+          "-B ${cfg.listen-address}"
+        ];
         Restart = "on-failure";
       };
     };
