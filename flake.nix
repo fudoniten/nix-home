@@ -24,48 +24,44 @@
     };
   };
 
-  outputs = { self,
-              nixpkgs,
-              home-manager,
-              doom-emacs,
-              fudo-pkgs,
-              niten-doom-config, ... }: {
-    nixosModule = {
-      imports = [
-        home-manager.nixosModules.home-manager
-        (import ./module.nix { inherit doom-emacs niten-doom-config; })
-      ];
-    };
+  outputs = { self, nixpkgs, home-manager, doom-emacs, fudo-pkgs
+    , niten-doom-config, ... }: {
+      nixosModule = {
+        imports = [
+          home-manager.nixosModules.home-manager
+          (import ./module.nix { inherit doom-emacs niten-doom-config; })
+          (import ./modules)
+        ];
+      };
 
-    homeConfigurations = {
-      niten = let
-        username = "niten";
-        system = "x86_64-linux";
-      in home-manager.lib.homeManagerConfiguration {
-        inherit system username;
-        homeDirectory = "/home/niten";
-        configuration = { pkgs, lib, ... }: let
-          doom-emacs-package = pkgs.callPackage doom-emacs {
-            doomPrivateDir = niten-doom-config;
-            extraPackages = with pkgs.emacsPackages; [
-              elpher
-              use-package
-            ];
-            # For https://github.com/vlaci/nix-doom-emacs/issues/401
-            emacsPackagesOverlay = final: prev: {
-              gitignore-mode = pkgs.emacsPackages.git-modes;
-              gitconfig-mode = pkgs.emacsPackages.git-modes;
-            };
-          };
-        in (import ./niten.nix {
-          inherit system pkgs lib username niten-doom-config doom-emacs-package;
+      homeConfigurations = {
+        niten = let
+          username = "niten";
+          system = "x86_64-linux";
+        in home-manager.lib.homeManagerConfiguration {
+          inherit system username;
+          homeDirectory = "/home/niten";
+          configuration = { pkgs, lib, ... }:
+            let
+              doom-emacs-package = pkgs.callPackage doom-emacs {
+                doomPrivateDir = niten-doom-config;
+                extraPackages = with pkgs.emacsPackages; [ elpher use-package ];
+                # For https://github.com/vlaci/nix-doom-emacs/issues/401
+                emacsPackagesOverlay = final: prev: {
+                  gitignore-mode = pkgs.emacsPackages.git-modes;
+                  gitconfig-mode = pkgs.emacsPackages.git-modes;
+                };
+              };
+            in (import ./niten.nix {
+              inherit system pkgs lib username niten-doom-config
+                doom-emacs-package;
 
-          user-email = "niten@fudo.org";
-          home-dir = "/home/niten";
-          enable-gui = true;
-          localOverlays = [ fudo-pkgs.overlay ];
-        });
+              user-email = "niten@fudo.org";
+              home-dir = "/home/niten";
+              enable-gui = true;
+              localOverlays = [ fudo-pkgs.overlay ];
+            });
+        };
       };
     };
-  };
 }
