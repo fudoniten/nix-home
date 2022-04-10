@@ -37,13 +37,15 @@ in {
             "-u ${toString cfg.port}"
             "-B ${cfg.listen-address}"
           ];
-          ExecStartPre = pkgs.writeShellScript "supercollider-prep.sh" ''
-            SYNTHDIR=$HOME/.local/share/SuperCollider/synthdefs
-            if [[ ! -d $SYNTHDIR ]]; then
-              mkdir -p $SYNTHDIR
-              chown $USER $SYNTHDIR
-            fi
-          '';
+          ExecStartPre = let
+            pre-script = pkgs.writeShellScript "supercollider-prep.sh" ''
+              SYNTHDIR=$HOME/.local/share/SuperCollider/synthdefs
+              if [[ ! -d $SYNTHDIR ]]; then
+                mkdir -p $SYNTHDIR
+                chown $USER $SYNTHDIR
+              fi
+            '';
+          in "${pre-script}";
           Restart = "on-failure";
         };
       };
