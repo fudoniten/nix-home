@@ -41,8 +41,9 @@ in {
         };
       };
 
-      tmpfiles.rules =
-        [ "d $HOME/.local/share/SuperCollider/synthdefs 0750 $USER - - -" ];
+      ## TODO: Path needs to be absolute...
+      # tmpfiles.rules =
+      #   [ "d $HOME/.local/share/SuperCollider/synthdefs 0750 $USER - - -" ];
     };
 
     home.sessionVariables = {
