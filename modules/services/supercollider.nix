@@ -21,23 +21,28 @@ in {
   };
 
   config = mkIf cfg.enable {
-    systemd.user.services.supercollider = {
+    systemd = {
+      user.services.supercollider = {
 
-      Unit = {
-        Description = "SuperCollider Audio Synthesis Server.";
-        X-RestartIfChanged = true;
+        Unit = {
+          Description = "SuperCollider Audio Synthesis Server.";
+          X-RestartIfChanged = true;
+        };
+
+        Install.WantedBy = [ "default.target" ];
+
+        Service = {
+          ExecStart = concatStringsSep " " [
+            "${pkgs.supercollider}/bin/scsynth"
+            "-u ${toString cfg.port}"
+            "-B ${cfg.listen-address}"
+          ];
+          Restart = "on-failure";
+        };
       };
 
-      Install.WantedBy = [ "default.target" ];
-
-      Service = {
-        ExecStart = concatStringsSep " " [
-          "${pkgs.supercollider}/bin/scsynth"
-          "-u ${toString cfg.port}"
-          "-B ${cfg.listen-address}"
-        ];
-        Restart = "on-failure";
-      };
+      tmpfiles.rules =
+        [ "d $HOME/.local/share/SuperCollider/synthdefs 0750 $USER - - -" ];
     };
 
     home.sessionVariables = {
