@@ -21,8 +21,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    systemd.user = {
-      services.supercollider = {
+    systemd.user.services = {
+      supercollider = {
 
         Unit = {
           Description = "SuperCollider Audio Synthesis Server.";
@@ -37,12 +37,16 @@ in {
             "-u ${toString cfg.port}"
             "-B ${cfg.listen-address}"
           ];
+          ExecStartPre = pkgs.writeShellScript "supercollider-prep.sh" ''
+            SYNTHDIR=$HOME/.local/share/SuperCollider/synthdefs
+            if [[ ! -d $SYNTHDIR ]]; then
+              mkdir -p $SYNTHDIR
+              chown $USER $SYNTHDIR
+            fi
+          '';
           Restart = "on-failure";
         };
       };
-
-      tmpfiles.rules =
-        [ "d %h/.local/share/SuperCollider/synthdefs 0750 %u - - -" ];
     };
 
     home.sessionVariables = {
