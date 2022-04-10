@@ -21,8 +21,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    systemd = {
-      user.services.supercollider = {
+    systemd.user = {
+      services.supercollider = {
 
         Unit = {
           Description = "SuperCollider Audio Synthesis Server.";
