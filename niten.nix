@@ -58,6 +58,7 @@ let
     enca
     file
     fortune
+    fzf
     gcc
     git
     gnutls
