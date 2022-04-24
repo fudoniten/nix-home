@@ -12,6 +12,7 @@ else {
       imagemagick
       jq
       minecraft
+      mumble
       pv
       spotify
       xclip

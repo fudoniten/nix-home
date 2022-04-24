@@ -19,6 +19,7 @@ let
       minecraft
       mplayer
       multimc
+      mumble
       openttd
       pidgin
       playerctl
