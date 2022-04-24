@@ -5,6 +5,7 @@
 with lib;
 let
   user-configs = {
+    jasper = ./jasper.nix;
     niten = ./niten.nix;
     root = ./root.nix;
     viator = ./niten.nix;

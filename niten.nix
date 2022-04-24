@@ -211,11 +211,12 @@ in {
 
     gnome-keyring.enable = enable-gui;
 
-    gammastep = {
-      enable = true;
-      latitude = "47";
-      longitude = "122";
-    };
+    ## Using Gnome
+    # gammastep = {
+    #   enable = true;
+    #   latitude = "47";
+    #   longitude = "122";
+    # };
 
     supercollider = {
       enable = true;
