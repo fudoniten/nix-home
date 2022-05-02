@@ -61,6 +61,7 @@ let
     fortune
     fzf
     gcc
+    ghc
     git
     gnutls
     gnupg
