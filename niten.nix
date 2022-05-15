@@ -98,6 +98,7 @@ let
     ruby
     rustc
     sbcl
+    statix
     stdenv
     supercollider
     telnet
