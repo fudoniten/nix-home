@@ -8,27 +8,29 @@ let
 
   gui-packages = with pkgs;
     [
-      element-desktop
-      exodus
-      faudio
+      alacritty # terminal
+      element-desktop # matrix client
+      exodus # crypto wallet
+      faudio # direct-x audio?
       gnome.gnome-tweaks
       google-chrome
-      helvum
+      gparted
+      helvum # pipeaudio switch panel
       imagemagick
-      jq
+      jq # command-line JSON parser
+      kitty # terminal
       minecraft
       mplayer
-      multimc
-      mumble
+      multimc # minecraft launcher
+      mumble # game chat
+      nyxt # browser
       openttd
       pidgin
-      playerctl
-      pv
-      redshift
+      playerctl # media control cli
       signal-desktop
       spotify
-      nyxt
-      xclip
+      via # keyboard firmware tool
+      xclip # copy and paste
     ] ++ [
       gnomeExtensions.espresso
       gnomeExtensions.focus
@@ -39,68 +41,66 @@ let
     ];
 
   common-packages = with pkgs; [
-    alacritty
     ant
     asdf
     atop
     bind # for dig
     binutils
     btrfs-progs
-    bundix
+    bundix # gemfile -> nix
     byobu
     cdrtools
-    cargo
+    cargo # rust
     #clj2nix
     clojure
     cmake
     curl
     doom-emacs-package
-    duf
-    enca
+    duf # fancy df
+    enca # encoding detector
     file
     fortune
     fzf
     gcc
-    ghc
+    ghc # haskell
     git
     gnutls
     gnupg
-    gparted
     graphviz
     guile
     home-manager
     ipfs
     iptables
-    jack2Full
+    jack2Full # audio daemon tools
     jdk
-    kitty
     leiningen
     libisofs
     lispPackages.quicklisp
     lsof
     lshw
-    manix
+    manix # nixos doc searcher
     mkpasswd
-    mtr
-    nixfmt
-    nix-index
+    mtr # network diagnosis tool
+    nixfmt # format nix files
+    nix-index # search by executable
     nix-prefetch-git
     nix-prefetch-github
     nmap
-    opencv-java
+    opencv-java # open computer vision
     openldap
     openssl
     openssl.out
     parted
     pciutils
+    pv # dd with info
     pwgen
     python
     ruby
     rustc
     sbcl
-    statix
+    statix # nix linter
     stdenv
-    supercollider
+    supercollider # audio generation
     telnet
     texlive.combined.scheme-basic
     tmux
@@ -108,18 +108,10 @@ let
     usbutils
     wget
     winetricks
-    yubikey-manager
-    yubikey-personalization
-    youtube-dl
-    yq
-
-    # Check and pick a favorite
-    molly-brown
-    ncgopher
-    amfora
-    asuka
-    kristall
-    castor
+    # yubikey-manager
+    # yubikey-personalization
+    # youtube-dl
+    yq # yaml processor
   ];
 
   ensure-directories = [ ".emacs.d/.local/etc/eshell" ];
