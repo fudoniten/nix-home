@@ -110,7 +110,7 @@ let
     winetricks
     # yubikey-manager
     # yubikey-personalization
-    # youtube-dl
+    youtube-dl
     yq # yaml processor
   ];
 
