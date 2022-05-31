@@ -8,6 +8,7 @@ let
 
   gui-packages = with pkgs;
     [
+      abiword
       alacritty # terminal
       element-desktop # matrix client
       exodus # crypto wallet
@@ -19,6 +20,7 @@ let
       imagemagick
       jq # command-line JSON parser
       kitty # terminal
+      libreoffice
       minecraft
       mplayer
       multimc # minecraft launcher
