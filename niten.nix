@@ -23,7 +23,6 @@ let
       libreoffice
       minecraft
       mplayer
-      multimc # minecraft launcher
       mumble # game chat
       nyxt # browser
       openttd
