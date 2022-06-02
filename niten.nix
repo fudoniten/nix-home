@@ -71,6 +71,7 @@ let
     graphviz
     guile
     home-manager
+    inetutils
     ipfs
     iptables
     jack2Full # audio daemon tools
@@ -103,7 +104,6 @@ let
     statix # nix linter
     stdenv
     supercollider # audio generation
-    telnet
     texlive.combined.scheme-basic
     tmux
     unzip
