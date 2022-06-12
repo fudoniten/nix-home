@@ -60,6 +60,7 @@ let
     duf # fancy df
     enca # encoding detector
     file
+    fish
     fortune
     fzf
     gcc
@@ -119,9 +120,9 @@ let
 
 in {
 
-  nixpkgs = mkIf (localOverlays != null) {
+  nixpkgs = {
     config.allowUnfree = true;
-    overlays = localOverlays;
+    overlays = mkIf (localOverlays != null) localOverlays;
   };
 
   programs = {
@@ -214,10 +215,10 @@ in {
     #   longitude = "122";
     # };
 
-    supercollider = {
-      enable = true;
-      port = 30300;
-    };
+    # supercollider = {
+    #   enable = true;
+    #   port = 30300;
+    # };
   };
 
   home = {
