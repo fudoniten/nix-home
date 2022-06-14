@@ -13,14 +13,14 @@
     };
     fudo-pkgs.url = "git+https://git.fudo.org/fudo-nix/pkgs.git";
     # For https://github.com/vlaci/nix-doom-emacs/issues/401
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      flake = false;
-    };
+    # emacs-overlay = {
+    #   url = "github:nix-community/emacs-overlay";
+    #   flake = false;
+    # };
     doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.emacs-overlay.follows = "emacs-overlay";
+      # inputs.emacs-overlay.follows = "emacs-overlay";
     };
   };
 
