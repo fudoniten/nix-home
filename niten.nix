@@ -21,6 +21,7 @@ let
       jq # command-line JSON parser
       kitty # terminal
       libreoffice
+      mindustry
       minecraft
       mplayer
       mumble # game chat
