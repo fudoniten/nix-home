@@ -147,7 +147,7 @@ in {
         editor = "emacsclient -t";
         enable_audio_bell = false;
         scrollback_lines = 10000;
-        theme = "Obsidian";
+        # theme = "Obsidian";
         #font_features = "ShureTechMono Nerd Font -liga";
       };
       font = {
