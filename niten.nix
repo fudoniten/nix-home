@@ -239,9 +239,10 @@ in {
         (package-initialize)
       '';
 
-      ".xsessions" = mkIf enable-gui {
+      # NOTE: could also try .xprofile, see https://wiki.archlinux.org/title/xprofile
+      ".xsession" = mkIf enable-gui {
         executable = true;
-        source = pkgs.writeShellScript "${username}-xsessions" ''
+        source = pkgs.writeShellScript "${username}-xsession" ''
           gdmauth=$XAUTHORITY
           unset  XAUTHORITY
           export XAUTHORITY
