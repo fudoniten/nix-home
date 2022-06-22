@@ -269,7 +269,7 @@ in {
       };
     };
 
-    # sessionVariables = env-variables;
+    sessionVariables = { };
   };
 
   systemd.user = {
