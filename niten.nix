@@ -1,8 +1,16 @@
 { doom-emacs-package, niten-doom-config, lib, pkgs, username, user-email
-, home-dir, enable-gui ? false, localOverlays ? null, ... }:
+, home-dir, enable-gui ? false, localOverlays ? null, ... }@toplevel:
 
 with lib;
 let
+
+  env-variables = {
+    ALTERNATE_EDITOR = "";
+
+    DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
+
+    HISTCONTROL = "ignoredups:ignorespace";
+  };
 
   use-kitty-term = true;
 
@@ -262,15 +270,12 @@ in {
       };
     };
 
-    sessionVariables = {
-      ALTERNATE_EDITOR = "";
-
-      DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
-
-      HISTCONTROL = "ignoredups:ignorespace";
-    };
+    sessionVariables = env-variables;
   };
 
-  systemd.user.tmpfiles.rules =
-    map (dir: "d ${home-dir}/${dir} 700 ${username} - - -") ensure-directories;
+  systemd.user = {
+    tmpfiles.rules = map (dir: "d ${home-dir}/${dir} 700 ${username} - - -")
+      ensure-directories;
+    sessionVariables = env-variables;
+  };
 }
