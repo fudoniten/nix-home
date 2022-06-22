@@ -254,23 +254,23 @@ in {
       '';
 
       # NOTE: could also try .xprofile, see https://wiki.archlinux.org/title/xprofile
-      ".xsession" = mkIf enable-gui {
-        executable = true;
-        source = pkgs.writeShellScript "${username}-xsession" ''
-          gdmauth=$XAUTHORITY
-          unset  XAUTHORITY
-          export XAUTHORITY
-          xauth merge "$gdmauth"
+      # Is this causing me not to be able to boot?
+      # ".xsession" = mkIf enable-gui {
+      #   executable = true;
+      #   source = pkgs.writeShellScript "${username}-xsession" ''
+      #     gdmauth=$XAUTHORITY
+      #     unset  XAUTHORITY
+      #     export XAUTHORITY
+      #     xauth merge "$gdmauth"
 
-          if [ -f $HOME/.xinitrc ]; then
-            bash --login -i $HOME/.xinitrc
-          fi
-        '';
-      };
+      #     if [ -f $HOME/.xinitrc ]; then
+      #       bash --login -i $HOME/.xinitrc
+      #     fi
+      #   '';
+      # };
     };
 
-    sessionVariables = { };
-  };
+    sessionVariables = env-variables;
 
   systemd.user = {
     tmpfiles.rules = map (dir: "d ${home-dir}/${dir} 700 ${username} - - -")
