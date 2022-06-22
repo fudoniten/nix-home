@@ -219,6 +219,13 @@ in {
       enable = true;
       port = 30300;
     };
+
+    syncthing = {
+      enable = true;
+      extraOptions = [
+
+      ];
+    };
   };
 
   home = {

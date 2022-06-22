@@ -26,7 +26,11 @@ in {
     users = let
       doom-emacs-package = pkgs.callPackage doom-emacs {
         doomPrivateDir = niten-doom-config;
-        extraPackages = with pkgs.emacsPackages; [ elpher use-package ];
+        extraPackages = with pkgs.emacsPackages; [
+          elpher
+          use-package
+          flycheck-clj-kondo
+        ];
         # For https://github.com/vlaci/nix-doom-emacs/issues/401
         emacsPackagesOverlay = final: prev: {
           gitignore-mode = pkgs.emacsPackages.git-modes;
