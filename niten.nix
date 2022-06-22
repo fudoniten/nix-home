@@ -271,12 +271,12 @@ in {
     };
 
     sessionVariables = env-variables;
+  };
 
-    systemd.user = {
-      tmpfiles.rules = map (dir: "d ${home-dir}/${dir} 700 ${username} - - -")
-        ensure-directories;
+  systemd.user = {
+    tmpfiles.rules = map (dir: "d ${home-dir}/${dir} 700 ${username} - - -")
+      ensure-directories;
 
-      sessionVariables = env-variables;
-    };
+    sessionVariables = env-variables;
   };
 }
