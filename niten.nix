@@ -231,9 +231,7 @@ in {
 
     syncthing = {
       enable = true;
-      extraOptions = [
-
-      ];
+      extraOptions = [ ];
     };
   };
 
@@ -271,7 +269,7 @@ in {
       };
     };
 
-    sessionVariables = env-variables;
+    # sessionVariables = env-variables;
   };
 
   systemd.user = {
