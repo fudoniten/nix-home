@@ -210,6 +210,7 @@ in {
       enable = true;
       package = doom-emacs-package;
       client.enable = true;
+      defaultEditor = true;
     };
 
     gpg-agent.enable = true;
@@ -276,6 +277,9 @@ in {
   systemd.user = {
     tmpfiles.rules = map (dir: "d ${home-dir}/${dir} 700 ${username} - - -")
       ensure-directories;
+
     sessionVariables = env-variables;
+
+    services = { emacs = { path = with pkgs; [ clj-kondo ]; }; };
   };
 }
