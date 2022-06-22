@@ -61,7 +61,7 @@ let
     byobu
     cdrtools
     cargo # rust
-    #clj2nix
+    clj-kondo # Clojure linter
     clojure
     cmake
     curl
@@ -279,7 +279,5 @@ in {
       ensure-directories;
 
     sessionVariables = env-variables;
-
-    services = { emacs = { path = with pkgs; [ clj-kondo ]; }; };
   };
 }
