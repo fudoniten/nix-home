@@ -41,8 +41,8 @@ in {
             pre-script = pkgs.writeShellScript "supercollider-prep.sh" ''
               SYNTHDIR=$HOME/.local/share/SuperCollider/synthdefs
               if [[ ! -d $SYNTHDIR ]]; then
-                mkdir -p $SYNTHDIR
-                chown $USER $SYNTHDIR
+                ${pkgs.coreutils}/bin/mkdir -p $SYNTHDIR
+                ${pkgs.coreutils}/bin/chown $USER $SYNTHDIR
               fi
             '';
           in "${pre-script}";
