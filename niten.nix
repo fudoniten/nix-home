@@ -10,6 +10,8 @@ let
     DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
 
     HISTCONTROL = "ignoredups:ignorespace";
+
+    EMACS_ORG_DIRECTORY = "~/Notes";
   };
 
   use-kitty-term = true;
