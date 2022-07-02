@@ -260,6 +260,8 @@ in {
       DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
 
       HISTCONTROL = "ignoredups:ignorespace";
+
+      XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/";
     };
   };
 
