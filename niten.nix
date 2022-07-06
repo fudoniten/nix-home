@@ -226,10 +226,10 @@ in {
     #   longitude = "122";
     # };
 
-    supercollider = {
-      enable = true;
-      port = 30300;
-    };
+    # supercollider = {
+    #   enable = true;
+    #   port = 30300;
+    # };
 
     syncthing = {
       enable = true;
