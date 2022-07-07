@@ -1,8 +1,20 @@
 { doom-emacs-package, niten-doom-config, lib, pkgs, username, user-email
-, home-dir, enable-gui ? false, localOverlays ? null, ... }:
+, home-dir, enable-gui ? false, localOverlays ? null, ... }@toplevel:
 
 with lib;
 let
+
+  env-variables = {
+    ALTERNATE_EDITOR = "";
+
+    DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
+
+    HISTCONTROL = "ignoredups:ignorespace";
+
+    EMACS_ORG_DIRECTORY = "~/Notes";
+
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
+  };
 
   use-kitty-term = true;
 
@@ -21,6 +33,7 @@ let
       jq # command-line JSON parser
       kitty # terminal
       libreoffice
+      mindustry
       minecraft
       mplayer
       mumble # game chat
@@ -52,7 +65,7 @@ let
     byobu
     cdrtools
     cargo # rust
-    #clj2nix
+    clj-kondo # Clojure linter
     clojure
     cmake
     curl
@@ -147,7 +160,7 @@ in {
         editor = "emacsclient -t";
         enable_audio_bell = false;
         scrollback_lines = 10000;
-        theme = "Obsidian";
+        # theme = "Obsidian";
         #font_features = "ShureTechMono Nerd Font -liga";
       };
       font = {
@@ -202,6 +215,7 @@ in {
       enable = true;
       package = doom-emacs-package;
       client.enable = true;
+      defaultEditor = true;
     };
 
     gpg-agent.enable = true;
@@ -219,6 +233,11 @@ in {
     #   enable = true;
     #   port = 30300;
     # };
+
+    syncthing = {
+      enable = true;
+      extraOptions = [ ];
+    };
   };
 
   home = {
@@ -239,9 +258,10 @@ in {
         (package-initialize)
       '';
 
-      ".xsessions" = mkIf enable-gui {
+      # NOTE: could also try .xprofile, see https://wiki.archlinux.org/title/xprofile
+      ".xprofile" = mkIf enable-gui {
         executable = true;
-        source = pkgs.writeShellScript "${username}-xsessions" ''
+        source = pkgs.writeShellScript "${username}-xsession" ''
           gdmauth=$XAUTHORITY
           unset  XAUTHORITY
           export XAUTHORITY
@@ -253,18 +273,13 @@ in {
         '';
       };
     };
-
-    sessionVariables = {
-      ALTERNATE_EDITOR = "";
-
-      DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
-
-      HISTCONTROL = "ignoredups:ignorespace";
-
-      XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/";
-    };
+    sessionVariables = env-variables;
   };
 
-  systemd.user.tmpfiles.rules =
-    map (dir: "d ${home-dir}/${dir} 700 ${username} - - -") ensure-directories;
+  systemd.user = {
+    tmpfiles.rules = map (dir: "d ${home-dir}/${dir} 700 ${username} - - -")
+      ensure-directories;
+
+    sessionVariables = env-variables;
+  };
 }
