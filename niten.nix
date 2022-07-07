@@ -252,6 +252,7 @@ in {
 
       # For nixified emacs
       ".emacs.d/init.el".text = ''
+        (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
         (load "default.el")
 
         (setq package-archives nil)
