@@ -12,6 +12,8 @@ let
     HISTCONTROL = "ignoredups:ignorespace";
 
     EMACS_ORG_DIRECTORY = "~/Notes";
+
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
   };
 
   use-kitty-term = true;
@@ -71,6 +73,7 @@ let
     duf # fancy df
     enca # encoding detector
     file
+    fish
     fortune
     fzf
     gcc
@@ -129,9 +132,9 @@ let
 
 in {
 
-  nixpkgs = mkIf (localOverlays != null) {
+  nixpkgs = {
     config.allowUnfree = true;
-    overlays = localOverlays;
+    overlays = mkIf (localOverlays != null) localOverlays;
   };
 
   programs = {
@@ -270,7 +273,6 @@ in {
         '';
       };
     };
-
     sessionVariables = env-variables;
   };
 
