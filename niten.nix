@@ -85,7 +85,6 @@ let
     ipfs
     iptables
     jack2Full # audio daemon tools
-    jdk
     leiningen
     libisofs
     lispPackages.quicklisp
