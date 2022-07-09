@@ -54,6 +54,62 @@ let
       gnomeExtensions.vitals
     ];
 
+  font-packages = with pkgs; [
+    cantarell_fonts
+    dejavu_fonts
+    dina-font
+    dosemu_fonts
+    fira-code
+    fira-code-symbols
+    freefont_ttf
+    liberation_ttf
+    mplus-outline-fonts
+    nerdfonts
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    proggyfonts
+    terminus_font
+    ubuntu_font_family
+    ucsFonts
+    ultimate-oldschool-pc-font-pack
+    unifont
+    xorg.fontadobe100dpi
+    xorg.fontadobe75dpi
+    xorg.fontadobeutopia100dpi
+    xorg.fontadobeutopia75dpi
+    xorg.fontadobeutopiatype1
+    xorg.fontarabicmisc
+    xorg.fontbh100dpi
+    xorg.fontbh75dpi
+    xorg.fontbhlucidatypewriter100dpi
+    xorg.fontbhlucidatypewriter75dpi
+    xorg.fontbhttf
+    xorg.fontbhtype1
+    xorg.fontbitstream100dpi
+    xorg.fontbitstream75dpi
+    xorg.fontbitstreamtype1
+    xorg.fontcronyxcyrillic
+    xorg.fontcursormisc
+    xorg.fontdaewoomisc
+    xorg.fontdecmisc
+    xorg.fontibmtype1
+    xorg.fontisasmisc
+    xorg.fontjismisc
+    xorg.fontmicromisc
+    xorg.fontmisccyrillic
+    xorg.fontmiscethiopic
+    xorg.fontmiscmeltho
+    xorg.fontmiscmisc
+    xorg.fontmuttmisc
+    xorg.fontschumachermisc
+    xorg.fontscreencyrillic
+    xorg.fontsonymisc
+    xorg.fontsunmisc
+    xorg.fontwinitzkicyrillic
+    xorg.fontxfree86type1
+  ];
+
   common-packages = with pkgs; [
     ant
     asdf
@@ -241,10 +297,12 @@ in {
   };
 
   home = {
-    packages =
-      if enable-gui then (common-packages ++ gui-packages) else common-packages;
+    packages = if enable-gui then
+      (common-packages ++ gui-packages ++ font-packages)
+    else
+      common-packages;
 
-    shellAliases = mkIf use-kitty-term { ssh = "kitty +kitten ssh"; };
+    # shellAliases = mkIf use-kitty-term { ssh = "kitty +kitten ssh"; };
 
     file = {
       ".local/share/openttd/baseset" =
@@ -259,7 +317,6 @@ in {
         (package-initialize)
       '';
 
-      # NOTE: could also try .xprofile, see https://wiki.archlinux.org/title/xprofile
       ".xprofile" = mkIf enable-gui {
         executable = true;
         source = pkgs.writeShellScript "${username}-xsession" ''
@@ -283,4 +340,6 @@ in {
 
     sessionVariables = env-variables;
   };
+
+  fonts.fontconfig.enable = enable-gui;
 }
