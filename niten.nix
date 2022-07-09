@@ -55,20 +55,20 @@ let
     ];
 
   font-packages = with pkgs; [
-    cantarell-fonts
+    #cantarell-fonts
     dejavu_fonts
-    dina-font
-    dosemu_fonts
+    #dina-font
+    #dosemu_fonts
     fira-code
     fira-code-symbols
-    freefont_ttf
+    #freefont_ttf
     liberation_ttf
     ## Not a valid package?
     # mplus-outline-fonts
     nerdfonts
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
+    #noto-fonts
+    #noto-fonts-cjk
+    #noto-fonts-emoji
     ## Errors building
     # proggyfonts
     terminus_font
@@ -77,40 +77,40 @@ let
     # ucs-fonts
     ultimate-oldschool-pc-font-pack
     unifont
-    # xorg.fontadobe100dpi
+    # qxorg.fontadobe100dpi
     # xorg.fontadobe75dpi
     # xorg.fontadobeutopia100dpi
     # xorg.fontadobeutopia75dpi
     # xorg.fontadobeutopiatype1
-    xorg.fontarabicmisc
-    xorg.fontbh100dpi
-    xorg.fontbh75dpi
-    xorg.fontbhlucidatypewriter100dpi
-    xorg.fontbhlucidatypewriter75dpi
-    xorg.fontbhttf
-    xorg.fontbhtype1
-    xorg.fontbitstream100dpi
-    xorg.fontbitstream75dpi
-    xorg.fontbitstreamtype1
-    xorg.fontcronyxcyrillic
-    xorg.fontcursormisc
-    xorg.fontdaewoomisc
-    xorg.fontdecmisc
-    xorg.fontibmtype1
-    xorg.fontisasmisc
-    xorg.fontjismisc
-    xorg.fontmicromisc
-    xorg.fontmisccyrillic
-    xorg.fontmiscethiopic
-    xorg.fontmiscmeltho
-    xorg.fontmiscmisc
-    xorg.fontmuttmisc
-    xorg.fontschumachermisc
-    xorg.fontscreencyrillic
-    xorg.fontsonymisc
-    xorg.fontsunmisc
-    xorg.fontwinitzkicyrillic
-    xorg.fontxfree86type1
+    # xorg.fontarabicmisc
+    # xorg.fontbh100dpi
+    # xorg.fontbh75dpi
+    # xorg.fontbhlucidatypewriter100dpi
+    # xorg.fontbhlucidatypewriter75dpi
+    # xorg.fontbhttf
+    # xorg.fontbhtype1
+    # xorg.fontbitstream100dpi
+    # xorg.fontbitstream75dpi
+    # xorg.fontbitstreamtype1
+    # xorg.fontcronyxcyrillic
+    # xorg.fontcursormisc
+    # xorg.fontdaewoomisc
+    # xorg.fontdecmisc
+    # xorg.fontibmtype1
+    # xorg.fontisasmisc
+    # xorg.fontjismisc
+    # xorg.fontmicromisc
+    # xorg.fontmisccyrillic
+    # xorg.fontmiscethiopic
+    # xorg.fontmiscmeltho
+    # xorg.fontmiscmisc
+    # xorg.fontmuttmisc
+    # xorg.fontschumachermisc
+    # xorg.fontscreencyrillic
+    # xorg.fontsonymisc
+    # xorg.fontsunmisc
+    # xorg.fontwinitzkicyrillic
+    # xorg.fontxfree86type1
   ];
 
   common-packages = with pkgs; [
