@@ -63,7 +63,7 @@ let
     fira-code-symbols
     freefont_ttf
     liberation_ttf
-    mplus-outline-fonts
+    # mplus-outline-fonts
     nerdfonts
     noto-fonts
     noto-fonts-cjk
