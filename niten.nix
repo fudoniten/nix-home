@@ -55,7 +55,7 @@ let
     ];
 
   font-packages = with pkgs; [
-    cantarell_fonts
+    cantarell-fonts
     dejavu_fonts
     dina-font
     dosemu_fonts
