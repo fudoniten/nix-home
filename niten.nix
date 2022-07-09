@@ -77,11 +77,11 @@ let
     # ucs-fonts
     ultimate-oldschool-pc-font-pack
     unifont
-    xorg.fontadobe100dpi
-    xorg.fontadobe75dpi
-    xorg.fontadobeutopia100dpi
-    xorg.fontadobeutopia75dpi
-    xorg.fontadobeutopiatype1
+    # xorg.fontadobe100dpi
+    # xorg.fontadobe75dpi
+    # xorg.fontadobeutopia100dpi
+    # xorg.fontadobeutopia75dpi
+    # xorg.fontadobeutopiatype1
     xorg.fontarabicmisc
     xorg.fontbh100dpi
     xorg.fontbh75dpi
