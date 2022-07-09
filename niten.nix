@@ -63,12 +63,14 @@ let
     fira-code-symbols
     freefont_ttf
     liberation_ttf
+    ## Not a valid package?
     # mplus-outline-fonts
     nerdfonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    proggyfonts
+    ## Errors building
+    # proggyfonts
     terminus_font
     ubuntu_font_family
     ucs-fonts
