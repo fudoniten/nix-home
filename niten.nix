@@ -55,14 +55,12 @@ let
     ];
 
   font-packages = with pkgs; [
-    #cantarell-fonts
+    cantarell-fonts
     dejavu_fonts
     #dosemu_fonts
     fira-code
     fira-code-symbols
-    #freefont_ttf
     liberation_ttf
-    ## Not a valid package?
     # mplus-outline-fonts
     nerdfonts
     #noto-fonts
