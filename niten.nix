@@ -71,7 +71,7 @@ let
     proggyfonts
     terminus_font
     ubuntu_font_family
-    ucsFonts
+    ucs-fonts
     ultimate-oldschool-pc-font-pack
     unifont
     xorg.fontadobe100dpi
