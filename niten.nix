@@ -73,7 +73,8 @@ let
     # proggyfonts
     terminus_font
     ubuntu_font_family
-    ucs-fonts
+    ## Conflict between this and dina-font
+    # ucs-fonts
     ultimate-oldschool-pc-font-pack
     unifont
     xorg.fontadobe100dpi
