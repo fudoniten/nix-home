@@ -57,7 +57,6 @@ let
   font-packages = with pkgs; [
     #cantarell-fonts
     dejavu_fonts
-    #dina-font
     #dosemu_fonts
     fira-code
     fira-code-symbols
@@ -69,12 +68,9 @@ let
     #noto-fonts
     #noto-fonts-cjk
     #noto-fonts-emoji
-    ## Errors building
-    # proggyfonts
+    proggyfonts
     terminus_font
     ubuntu_font_family
-    ## Conflict between this and dina-font
-    # ucs-fonts
     ultimate-oldschool-pc-font-pack
     unifont
     # qxorg.fontadobe100dpi
