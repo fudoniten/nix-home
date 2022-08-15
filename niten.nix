@@ -337,5 +337,6 @@ in {
     sessionVariables = env-variables;
   };
 
-  fonts.fontconfig.enable = enable-gui;
+  ## Somehow this is redundant?
+  # fonts.fontconfig.enable = enable-gui;
 }
