@@ -299,7 +299,7 @@ in {
       common-packages;
 
     shellAliases = {
-      ssh = mkIf config.programs.kitty.enable "kitty +kitten ssh";
+      ssh = mkIf (enable-gui && use-kitty-term) "kitty +kitten ssh";
     };
 
     file = {
