@@ -298,7 +298,9 @@ in {
     else
       common-packages;
 
-    # shellAliases = mkIf use-kitty-term { ssh = "kitty +kitten ssh"; };
+    shellAliases = {
+      ssh = mkIf config.programs.kitty.enable "kitty +kitten ssh";
+    };
 
     file = {
       ".local/share/openttd/baseset" =
