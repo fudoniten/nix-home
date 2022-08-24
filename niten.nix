@@ -154,7 +154,7 @@ let
     nix-prefetch-git
     nix-prefetch-github
     nmap
-    opencv-java # open computer vision
+    # opencv-java # open computer vision
     openldap
     openssl
     openssl.out
