@@ -19,7 +19,7 @@ in {
   in {
     useGlobalPkgs = true;
 
-    users = listToAttrs (username:
+    users = (listToAttrs (map (username:
       let
         config-user = getAttr username user-map;
         config-file = "./users/${config-user}.nix";
@@ -37,7 +37,7 @@ in {
 
         # AFAIK this always works on NixOS hosts
         enable-kitty-term = true;
-      })) // {
+      })) local-users)) // {
         root = {
           username = "root";
           user-email = "root@${config.instance.local-domain}";
