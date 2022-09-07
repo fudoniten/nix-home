@@ -28,6 +28,15 @@ let
     unzip
   ];
 
+  doom-emacs-package = pkgs.callPackage doom-emacs {
+    doomPrivateDir = niten-doom-config;
+    extraPackages = emacs-packages;
+    emacsPackagesOverlay = final: prev: {
+      gitignore-mode = pkgs.emacsPackages.git-modes;
+      gitconfig-mode = pkgs.emacsPackages.git-modes;
+    };
+  };
+
 in {
 
   programs = {
