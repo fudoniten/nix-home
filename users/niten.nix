@@ -180,7 +180,7 @@ in {
     };
 
     kitty = mkIf enable-gui {
-      enable = use-kitty-term;
+      enable = enable-kitty-term;
       settings = {
         copy_on_select = "clipboard";
         strip_trailing_spaces = "always";
@@ -267,7 +267,7 @@ in {
       common-packages;
 
     shellAliases = {
-      ssh = mkIf (enable-gui && use-kitty-term) "kitty +kitten ssh";
+      ssh = mkIf (enable-gui && enable-kitty-term) "kitty +kitten ssh";
     };
 
     file = {
