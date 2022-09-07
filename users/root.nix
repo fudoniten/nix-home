@@ -1,14 +1,11 @@
-{
-  doom-emacs-package,
-  niten-doom-config,
-  config,
-  lib,
-  pkgs,
-  username,
-  user-email,
-  home-dir,
-  ...
-}:
+# Required packages
+{ doom-emacs, doom-emacs-config, niten-doom-config, ... }:
+
+# Local settings
+{ username, user-email, home-dir, ... }:
+
+# The module itself
+{ config, lib, pkgs, ... }:
 
 with lib;
 let
@@ -34,8 +31,6 @@ let
     unzip
   ];
 
-  ensure-directories = [ ".emacs.d/.local/etc/eshell" ];
-
 in {
 
   programs = {
@@ -57,9 +52,7 @@ in {
     emacs = {
       enable = true;
       package = doom-emacs-package;
-      client = {
-        enable = true;
-      };
+      client.enable = true;
     };
   };
 
@@ -86,5 +79,6 @@ in {
   };
 
   systemd.user.tmpfiles.rules =
-    map (dir: "d ${home-dir}/${dir} 700 root - - -") ensure-directories;
+    [ "d ${home-dir}/.emacs.d/.local/etc/eshell 700 root - - -" ];
+
 }

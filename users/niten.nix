@@ -1,9 +1,14 @@
-{ doom-emacs-package, niten-doom-config, lib, pkgs, username, user-email
-, home-dir, enable-gui ? false, localOverlays ? null, ... }@toplevel:
+# Required packages
+{ doom-emacs, doom-emacs-config, niten-doom-config, ... }:
+
+# Local settings
+{ username, user-email, enable-gui, home-dir, enable-kitty-term ? true, ... }:
+
+# The module itself
+{ config, lib, pkgs, ... }:
 
 with lib;
 let
-
   env-variables = {
     ALTERNATE_EDITOR = "";
 
@@ -16,7 +21,11 @@ let
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
   };
 
-  use-kitty-term = true;
+  emacs-packages = with pkgs.emacsPackages; [
+    elpher
+    use-package
+    flycheck-clj-kondo
+  ];
 
   gui-packages = with pkgs;
     [
@@ -57,54 +66,15 @@ let
   font-packages = with pkgs; [
     cantarell-fonts
     dejavu_fonts
-    #dosemu_fonts
     fira-code
     fira-code-symbols
     liberation_ttf
-    # mplus-outline-fonts
     nerdfonts
-    #noto-fonts
-    #noto-fonts-cjk
-    #noto-fonts-emoji
     proggyfonts
     terminus_font
     ubuntu_font_family
     ultimate-oldschool-pc-font-pack
     unifont
-    # qxorg.fontadobe100dpi
-    # xorg.fontadobe75dpi
-    # xorg.fontadobeutopia100dpi
-    # xorg.fontadobeutopia75dpi
-    # xorg.fontadobeutopiatype1
-    # xorg.fontarabicmisc
-    # xorg.fontbh100dpi
-    # xorg.fontbh75dpi
-    # xorg.fontbhlucidatypewriter100dpi
-    # xorg.fontbhlucidatypewriter75dpi
-    # xorg.fontbhttf
-    # xorg.fontbhtype1
-    # xorg.fontbitstream100dpi
-    # xorg.fontbitstream75dpi
-    # xorg.fontbitstreamtype1
-    # xorg.fontcronyxcyrillic
-    # xorg.fontcursormisc
-    # xorg.fontdaewoomisc
-    # xorg.fontdecmisc
-    # xorg.fontibmtype1
-    # xorg.fontisasmisc
-    # xorg.fontjismisc
-    # xorg.fontmicromisc
-    # xorg.fontmisccyrillic
-    # xorg.fontmiscethiopic
-    # xorg.fontmiscmeltho
-    # xorg.fontmiscmisc
-    # xorg.fontmuttmisc
-    # xorg.fontschumachermisc
-    # xorg.fontscreencyrillic
-    # xorg.fontsonymisc
-    # xorg.fontsunmisc
-    # xorg.fontwinitzkicyrillic
-    # xorg.fontxfree86type1
   ];
 
   common-packages = with pkgs; [
@@ -181,14 +151,21 @@ let
     yq # yaml processor
   ];
 
-  ensure-directories = [ ".emacs.d/.local/etc/eshell" ];
+  doom-emacs-package = pkgs.callPackage doom-emacs {
+    doomPrivateDir = niten-doom-config;
+    extraPackages = emacs-packages;
+    emacsPackagesOverlay = final: prev: {
+      gitignore-mode = pkgs.emacsPackages.git-modes;
+      gitconfig-mode = pkgs.emacsPackages.git-modes;
+    };
+  };
 
 in {
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = mkIf (localOverlays != null) localOverlays;
-  };
+  ## Necessary?
+  # nixpkgs = {
+  #   config.allowUnfree = true;
+  #   overlays = mkIf (localOverlays != null) localOverlays;
+  # };
 
   programs = {
     bash = {
@@ -213,7 +190,7 @@ in {
         enable_audio_bell = false;
         scrollback_lines = 10000;
         # theme = "Obsidian";
-        #font_features = "ShureTechMono Nerd Font -liga";
+        # font_features = "ShureTechMono Nerd Font -liga";
       };
       font = {
         package = pkgs.nerdfonts;
@@ -274,13 +251,6 @@ in {
 
     gnome-keyring.enable = enable-gui;
 
-    ## Using Gnome
-    # gammastep = {
-    #   enable = true;
-    #   latitude = "47";
-    #   longitude = "122";
-    # };
-
     # supercollider = {
     #   enable = true;
     #   port = 30300;
@@ -333,12 +303,9 @@ in {
   };
 
   systemd.user = {
-    tmpfiles.rules = map (dir: "d ${home-dir}/${dir} 700 ${username} - - -")
-      ensure-directories;
+    tmpfiles.rules =
+      [ "d ${home-dir}/.emacs.d/.local/etc/eshell 700 ${username} - - -" ];
 
     sessionVariables = env-variables;
   };
-
-  ## Somehow this is redundant?
-  # fonts.fontconfig.enable = enable-gui;
 }

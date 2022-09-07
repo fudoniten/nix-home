@@ -1,7 +1,19 @@
-{ config, lib, pkgs, username, user-email, home-dir, enable-gui, ... }:
+# Required packages
+{ ... }:
 
-with lib; if !enable-gui then {} else {
+# Local settings
+{ username, user-email, enable-gui, home-dir, ... }:
+
+# The module itself
+{ config, lib, pkgs, ... }:
+
+with lib;
+if !enable-gui then
+  { }
+else {
   home = {
+    inherit username;
+
     packages = with pkgs; [
       fcitx5-configtool
       fcitx5-gtk
@@ -17,11 +29,7 @@ with lib; if !enable-gui then {} else {
       xclip
     ];
 
-    keyboard = {
-      layout = "us";
-    };
-
-    username = username;
+    keyboard.layout = "us";
   };
 
   ## Sigh...have to wait for this
@@ -30,25 +38,9 @@ with lib; if !enable-gui then {} else {
   #   fcitx5.addons = [ pkgs.fcitx5-rime ];
   # };
 
-  programs = {
-    firefox.enable = true;
-  };
+  programs.firefox.enable = true;
 
-  services = {
-    # gammastep = {
-    #   enable = true;
-    #   latitude = 47;
-    #   longitude = 122;
-    # };
-
-    gnome-keyring.enable = true;
-
-    redshift = {
-      enable = true;
-      latitude = "47";
-      longitude = "122";
-    };
-  };
+  services = { gnome-keyring.enable = true; };
 
   accounts.email.accounts = {
     Fudo = {
@@ -78,9 +70,4 @@ with lib; if !enable-gui then {} else {
       realName = "Xiaoxuan Jin";
     };
   };
-
-  systemd.user.tmpfiles.rules = [
-    "L+ /mnt/documents/${username} - - - - ${home-dir}/Documents"
-    "L+ /mnt/downloads/${username} - - - - ${home-dir}/Downloads"
-  ];
 }
