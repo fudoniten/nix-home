@@ -38,11 +38,9 @@ in {
         # AFAIK this always works on NixOS hosts
         enable-kitty-term = true;
       })) local-users)) // (import ./users/root.nix inputs {
-        root = {
-          username = "root";
-          user-email = "root@${config.instance.local-domain}";
-          home-dir = "/root";
-        };
+        username = "root";
+        user-email = "root@${config.instance.local-domain}";
+        home-dir = "/root";
       });
   };
 }
