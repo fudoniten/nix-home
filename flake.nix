@@ -41,6 +41,7 @@
         homeDirectory = "/home/niten";
         configuration = { pkgs, lib, ... }:
           import ./users/niten.nix inputs {
+            inherit pkgs lib;
             username = "niten";
             user-email = "niten@fudo.org";
             enable-gui = true;

@@ -2,10 +2,7 @@
 { ... }:
 
 # Local settings
-{ username, user-email, enable-gui, home-dir, ... }:
-
-# The module itself
-{ config, lib, pkgs, ... }:
+{ pkgs, lib, username, user-email, enable-gui, home-dir, ... }:
 
 with lib;
 if !enable-gui then

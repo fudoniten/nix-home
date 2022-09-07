@@ -2,10 +2,7 @@
 { doom-emacs, niten-doom-config, ... }:
 
 # Local settings
-{ username, user-email, home-dir, ... }:
-
-# The module itself
-{ config, lib, pkgs, ... }:
+{ pkgs, lib, username, user-email, home-dir, ... }:
 
 with lib;
 let

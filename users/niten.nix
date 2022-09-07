@@ -2,10 +2,8 @@
 { doom-emacs, niten-doom-config, ... }:
 
 # Local settings
-{ username, user-email, enable-gui, home-dir, enable-kitty-term ? true, ... }:
-
-# The module itself
-{ config, lib, pkgs, ... }:
+{ pkgs, lib, username, user-email, enable-gui, home-dir
+, enable-kitty-term ? true, ... }:
 
 with lib;
 let

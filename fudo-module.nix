@@ -33,11 +33,12 @@ in {
           "${username}@${local-domain}";
         home-dir = config.users.users.${username}.home;
       in nameValuePair username (import config-file inputs {
-        inherit username user-email home-dir enable-gui hostname;
+        inherit username user-email home-dir enable-gui hostname pkgs lib;
 
         # AFAIK this always works on NixOS hosts
         enable-kitty-term = true;
       })) local-users)) // (import ./users/root.nix inputs {
+        inherit pkgs lib;
         username = "root";
         user-email = "root@${config.instance.local-domain}";
         home-dir = "/root";
