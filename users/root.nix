@@ -28,6 +28,12 @@ let
     unzip
   ];
 
+  emacs-packages = with pkgs.emacsPackages; [
+    elpher
+    use-package
+    flycheck-clj-kondo
+  ];
+
   doom-emacs-package = pkgs.callPackage doom-emacs {
     doomPrivateDir = niten-doom-config;
     extraPackages = emacs-packages;
