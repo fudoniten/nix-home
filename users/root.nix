@@ -1,5 +1,5 @@
 # Required packages
-{ doom-emacs, doom-emacs-config, niten-doom-config, ... }:
+{ doom-emacs, niten-doom-config, ... }:
 
 # Local settings
 { username, user-email, home-dir, ... }:
