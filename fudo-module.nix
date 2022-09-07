@@ -37,11 +37,13 @@ in {
 
         # AFAIK this always works on NixOS hosts
         enable-kitty-term = true;
-      })) local-users)) // (import ./users/root.nix inputs {
-        inherit pkgs lib;
-        username = "root";
-        user-email = "root@${config.instance.local-domain}";
-        home-dir = "/root";
-      });
+      })) local-users)) // {
+        root = import ./users/root.nix inputs {
+          inherit pkgs lib;
+          username = "root";
+          user-email = "root@${config.instance.local-domain}";
+          home-dir = "/root";
+        };
+      };
   };
 }
