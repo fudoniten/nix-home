@@ -53,7 +53,7 @@ in {
     users = mapAttrs (_: userOpts:
       let
         config-user = user-map."${userOpts.username}";
-        config-file = "./users/${config-user}.nix";
+        config-file = ./. + "/users/${config-user}.nix";
       in pkgs.callPackage config-file inputs {
         inherit (userOpts) username user-email home-dir;
         inherit (cfg) enable-gui enable-kitty-term;

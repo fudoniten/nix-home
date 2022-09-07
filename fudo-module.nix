@@ -22,7 +22,7 @@ in {
     users = (listToAttrs (map (username:
       let
         config-user = getAttr username user-map;
-        config-file = "./users/${config-user}.nix";
+        config-file = ./. + "/users/${config-user}.nix";
         cfg = config.fudo.users."${username}";
         hostname = config.instance.hostname;
         enable-gui = config.fudo.hosts."${hostname}".enable-gui;
