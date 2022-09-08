@@ -44,7 +44,7 @@ in {
 
           home-dir = mkOption {
             type = str;
-            default = toplevel.config.users.users."${name}".homeDirectory;
+            default = toplevel.config.users.users."${name}".home;
           };
         };
       }));
