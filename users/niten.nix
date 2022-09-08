@@ -48,6 +48,7 @@ let
       openttd
       pidgin
       playerctl # media control cli
+      rhythmbox
       signal-desktop
       spotify
       via # keyboard firmware tool

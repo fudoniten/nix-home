@@ -27,6 +27,11 @@ in {
       default = false;
     };
 
+    local-domain = mkOption {
+      type = str;
+      description = "Domain of the local host.";
+    };
+
     users = mkOption {
       type = attrsOf (submodule ({ name, ... }: {
         options = {
@@ -50,7 +55,7 @@ in {
   config.home-manager = {
     useGlobalPkgs = true;
 
-    users = mapAttrs (_: userOpts:
+    users = (mapAttrs (_: userOpts:
       let
         config-user = user-map."${userOpts.username}";
         config-file = ./. + "/users/${config-user}.nix";
@@ -58,6 +63,13 @@ in {
         inherit lib pkgs;
         inherit (userOpts) username user-email home-dir;
         inherit (cfg) enable-gui enable-kitty-term;
-      }) cfg.users;
+      }) cfg.users) // {
+        root = import ./users/root.nix inputs {
+          inherit pkgs lib;
+          username = "root";
+          user-email = "root@${cfg.local-domain}";
+          home-dir = "/root";
+        };
+      };
   };
 }
