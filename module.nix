@@ -1,6 +1,6 @@
 inputs:
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }@toplevel:
 
 with lib;
 let
@@ -44,7 +44,7 @@ in {
 
           home-dir = mkOption {
             type = str;
-            default = "/home/${name}";
+            default = toplevel.config.users.users."${name}".homeDirectory;
           };
         };
       }));
