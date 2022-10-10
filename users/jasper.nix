@@ -12,6 +12,7 @@ else {
     inherit username;
 
     packages = with pkgs; [
+      factorio
       firefox
       gnome.gnome-tweaks
       google-chrome
