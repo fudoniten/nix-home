@@ -13,8 +13,6 @@ let
   };
 
 in {
-  imports = [ ./modules ];
-
   config.home-manager = let
     local-users = intersectLists (attrNames config.instance.local-users)
       (attrNames user-map);

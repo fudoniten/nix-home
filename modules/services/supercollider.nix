@@ -29,7 +29,7 @@ in {
           X-RestartIfChanged = true;
         };
 
-        Install.WantedBy = [ "default.target" ];
+        Install.WantedBy = [ "graphical-session.target" ];
 
         Service = {
           ExecStart = concatStringsSep " " [

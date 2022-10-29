@@ -161,151 +161,156 @@ let
   };
 
 in {
-  ## Necessary?
-  # nixpkgs = {
-  #   config.allowUnfree = true;
-  #   overlays = mkIf (localOverlays != null) localOverlays;
-  # };
 
-  programs = {
-    bash = {
-      enable = true;
-      enableVteIntegration = true;
-    };
+  imports = [ ./modules ];
 
-    git = {
-      enable = true;
-      userName = username;
-      userEmail = user-email;
-      ignores = [ "*~" ];
-      extraConfig.pull.rebase = false;
-    };
+  config = {
+    ## Necessary?
+    # nixpkgs = {
+    #   config.allowUnfree = true;
+    #   overlays = mkIf (localOverlays != null) localOverlays;
+    # };
 
-    kitty = mkIf enable-gui {
-      enable = enable-kitty-term;
-      settings = {
-        copy_on_select = "clipboard";
-        strip_trailing_spaces = "always";
-        editor = "emacsclient -t";
-        enable_audio_bell = false;
-        scrollback_lines = 10000;
-        # theme = "Obsidian";
-        # font_features = "ShureTechMono Nerd Font -liga";
+    programs = {
+      bash = {
+        enable = true;
+        enableVteIntegration = true;
       };
-      font = {
-        package = pkgs.nerdfonts;
-        name = "Terminess (TTF) Nerd Font Complete Mono";
-        # name = "Shure Tech Mono Nerd Font Complete Mono";
-        size = 14;
-        #package = pkgs.inconsolata;
-        #name = "Incosolata";
-        #size = 10;
+
+      git = {
+        enable = true;
+        userName = username;
+        userEmail = user-email;
+        ignores = [ "*~" ];
+        extraConfig.pull.rebase = false;
       };
-      keybindings = let lead = "ctrl+super";
-      in {
-        "ctrl+shift+plus" = "no_op";
-        "ctrl+shift+minus" = "no_op";
-        "ctrl+shift+backspace" = "no_op";
 
-        "${lead}+plus" = "change_font_size all +2.0";
-        "${lead}+minus" = "change_font_size all -2.0";
-        "${lead}+backspace" = "change_font_size all 0";
+      kitty = mkIf enable-gui {
+        enable = enable-kitty-term;
+        settings = {
+          copy_on_select = "clipboard";
+          strip_trailing_spaces = "always";
+          editor = "emacsclient -t";
+          enable_audio_bell = false;
+          scrollback_lines = 10000;
+          # theme = "Obsidian";
+          # font_features = "ShureTechMono Nerd Font -liga";
+        };
+        font = {
+          package = pkgs.nerdfonts;
+          name = "Terminess (TTF) Nerd Font Complete Mono";
+          # name = "Shure Tech Mono Nerd Font Complete Mono";
+          size = 14;
+          #package = pkgs.inconsolata;
+          #name = "Incosolata";
+          #size = 10;
+        };
+        keybindings = let lead = "ctrl+super";
+        in {
+          "ctrl+shift+plus" = "no_op";
+          "ctrl+shift+minus" = "no_op";
+          "ctrl+shift+backspace" = "no_op";
 
-        "${lead}+left" = "previous_tab";
-        "${lead}+right" = "next_tab";
-        "${lead}+t" = "new_tab";
-        "${lead}+alt+t" = "set_tab_title";
-        "${lead}+x" = "detach_tab";
+          "${lead}+plus" = "change_font_size all +2.0";
+          "${lead}+minus" = "change_font_size all -2.0";
+          "${lead}+backspace" = "change_font_size all 0";
+
+          "${lead}+left" = "previous_tab";
+          "${lead}+right" = "next_tab";
+          "${lead}+t" = "new_tab";
+          "${lead}+alt+t" = "set_tab_title";
+          "${lead}+x" = "detach_tab";
+        };
+      };
+
+      firefox = {
+        enable = enable-gui;
+        ## Some perm change error?
+        # package = (pkgs.firefox.override {
+        #   cfg = {
+        #     enableGnomeExtensions = true;
+        #   };
+        # });
       };
     };
 
-    firefox = {
-      enable = enable-gui;
-      ## Some perm change error?
-      # package = (pkgs.firefox.override {
-      #   cfg = {
-      #     enableGnomeExtensions = true;
-      #   };
-      # });
-    };
-  };
-
-  xresources.properties = mkIf enable-gui {
-    "Xft.antialias" = 1;
-    "Xft.autohint" = 0;
-    # "Xft.dpi" = 192;
-    "Xft.hinting" = 1;
-    "Xft.hintstyle" = "hintfull";
-    "Xft.lcdfilter" = "lcddefault";
-  };
-
-  services = {
-    emacs = {
-      enable = true;
-      package = doom-emacs-package;
-      client.enable = true;
-      defaultEditor = true;
+    xresources.properties = mkIf enable-gui {
+      "Xft.antialias" = 1;
+      "Xft.autohint" = 0;
+      # "Xft.dpi" = 192;
+      "Xft.hinting" = 1;
+      "Xft.hintstyle" = "hintfull";
+      "Xft.lcdfilter" = "lcddefault";
     };
 
-    gpg-agent.enable = true;
+    services = {
+      emacs = {
+        enable = true;
+        package = doom-emacs-package;
+        client.enable = true;
+        defaultEditor = true;
+      };
 
-    gnome-keyring.enable = enable-gui;
+      gpg-agent.enable = true;
 
-    supercollider = {
-      enable = true;
-      port = 30300;
+      gnome-keyring.enable = enable-gui;
+
+      supercollider = {
+        enable = true;
+        port = 30300;
+      };
+
+      syncthing = {
+        enable = true;
+        extraOptions = [ ];
+      };
     };
 
-    syncthing = {
-      enable = true;
-      extraOptions = [ ];
-    };
-  };
+    home = {
+      packages = if enable-gui then
+        (common-packages ++ gui-packages ++ font-packages)
+      else
+        common-packages;
 
-  home = {
-    packages = if enable-gui then
-      (common-packages ++ gui-packages ++ font-packages)
-    else
-      common-packages;
+      shellAliases = {
+        ssh = mkIf (enable-gui && enable-kitty-term) "kitty +kitten ssh";
+      };
 
-    shellAliases = {
-      ssh = mkIf (enable-gui && enable-kitty-term) "kitty +kitten ssh";
-    };
+      file = {
+        ".local/share/openttd/baseset" =
+          mkIf enable-gui { source = "${pkgs.openttd-data}/data"; };
 
-    file = {
-      ".local/share/openttd/baseset" =
-        mkIf enable-gui { source = "${pkgs.openttd-data}/data"; };
+        # For nixified emacs
+        ".emacs.d/init.el".text = ''
+          (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
+          (load "default.el")
 
-      # For nixified emacs
-      ".emacs.d/init.el".text = ''
-        (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
-        (load "default.el")
-
-        (setq package-archives nil)
-        (package-initialize)
-      '';
-
-      ".xprofile" = mkIf enable-gui {
-        executable = true;
-        source = pkgs.writeShellScript "${username}-xsession" ''
-          gdmauth=$XAUTHORITY
-          unset  XAUTHORITY
-          export XAUTHORITY
-          xauth merge "$gdmauth"
-
-          if [ -f $HOME/.xinitrc ]; then
-            bash --login -i $HOME/.xinitrc
-          fi
+          (setq package-archives nil)
+          (package-initialize)
         '';
+
+        ".xprofile" = mkIf enable-gui {
+          executable = true;
+          source = pkgs.writeShellScript "${username}-xsession" ''
+            gdmauth=$XAUTHORITY
+            unset  XAUTHORITY
+            export XAUTHORITY
+            xauth merge "$gdmauth"
+
+            if [ -f $HOME/.xinitrc ]; then
+              bash --login -i $HOME/.xinitrc
+            fi
+          '';
+        };
       };
+      sessionVariables = env-variables;
     };
-    sessionVariables = env-variables;
-  };
 
-  systemd.user = {
-    tmpfiles.rules =
-      [ "d ${home-dir}/.emacs.d/.local/etc/eshell 700 ${username} - - -" ];
+    systemd.user = {
+      tmpfiles.rules =
+        [ "d ${home-dir}/.emacs.d/.local/etc/eshell 700 ${username} - - -" ];
 
-    sessionVariables = env-variables;
+      sessionVariables = env-variables;
+    };
   };
 }
