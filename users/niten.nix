@@ -162,7 +162,7 @@ let
 
 in {
 
-  imports = [ ./modules ];
+  imports = [ ../modules ];
 
   config = {
     ## Necessary?
