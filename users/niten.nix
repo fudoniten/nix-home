@@ -31,7 +31,6 @@ let
       alacritty # terminal
       element-desktop # matrix client
       # exodus # crypto wallet -- not found?
-      factorio
       faudio # direct-x audio?
       gnome.gnome-tweaks
       google-chrome
