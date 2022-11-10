@@ -30,7 +30,7 @@ let
       abiword
       alacritty # terminal
       element-desktop # matrix client
-      # exodus # crypto wallet -- not found?
+      exodus # crypto wallet -- not found?
       faudio # direct-x audio?
       gnome.gnome-tweaks
       google-chrome
