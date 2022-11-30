@@ -18,6 +18,12 @@ in {
         "IP address on which to listen for connections. 0.0.0.0 for all addresses.";
       default = "127.0.0.1";
     };
+
+    memory = mkOption {
+      type = int;
+      description = "Number of memory (in megabytes) to allocate to scsynth.";
+      default = 1024;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -36,6 +42,7 @@ in {
             "${pkgs.supercollider}/bin/scsynth"
             "-u ${toString cfg.port}"
             "-B ${cfg.listen-address}"
+            "-m ${toString cfg.memory}"
           ];
           ExecStartPre = let
             pre-script = pkgs.writeShellScript "supercollider-prep.sh" ''
