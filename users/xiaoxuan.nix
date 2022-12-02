@@ -6,7 +6,7 @@
 
 with lib;
 if !enable-gui then {
-  stateVersion = "22.05";
+  home.stateVersion = "22.05";
 } else {
   home = {
     inherit username;
