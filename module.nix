@@ -67,7 +67,10 @@ in {
           inherit (cfg) enable-gui enable-kitty-term;
         })
       else {
-        home.stateVersion = "22.11";
+        home = {
+          username = trace "username is: ${username}" username;
+          stateVersion = "22.11";
+        };
       }) config.users.users) // {
         root = import ./users/root.nix inputs {
           inherit pkgs lib;
