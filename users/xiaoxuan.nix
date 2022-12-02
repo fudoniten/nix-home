@@ -11,6 +11,8 @@ else {
   home = {
     inherit username;
 
+    stateVersion = "22.05";
+
     packages = with pkgs; [
       fcitx5-configtool
       fcitx5-gtk
