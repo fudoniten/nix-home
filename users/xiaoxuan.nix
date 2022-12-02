@@ -5,9 +5,9 @@
 { pkgs, lib, username, user-email, enable-gui, home-dir, ... }:
 
 with lib;
-if !enable-gui then
-  { }
-else {
+if !enable-gui then {
+  stateVersion = "22.05";
+} else {
   home = {
     inherit username;
 
@@ -28,7 +28,10 @@ else {
       xclip
     ];
 
-    keyboard.layout = "us";
+    keyboard = {
+      layout = "us";
+      options = "";
+    };
   };
 
   ## Sigh...have to wait for this

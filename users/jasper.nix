@@ -5,9 +5,9 @@
 { pkgs, lib, username, user-email, enable-gui, home-dir, ... }:
 
 with lib;
-if !enable-gui then
-  { }
-else {
+if !enable-gui then {
+  home.stateVersion = "22.05";
+} else {
   home = {
     inherit username;
 
