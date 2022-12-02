@@ -57,15 +57,15 @@ in {
 
     users = (mapAttrs (username: _:
       if hasAttr username cfg.users then
-        let
+        (let
           userOpts = getAttr username cfg.users;
-          config-user = user-map."${userOpts.username}";
+          config-user = user-map."${username}";
           config-file = ./. + "/users/${config-user}.nix";
         in pkgs.callPackage config-file inputs {
           inherit lib pkgs;
           inherit (userOpts) username user-email home-dir;
           inherit (cfg) enable-gui enable-kitty-term;
-        }
+        })
       else {
         home.stateVersion = "22.11";
       }) config.users.users) // {
