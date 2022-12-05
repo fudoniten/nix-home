@@ -56,7 +56,7 @@ in {
     useGlobalPkgs = true;
 
     users = (mapAttrs (username: _:
-      if hasAttr username cfg.users then
+      if hasAttr username user-map then
         (let
           userOpts = getAttr username cfg.users;
           config-user = user-map."${username}";
@@ -68,16 +68,17 @@ in {
         })
       else {
         home = {
-          username = trace "username is: ${username}" username;
+          inherit username;
           stateVersion = "22.11";
         };
-      }) config.users.users) // {
-        root = import ./users/root.nix inputs {
-          inherit pkgs lib;
-          username = "root";
-          user-email = "root@${cfg.local-domain}";
-          home-dir = "/root";
+      }) (trace (concatStringsSep " : " (attrNames config.users.users))
+        config.users.users)) // {
+          root = import ./users/root.nix inputs {
+            inherit pkgs lib;
+            username = "root";
+            user-email = "root@${cfg.local-domain}";
+            home-dir = "/root";
+          };
         };
-      };
   };
 }
