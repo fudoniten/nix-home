@@ -4,7 +4,7 @@ inputs:
 
 with lib;
 let
-  user-map = {
+  userMap = {
     jasper = "jasper";
     niten = "niten";
     root = "root";
@@ -12,38 +12,44 @@ let
     xiaoxuan = "xiaoxuan";
   };
 
+  rootConfig = import ./users/root.nix inputs {
+    inherit pkgs lib;
+    username = "root";
+    user-email = "root@${config.instance.local-domain}";
+    home-dir = "/root";
+  };
+
 in {
   config.home-manager = let
-    local-users = intersectLists (attrNames config.instance.local-users)
+    localUsers = intersectLists (attrNames config.instance.local-users)
       (attrNames user-map);
   in {
     useGlobalPkgs = true;
 
     users = (listToAttrs (map (username:
-      let
-        config-user = getAttr username user-map;
-        config-file = ./. + "/users/${config-user}.nix";
-        cfg = config.fudo.users."${username}";
-        hostname = config.instance.hostname;
-        enable-gui = config.fudo.hosts."${hostname}".enable-gui;
-        local-domain = config.instance.local-domain;
-        user-email = if (isNull cfg.email) then
-          cfg.email
-        else
-          "${username}@${local-domain}";
-        home-dir = config.users.users.${username}.home;
-      in nameValuePair username (import config-file inputs {
-        inherit username user-email home-dir enable-gui hostname pkgs lib;
-
-        # AFAIK this always works on NixOS hosts
-        enable-kitty-term = true;
-      })) local-users)) // {
-        root = import ./users/root.nix inputs {
-          inherit pkgs lib;
-          username = "root";
-          user-email = "root@${config.instance.local-domain}";
-          home-dir = "/root";
-        };
-      };
+      if hasAttr username userMap then
+        (let
+          configFile = ./. + "/users/${getAttr username userMap}.nix";
+          cfg = config.fudo.users."${username}";
+          hostname = config.instance.hostname;
+          enable-gui = config.fudo.hosts."${hostname}".enable-gui;
+          localDomain = config.instance.localDomain;
+          user-email = if isNull cfg.email then
+            "${username}@${localDomain}"
+          else
+            cfg.email;
+          home-dir = config.users.users."${username}".home;
+        in nameValuePair username (import configFile inputs {
+          inherit pkgs lib username user-email home-dir enable-gui hostname;
+          # AFAIK this always works on NixOS hosts
+          enable-kitty-term = true;
+        }))
+      else
+        (nameValuePair username {
+          home = {
+            inherit username;
+            stateVersion = 22.11;
+          };
+        })) localUsers)) // rootConfig;
   };
 }

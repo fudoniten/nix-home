@@ -71,14 +71,13 @@ in {
           inherit username;
           stateVersion = "22.11";
         };
-      }) (trace (concatStringsSep " : " (attrNames config.users.users))
-        config.users.users)) // {
-          root = import ./users/root.nix inputs {
-            inherit pkgs lib;
-            username = "root";
-            user-email = "root@${cfg.local-domain}";
-            home-dir = "/root";
-          };
+      }) config.users.users) // {
+        root = import ./users/root.nix inputs {
+          inherit pkgs lib;
+          username = "root";
+          user-email = "root@${cfg.local-domain}";
+          home-dir = "/root";
         };
+      };
   };
 }
