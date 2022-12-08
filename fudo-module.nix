@@ -20,9 +20,7 @@ let
   };
 
 in {
-  config.home-manager = let
-    localUsers = intersectLists (attrNames config.instance.local-users)
-      (attrNames user-map);
+  config.home-manager = let localUsers = attrNames config.instance.local-users;
   in {
     useGlobalPkgs = true;
 
