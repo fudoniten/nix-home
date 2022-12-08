@@ -12,11 +12,13 @@ let
     xiaoxuan = "xiaoxuan";
   };
 
-  rootConfig = import ./users/root.nix inputs {
-    inherit pkgs lib;
-    username = "root";
-    user-email = "root@${config.instance.local-domain}";
-    home-dir = "/root";
+  rootConfig = {
+    root = import ./users/root.nix inputs {
+      inherit pkgs lib;
+      username = "root";
+      user-email = "root@${config.instance.local-domain}";
+      home-dir = "/root";
+    };
   };
 
 in {
