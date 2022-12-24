@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgsUnstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, fudo-pkgs, ... }@inputs: {
     nixosModules = {
       default = {
         imports = [
@@ -33,22 +34,29 @@
           (import ./module.nix inputs)
         ];
       };
-
-      homeConfigurations.niten = let system = "x86_64-linux";
-      in home-manager.lib.homeManagerConfiguration {
-        inherit system;
-        username = "niten";
-        homeDirectory = "/home/niten";
-        configuration = { pkgs, lib, ... }:
-          import ./users/niten.nix inputs {
-            inherit pkgs lib;
-            username = "niten";
-            user-email = "niten@fudo.org";
-            enable-gui = true;
-            home-dir = "/home/niten";
-            enable-kitty-term = false;
-          };
-      };
     };
+
+      homeConfigurations.niten = let
+        system = "x86_64-linux";
+	pkgs = import nixpkgs {
+	  inherit system;
+	  config.allowUnfree = true;
+	  overlays = [
+	    fudo-pkgs.overlay
+	  ];
+	};
+      in home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+	  ({pkgs, lib, ... }: import ./users/niten.nix inputs {
+	    inherit pkgs lib;
+	    username = "niten";
+	    user-email = "niten@fudo.org";
+	    enable-gui = true;
+	    home-dir = "/home/niten";
+	    enable-kitty-term = false;
+	  })
+	];
+      };
   };
 }
