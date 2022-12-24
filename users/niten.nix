@@ -40,6 +40,7 @@ let
       jq # command-line JSON parser
       kitty # terminal
       libreoffice
+      mosh
       mindustry
       minecraft
       mplayer
