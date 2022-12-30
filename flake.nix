@@ -16,45 +16,50 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    gnome-manager.url = "file://home/niten/Projects/gnome-manager/";
   };
 
-  outputs = { self, nixpkgs, home-manager, fudo-pkgs, ... }@inputs: {
-    nixosModules = {
-      default = {
-        imports = [
-          home-manager.nixosModules.home-manager
-          (import ./fudo-module.nix inputs)
-        ];
+  outputs =
+    { self, nixpkgs, home-manager, fudo-pkgs, gnome-manager, ... }@inputs: {
+      nixosModules = {
+        default = {
+          imports = [
+            home-manager.nixosModules.home-manager
+            (import ./fudo-module.nix inputs)
+            gnome-manager.nixosModules.default
+          ];
+        };
+
+        live-disk = {
+          imports = [
+            home-manager.nixosModules.home-manager
+            (import ./module.nix inputs)
+            gnome-manager.nixosModules.default
+          ];
+        };
       };
 
-      live-disk = {
-        imports = [
-          home-manager.nixosModules.home-manager
-          (import ./module.nix inputs)
+      homeConfigurations.niten = let
+        system = "x86_64-linux";
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [ fudo-pkgs.overlay ];
+        };
+      in home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ({ pkgs, lib, ... }: import "${gnome-manager}/gnome.nix")
+          ({ pkgs, lib, ... }:
+            import ./users/niten.nix inputs {
+              inherit pkgs lib;
+              username = "niten";
+              user-email = "niten@fudo.org";
+              enable-gui = true;
+              home-dir = "/home/niten";
+              enable-kitty-term = false;
+            })
         ];
       };
     };
-
-    homeConfigurations.niten = let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [ fudo-pkgs.overlay ];
-      };
-    in home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        ({ pkgs, lib, ... }:
-          import ./users/niten.nix inputs {
-            inherit pkgs lib;
-            username = "niten";
-            user-email = "niten@fudo.org";
-            enable-gui = true;
-            home-dir = "/home/niten";
-            enable-kitty-term = false;
-          })
-      ];
-    };
-  };
 }
