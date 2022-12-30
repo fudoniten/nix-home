@@ -12,55 +12,49 @@
       flake = false;
     };
     fudo-pkgs.url = "git+https://git.fudo.org/fudo-nix/pkgs.git";
-    # For https://github.com/vlaci/nix-doom-emacs/issues/401
-    # emacs-overlay = {
-    #   url = "github:nix-community/emacs-overlay";
-    #   flake = false;
-    # };
     doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.emacs-overlay.follows = "emacs-overlay";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, doom-emacs, fudo-pkgs
-    , niten-doom-config, ... }: {
-      nixosModule = {
+  outputs = { self, nixpkgs, home-manager, fudo-pkgs, ... }@inputs: {
+    nixosModules = {
+      default = {
         imports = [
           home-manager.nixosModules.home-manager
-          (import ./module.nix { inherit doom-emacs niten-doom-config; })
+          (import ./fudo-module.nix inputs)
         ];
       };
 
-      homeConfigurations = {
-        niten = let
-          username = "niten";
-          system = "x86_64-linux";
-        in home-manager.lib.homeManagerConfiguration {
-          inherit system username;
-          homeDirectory = "/home/niten";
-          configuration = { pkgs, lib, ... }:
-            let
-              doom-emacs-package = pkgs.callPackage doom-emacs {
-                doomPrivateDir = niten-doom-config;
-                extraPackages = with pkgs.emacsPackages; [ elpher use-package ];
-                # For https://github.com/vlaci/nix-doom-emacs/issues/401
-                emacsPackagesOverlay = final: prev: {
-                  gitignore-mode = pkgs.emacsPackages.git-modes;
-                  gitconfig-mode = pkgs.emacsPackages.git-modes;
-                };
-              };
-            in (import ./niten.nix {
-              inherit system pkgs lib username niten-doom-config
-                doom-emacs-package;
-
-              user-email = "niten@fudo.org";
-              home-dir = "/home/niten";
-              enable-gui = true;
-              localOverlays = [ fudo-pkgs.overlay ];
-            });
-        };
+      live-disk = {
+        imports = [
+          home-manager.nixosModules.home-manager
+          (import ./module.nix inputs)
+        ];
       };
     };
+
+    homeConfigurations.niten = let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ fudo-pkgs.overlay ];
+      };
+    in home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        ({ pkgs, lib, ... }:
+          import ./users/niten.nix inputs {
+            inherit pkgs lib;
+            username = "niten";
+            user-email = "niten@fudo.org";
+            enable-gui = true;
+            home-dir = "/home/niten";
+            enable-kitty-term = false;
+          })
+      ];
+    };
+  };
 }

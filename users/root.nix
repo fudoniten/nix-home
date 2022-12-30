@@ -1,14 +1,8 @@
-{
-  doom-emacs-package,
-  niten-doom-config,
-  config,
-  lib,
-  pkgs,
-  username,
-  user-email,
-  home-dir,
-  ...
-}:
+# Required packages
+{ doom-emacs, niten-doom-config, ... }:
+
+# Local settings
+{ pkgs, lib, username, user-email, home-dir, ... }:
 
 with lib;
 let
@@ -34,7 +28,20 @@ let
     unzip
   ];
 
-  ensure-directories = [ ".emacs.d/.local/etc/eshell" ];
+  emacs-packages = with pkgs.emacsPackages; [
+    elpher
+    use-package
+    flycheck-clj-kondo
+  ];
+
+  doom-emacs-package = pkgs.callPackage doom-emacs {
+    doomPrivateDir = niten-doom-config;
+    extraPackages = emacs-packages;
+    emacsPackagesOverlay = final: prev: {
+      gitignore-mode = pkgs.emacsPackages.git-modes;
+      gitconfig-mode = pkgs.emacsPackages.git-modes;
+    };
+  };
 
 in {
 
@@ -57,13 +64,13 @@ in {
     emacs = {
       enable = true;
       package = doom-emacs-package;
-      client = {
-        enable = true;
-      };
+      client.enable = true;
     };
   };
 
   home = {
+    stateVersion = "22.05";
+
     packages = common-packages;
 
     file = {
@@ -86,5 +93,6 @@ in {
   };
 
   systemd.user.tmpfiles.rules =
-    map (dir: "d ${home-dir}/${dir} 700 root - - -") ensure-directories;
+    [ "d ${home-dir}/.emacs.d/.local/etc/eshell 700 root - - -" ];
+
 }

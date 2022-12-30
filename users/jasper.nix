@@ -1,10 +1,18 @@
-{ config, lib, pkgs, username, user-email, home-dir, enable-gui, ... }:
+# Required packages
+{ ... }:
+
+# Local settings
+{ pkgs, lib, username, user-email, enable-gui, home-dir, ... }:
 
 with lib;
-if !enable-gui then
-  { }
-else {
+if !enable-gui then {
+  home.stateVersion = "22.05";
+} else {
   home = {
+    inherit username;
+
+    stateVersion = "22.05";
+
     packages = with pkgs; [
       firefox
       gnome.gnome-tweaks
@@ -18,34 +26,12 @@ else {
       xclip
     ];
 
-    keyboard = { layout = "us"; };
-
-    username = username;
+    keyboard.layout = "us";
   };
 
-  ## Sigh...have to wait for this
-  # i18n.inputMethod = {
-  #   enabled = "fcitx5";
-  #   fcitx5.addons = [ pkgs.fcitx5-rime ];
-  # };
+  programs.firefox.enable = true;
 
-  programs = { firefox.enable = true; };
-
-  services = {
-    # gammastep = {
-    #   enable = true;
-    #   latitude = 47;
-    #   longitude = 122;
-    # };
-
-    gnome-keyring.enable = true;
-
-    # redshift = {
-    #   enable = true;
-    #   latitude = "47";
-    #   longitude = "122";
-    # };
-  };
+  services.gnome-keyring.enable = true;
 
   accounts.email.accounts = {
     Fudo = {
@@ -75,9 +61,4 @@ else {
       realName = "Jasper Selby";
     };
   };
-
-  systemd.user.tmpfiles.rules = [
-    "L+ /mnt/documents/${username} - - - - ${home-dir}/Documents"
-    "L+ /mnt/downloads/${username} - - - - ${home-dir}/Downloads"
-  ];
 }
