@@ -16,7 +16,8 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gnome-manager.url = "path:/home/niten/Projects/gnome-manager/";
+    gnome-manager.url =
+      "git+path:/home/niten/Projects/gnome-manager?ref=hm-module";
   };
 
   outputs =
