@@ -187,6 +187,15 @@ in {
         extraConfig.pull.rebase = false;
       };
 
+      gh = {
+        enable = true;
+        enableGitCredentialHelper = true;
+        settings = {
+          editor = "emacsclient";
+          git_protocol = "ssh";
+        };
+      };
+
       kitty = mkIf enable-gui {
         enable = enable-kitty-term;
         settings = {
