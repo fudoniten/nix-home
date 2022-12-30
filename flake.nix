@@ -49,7 +49,7 @@
       in home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ({ pkgs, lib, ... }: import "${gnome-manager}/gnome.nix")
+          gnome-manager.homeManagerModules.default
           ({ pkgs, lib, ... }:
             import ./users/niten.nix inputs {
               inherit pkgs lib;
