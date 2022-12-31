@@ -43,6 +43,7 @@ let
       jq # command-line JSON parser
       kitty # terminal
       libreoffice
+      mosh
       mindustry
       minecraft
       mplayer
@@ -173,6 +174,8 @@ in {
     #   overlays = mkIf (localOverlays != null) localOverlays;
     # };
 
+    gnome-manager.background = ./static/k3gy64wu8i5a1.png;
+
     programs = {
       bash = {
         enable = true;
@@ -185,6 +188,15 @@ in {
         userEmail = user-email;
         ignores = [ "*~" ];
         extraConfig.pull.rebase = false;
+      };
+
+      gh = {
+        enable = true;
+        enableGitCredentialHelper = true;
+        settings = {
+          editor = "emacsclient";
+          git_protocol = "ssh";
+        };
       };
 
       kitty = mkIf enable-gui {
