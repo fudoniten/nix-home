@@ -19,6 +19,9 @@ let
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
   };
 
+  python-with-packages =
+    pkgs.python3.withPackages (pyPkgs: with pyPkgs; [ opencv4 ]);
+
   emacs-packages = with pkgs.emacsPackages; [
     elpher
     use-package
@@ -131,7 +134,7 @@ let
     pciutils
     pv # dd with info
     pwgen
-    python
+    python-with-packages
     ruby
     rustc
     sbcl
