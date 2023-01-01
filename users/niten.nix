@@ -20,7 +20,7 @@ let
   };
 
   python-with-packages =
-    pkgs.python3.withPackages (pyPkgs: with pyPkgs; [ opencv4 torch ]);
+    pkgs.python3.withPackages (pyPkgs: with pyPkgs; [ fastapi opencv4 torch ]);
 
   emacs-packages = with pkgs.emacsPackages; [
     elpher
