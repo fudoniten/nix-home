@@ -19,8 +19,8 @@ let
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
   };
 
-  python-with-packages =
-    pkgs.python3.withPackages (pyPkgs: with pyPkgs; [ fastapi opencv4 torch ]);
+  python-with-packages = pkgs.python3.withPackages
+    (pyPkgs: with pyPkgs; [ fastapi opencv4 python-multipart torch ]);
 
   emacs-packages = with pkgs.emacsPackages; [
     elpher
