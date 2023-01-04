@@ -16,7 +16,11 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gnome-manager.url = "github:fudoniten/gnome-manager?ref=hm-module";
+    # gnome-manager.url = "github:fudoniten/gnome-manager?ref=hm-module";
+    gnome-manager = {
+      url = "path:/state/gnome-manager";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -25,8 +29,8 @@
         default = {
           imports = [
             home-manager.nixosModules.home-manager
-            (import ./fudo-module.nix inputs)
             gnome-manager.nixosModules.default
+            (import ./fudo-module.nix inputs)
           ];
         };
 
@@ -34,7 +38,6 @@
           imports = [
             home-manager.nixosModules.home-manager
             (import ./module.nix inputs)
-            gnome-manager.nixosModules.default
           ];
         };
       };
