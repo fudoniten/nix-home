@@ -32,10 +32,10 @@ let
     [
       abiword
       alacritty # terminal
-      dconf-editor # for gnome dconf config
       element-desktop # matrix client
       # exodus # crypto wallet -- not found?
       faudio # direct-x audio?
+      gnome.dconf-editor # for gnome dconf config
       gnome.gnome-tweaks
       google-chrome
       gparted
