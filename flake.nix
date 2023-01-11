@@ -17,7 +17,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gnome-manager = {
-      url = "github:fudoniten/gnome-manager?ref=hm-module";
+      # url = "github:fudoniten/gnome-manager?ref=hm-module";
+      url = "path:/state/gnome-manager";
       inputs.home-manager.follows = "home-manager";
     };
   };

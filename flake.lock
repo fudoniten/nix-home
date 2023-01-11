@@ -259,8 +259,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1672860127,
-        "narHash": "sha256-PSQE0UqGQIJfqVzJDzvkERlcy6yo7JQgi76xWjozpq4=",
+        "lastModified": 1673465169,
+        "narHash": "sha256-O5FVbpUPUd2pR6xFkhc7n80ZWm6LuA/OJgI2njtLXHY=",
         "path": "/state/gnome-manager",
         "type": "path"
       },
