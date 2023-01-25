@@ -47,7 +47,7 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [ fudo-pkgs.overlay ];
+          overlays = [ fudo-pkgs.overlays.default ];
         };
       in home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
