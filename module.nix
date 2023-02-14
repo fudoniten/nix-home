@@ -61,7 +61,7 @@ in {
         userOpts = config.users.users."${username}";
         configUser = user-map."${username}";
         configFile = ./. + "/users/${configUser}.nix";
-      in pkgs.callPackage config-file inputs {
+      in import config-file inputs {
         inherit lib pkgs;
         inherit (userOpts) username user-email home-dir;
         inherit (cfg) enable-gui enable-kitty-term;

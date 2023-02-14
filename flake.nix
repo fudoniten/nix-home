@@ -39,6 +39,7 @@
         nonfudo = {
           imports = [
             home-manager.nixosModules.home-manager
+            gnome-manager.nixosModules.default
             (import ./module.nix inputs)
           ];
         };
