@@ -40,7 +40,9 @@
           imports = [
             home-manager.nixosModules.home-manager
             gnome-manager.nixosModules.default
+            fudo-pkgs.nixosModules.default
             (import ./module.nix inputs)
+
           ];
         };
 
