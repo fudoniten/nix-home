@@ -52,32 +52,25 @@ in {
     };
   };
 
-  config.home-manager = let users = attrNames toplevel.config.users.users;
-  in {
-    users.niten = import ./users/niten.nix inputs {
-      inherit lib pkgs;
-      inherit (cfg) enable-gui enable-kitty-term;
-      username = "niten";
-      user-email = "niten@fudo.org";
-      home-dir = "/home/niten";
-    };
-
-    # users = (genAttrs users (username:
-    #   mkIf (hasAttr username user-map) (let
-    #     userOpts = config.users.users."${username}";
-    #     configUser = user-map."${username}";
-    #     configFile = ./. + "/users/${configUser}.nix";
-    #   in import config-file inputs {
-    #     inherit lib pkgs;
-    #     inherit (userOpts) username user-email home-dir;
-    #     inherit (cfg) enable-gui enable-kitty-term;
-    #   }))) // {
-    #     root = import ./users/root.nix inputs {
-    #       inherit pkgs lib;
-    #       username = "root";
-    #       user-email = "root@${cfg.local-domain}";
-    #       home-dir = "/root";
-    #     };
-    #   };
+  config.home-manager = {
+    users = let
+      userCfgs = mapAttrs (username: userOpts:
+        mkIf (hasAttr username user-map) (let
+          configUser = user-map."${username}";
+          configFile = ./. + "/users/${configUser}.nix";
+        in import config-file inputs {
+          inherit lib pkgs;
+          inherit (userOpts) username user-email home-dir;
+          inherit (cfg) enable-gui enable-kitty-term;
+        })) cfg.users;
+      rootCfg = {
+        root = import ./users/root.nix inputs {
+          inherit pkgs lib;
+          username = "root";
+          user-email = "root@${cfg.local-domain}";
+          home-dir = "/root";
+        };
+      };
+    in userCfgs // rootCfg;
   };
 }
