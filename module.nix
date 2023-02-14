@@ -52,19 +52,20 @@ in {
     };
   };
 
-  config.home-manager = {
+  config.home-manager = let users = attrNames config.users.users;
+  in {
     useGlobalPkgs = true;
 
-    users = (mapAttrs (username: _:
+    users = (genAttrs users (username:
       mkIf (hasAttr username user-map) (let
-        userOpts = getAttr username cfg.users;
-        config-user = user-map."${username}";
-        config-file = ./. + "/users/${config-user}.nix";
+        userOpts = config.users.users."${username}";
+        configUser = user-map."${username}";
+        configFile = ./. + "/users/${configUser}.nix";
       in pkgs.callPackage config-file inputs {
         inherit lib pkgs;
         inherit (userOpts) username user-email home-dir;
         inherit (cfg) enable-gui enable-kitty-term;
-      })) config.users.users) // {
+      }))) // {
         root = import ./users/root.nix inputs {
           inherit pkgs lib;
           username = "root";
