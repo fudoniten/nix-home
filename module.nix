@@ -58,7 +58,7 @@ in {
         mkIf (hasAttr username user-map) (let
           configUser = user-map."${username}";
           configFile = ./. + "/users/${configUser}.nix";
-        in import config-file inputs {
+        in import configFile inputs {
           inherit lib pkgs;
           inherit (userOpts) username user-email home-dir;
           inherit (cfg) enable-gui enable-kitty-term;
