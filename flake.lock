@@ -494,11 +494,11 @@
         "helpers": "helpers_2"
       },
       "locked": {
-        "lastModified": 1675534084,
-        "narHash": "sha256-Md46gQ0DF7+TS1yS3bJSgTgKvo1r/XQXXib09YwDJdw=",
+        "lastModified": 1676400669,
+        "narHash": "sha256-zv6WDX94YFnTFWI9nb4o2USKykpA4lgNMTIOpOzDM6Q=",
         "ref": "refs/heads/master",
-        "rev": "5cf93764f19d94c55e4dd559da19a61eaa16bb79",
-        "revCount": 190,
+        "rev": "4da588d876c5746db4fa84af1bd1ec6828721e48",
+        "revCount": 191,
         "type": "git",
         "url": "https://git.fudo.org/fudo-nix/pkgs.git"
       },

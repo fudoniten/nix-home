@@ -42,7 +42,6 @@
             gnome-manager.nixosModules.default
             fudo-pkgs.nixosModules.default
             (import ./module.nix inputs)
-
           ];
         };
 
