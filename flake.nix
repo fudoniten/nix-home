@@ -25,12 +25,21 @@
 
   outputs =
     { self, nixpkgs, home-manager, fudo-pkgs, gnome-manager, ... }@inputs: {
-      nixosModules = {
-        default = {
+      nixosModules = rec {
+        default = fudo;
+
+        fudo = {
           imports = [
             home-manager.nixosModules.home-manager
             gnome-manager.nixosModules.default
             (import ./fudo-module.nix inputs)
+          ];
+        };
+
+        nonfudo = {
+          imports = [
+            home-manager.nixosModules.home-manager
+            (import ./module.nix inputs)
           ];
         };
 
