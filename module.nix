@@ -56,22 +56,15 @@ in {
     useGlobalPkgs = true;
 
     users = (mapAttrs (username: _:
-      if hasAttr username user-map then
-        (let
-          userOpts = getAttr username cfg.users;
-          config-user = user-map."${username}";
-          config-file = ./. + "/users/${config-user}.nix";
-        in pkgs.callPackage config-file inputs {
-          inherit lib pkgs;
-          inherit (userOpts) username user-email home-dir;
-          inherit (cfg) enable-gui enable-kitty-term;
-        })
-      else {
-        home = {
-          inherit username;
-          stateVersion = "22.11";
-        };
-      }) config.users.users) // {
+      mkIf (hasAttr username user-map) (let
+        userOpts = getAttr username cfg.users;
+        config-user = user-map."${username}";
+        config-file = ./. + "/users/${config-user}.nix";
+      in pkgs.callPackage config-file inputs {
+        inherit lib pkgs;
+        inherit (userOpts) username user-email home-dir;
+        inherit (cfg) enable-gui enable-kitty-term;
+      })) config.users.users) // {
         root = import ./users/root.nix inputs {
           inherit pkgs lib;
           username = "root";
