@@ -52,6 +52,14 @@ in {
     };
   };
 
+  config.home-manager = let
+    allUsers = attrNames config.users.users;
+    users = filter (username: hasAttr username user-map) allUsers;
+  in {
+    users =
+      (genAttrs users (username: { config.programs.bash.enable = true; }));
+  };
+
   # config.home-manager = let users = attrNames config.users.users;
   # in {
   #   useGlobalPkgs = true;
