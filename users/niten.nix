@@ -288,7 +288,7 @@ in {
       stateVersion = "22.05";
 
       packages = if enable-gui then
-        (common-packages ++ gui-packages ++ font-packages)
+        (common-pacakges ++ gui-packages ++ font-packages)
       else
         common-packages;
 
