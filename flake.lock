@@ -494,11 +494,11 @@
         "helpers": "helpers_2"
       },
       "locked": {
-        "lastModified": 1676400669,
-        "narHash": "sha256-zv6WDX94YFnTFWI9nb4o2USKykpA4lgNMTIOpOzDM6Q=",
+        "lastModified": 1676486038,
+        "narHash": "sha256-Z3tGuKBqxfRoop5eA3z16AIFlxEnZlfYnrW2g0tV4yI=",
         "ref": "refs/heads/master",
-        "rev": "4da588d876c5746db4fa84af1bd1ec6828721e48",
-        "revCount": 191,
+        "rev": "6462e00892076ab38ae2c973209c51601d17fa37",
+        "revCount": 192,
         "type": "git",
         "url": "https://git.fudo.org/fudo-nix/pkgs.git"
       },
@@ -701,11 +701,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1676253841,
-        "narHash": "sha256-jhuI8Mmky8VCD45OoJEuF6HdPLFBwNrHA0ljjZ/zkfw=",
+        "lastModified": 1676375384,
+        "narHash": "sha256-6HI3jZiuJX+KLz05cocYy2mBAWlISEKHU84ftYfxHZ8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a45a8916243a7d27acc358f4fc18c4491f3eeca8",
+        "rev": "c43f676c938662072772339be6269226c77b51b8",
         "type": "github"
       },
       "original": {
