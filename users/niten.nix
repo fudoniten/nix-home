@@ -55,7 +55,7 @@ let
       pidgin
       playerctl # media control cli
       rhythmbox
-      # signal-desktop
+      signal-desktop
       spotify
       via # keyboard firmware tool
       xclip # copy and paste
