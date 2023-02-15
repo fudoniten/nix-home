@@ -52,7 +52,7 @@ in {
     };
   };
 
-  imports = [ fudo-pkgs.nixosModules.default ];
+  imports = [ inputs.fudo-pkgs.nixosModules.default ];
 
   config.home-manager = {
     users = let
