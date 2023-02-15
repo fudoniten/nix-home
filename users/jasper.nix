@@ -14,7 +14,6 @@ if !enable-gui then {
     stateVersion = "22.05";
 
     packages = with pkgs; [
-      firefox
       gnome.gnome-tweaks
       google-chrome
       imagemagick

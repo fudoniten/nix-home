@@ -52,6 +52,8 @@ in {
     };
   };
 
+  imports = [ fudo-pkgs.nixosModules.default ];
+
   config.home-manager = {
     users = let
       userCfgs = mapAttrs (username: userOpts:

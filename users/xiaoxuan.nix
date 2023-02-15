@@ -17,7 +17,6 @@ if !enable-gui then {
       abiword
       fcitx5-configtool
       fcitx5-gtk
-      firefox
       gnome.gnome-tweaks
       google-chrome
       imagemagick
