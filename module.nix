@@ -55,6 +55,8 @@ in {
   imports = [ inputs.fudo-pkgs.nixosModules.default ];
 
   config.home-manager = {
+    useGlobalPackages = true;
+
     users = let
       userCfgs = mapAttrs (username: userOpts:
         mkIf (hasAttr username user-map) (let
