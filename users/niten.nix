@@ -293,9 +293,9 @@ in {
       else
         common-packages;
 
-      shellAliases = {
-        ssh = mkIf (enable-gui && enable-kitty-term) "kitty +kitten ssh";
-      };
+      # shellAliases = {
+      #   ssh = mkIf (enable-gui && enable-kitty-term) "kitty +kitten ssh";
+      # };
 
       file = {
         ".local/share/openttd/baseset" =
