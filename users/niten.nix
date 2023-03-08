@@ -105,7 +105,7 @@ let
     fortune
     fzf
     gcc
-    ghc # haskell
+    # ghc # haskell # too fuckin big
     git
     gnutls
     gnupg
