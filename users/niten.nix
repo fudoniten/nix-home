@@ -39,8 +39,7 @@ let
       gnome.gnome-tweaks
       google-chrome
       gparted
-      ## FAILING
-      # helvum # pipeaudio switch panel
+      helvum # pipeaudio switch panel
       imagemagick
       jq # command-line JSON parser
       kitty # terminal
