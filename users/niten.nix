@@ -39,8 +39,7 @@ let
       gnome.gnome-tweaks
       google-chrome
       gparted
-      ## FAILING
-      # helvum # pipeaudio switch panel
+      helvum # pipeaudio switch panel
       imagemagick
       jq # command-line JSON parser
       kitty # terminal
@@ -294,9 +293,9 @@ in {
       else
         common-packages;
 
-      shellAliases = {
-        ssh = mkIf (enable-gui && enable-kitty-term) "kitty +kitten ssh";
-      };
+      # shellAliases = {
+      #   ssh = mkIf (enable-gui && enable-kitty-term) "kitty +kitten ssh";
+      # };
 
       file = {
         ".local/share/openttd/baseset" =

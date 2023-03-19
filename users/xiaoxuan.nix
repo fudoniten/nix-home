@@ -22,6 +22,7 @@ if !enable-gui then {
       imagemagick
       jq
       minecraft
+      mumble
       pv
       redshift
       spotify
