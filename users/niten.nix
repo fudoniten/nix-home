@@ -44,6 +44,7 @@ let
       jq # command-line JSON parser
       kitty # terminal
       libreoffice
+      mattermost-desktop
       mosh
       mindustry
       minecraft
