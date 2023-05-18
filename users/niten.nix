@@ -123,12 +123,12 @@ let
     manix # nixos doc searcher
     mkpasswd
     mtr # network diagnosis tool
+    nil # nix lsp server
     nixfmt # format nix files
     nix-index # search by executable
     nix-prefetch-git
     nix-prefetch-github
     nmap
-    # opencv-java # open computer vision
     openldap
     openssl
     openssl.out
