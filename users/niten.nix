@@ -119,6 +119,7 @@ let
     jack2Full # audio daemon tools
     leiningen
     libisofs
+    linphone # VoIP client
     lispPackages.quicklisp
     lsof
     lshw
