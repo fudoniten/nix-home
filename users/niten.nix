@@ -117,7 +117,7 @@ let
     ipfs
     iptables
     jack2Full # audio daemon tools
-    jami # GNU chat app & voip client
+    jami-client-qt # GNU chat app & voip client
     leiningen
     libisofs
     linphone # VoIP client
