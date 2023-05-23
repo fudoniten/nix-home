@@ -93,6 +93,7 @@ let
     byobu
     cdrtools
     cargo # rust
+    cinny-desktop # matrix client
     clj-kondo # Clojure linter
     clojure
     cmake
