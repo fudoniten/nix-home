@@ -148,6 +148,7 @@ let
     stdenv
     supercollider # audio generation
     texlive.combined.scheme-basic
+    tio # Serial IO
     tmux
     unzip
     usbutils
