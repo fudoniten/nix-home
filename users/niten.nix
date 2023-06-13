@@ -124,6 +124,7 @@ let
     lispPackages.quicklisp
     lsof
     lshw
+    lz4json # For decompressing Mozilla sessions
     manix # nixos doc searcher
     mkpasswd
     mtr # network diagnosis tool
