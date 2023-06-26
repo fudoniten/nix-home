@@ -93,7 +93,7 @@ let
     byobu
     cdrtools
     cargo # rust
-    cinny-desktop # matrix client
+    # cinny-desktop # matrix client -- obsolete SSL
     clj-kondo # Clojure linter
     clojure
     cmake
