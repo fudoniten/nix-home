@@ -368,11 +368,11 @@
         "unstableNixpkgs": "unstableNixpkgs"
       },
       "locked": {
-        "lastModified": 1687761292,
-        "narHash": "sha256-RrBh/2S/6b4wO9RXDphlLVUQpG9DDZU9/OEiHYMvcCU=",
+        "lastModified": 1687761946,
+        "narHash": "sha256-blL+KLeyUA5XWYN5j2NpYwoL88UiOWThY6k4eK6MrRU=",
         "ref": "refs/heads/master",
-        "rev": "5663afd1fa3970a90137fdc7d88d94d3e3518e72",
-        "revCount": 229,
+        "rev": "c77148c89cc34b95da103e9c5becc4868b8d138a",
+        "revCount": 230,
         "type": "git",
         "url": "https://git.fudo.org/fudo-nix/pkgs.git"
       },
@@ -508,11 +508,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1687555006,
-        "narHash": "sha256-GD2Kqb/DXQBRJcHqkM2qFZqbVenyO7Co/80JHRMg2U0=",
+        "lastModified": 1687729501,
+        "narHash": "sha256-mTLkMePoHUWvTCf3NuKbeYEea/tsikSIKBWwb9OfRr4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "33223d479ffde3d05ac16c6dff04ae43cc27e577",
+        "rev": "35130d4b4f0b8c50ed2aceb909a538c66c91d4a0",
         "type": "github"
       },
       "original": {
