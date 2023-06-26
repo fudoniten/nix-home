@@ -15,7 +15,7 @@ if !enable-gui then {
 
     packages = with pkgs; [
       abiword
-      fcitx5
+      #fcitx5
       #fcitx5-configtool
       #fcitx5-gtk
       gnome.gnome-tweaks
