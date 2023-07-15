@@ -15,6 +15,7 @@ if !enable-gui then {
 
     packages = with pkgs; [
       abiword
+      anki # flashcards
       #fcitx5
       #fcitx5-configtool
       #fcitx5-gtk
