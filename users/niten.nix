@@ -33,7 +33,6 @@ let
       abiword
       alacritty # terminal
       anki # flashcards
-      element-desktop # matrix client
       # exodus # crypto wallet -- not found?
       faudio # direct-x audio?
       gnome.dconf-editor # for gnome dconf config
@@ -60,6 +59,12 @@ let
       spotify
       via # keyboard firmware tool
       xclip # copy and paste
+
+      # Matrix clients
+      element-desktop # matrix client
+      nheko
+      fractal
+      quaternion
     ] ++ [
       gnomeExtensions.espresso
       gnomeExtensions.focus
