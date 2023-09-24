@@ -24,8 +24,9 @@ let
 
   emacs-packages = with pkgs.emacsPackages; [
     elpher
-    use-package
     flycheck-clj-kondo
+    spotify
+    use-package
   ];
 
   gui-packages = with pkgs;
@@ -57,6 +58,9 @@ let
       rhythmbox
       signal-desktop
       spotify
+      spotify-player
+      spotify-qt
+      spotify-tui
       via # keyboard firmware tool
       xclip # copy and paste
 
