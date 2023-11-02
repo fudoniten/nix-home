@@ -60,7 +60,7 @@ if !enable-gui then {
 
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = with pgks; [ fcitx5-chinese-addons fcitx5-gtk fcitx5-rime ];
+    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons fcitx5-gtk fcitx5-rime ];
   };
 
   programs.firefox.enable = true;
