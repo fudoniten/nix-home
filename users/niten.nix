@@ -104,7 +104,6 @@ let
     asdf
     bind # for dig
     binutils
-    btrfs-progs
     bundix # gemfile -> nix
     byobu
     cdrtools
@@ -176,6 +175,7 @@ let
     yq # yaml processor
   ] ++ (optionals isLinux [
     atop
+    btrfs-progs
     jack2Full # audio daemon tools
     lz4json # For decompressing Mozilla sessions
   ]);
