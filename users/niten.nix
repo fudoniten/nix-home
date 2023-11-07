@@ -263,12 +263,12 @@ in {
           "${lead}+alt+t" = "set_tab_title";
           "${lead}+x" = "detach_tab";
         };
+      };
 
-        zsh = {
-          enableAutosuggestions = true;
-          enableCompletion = true;
-          sessionVariables = env-variables;
-        };
+      zsh = {
+        enableAutosuggestions = true;
+        enableCompletion = true;
+        sessionVariables = env-variables;
       };
 
       firefox = mkIf isLinux {
