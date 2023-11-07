@@ -130,7 +130,6 @@ let
     home-manager
     inetutils
     ipfs
-    jami-client-qt # GNU chat app & voip client
     leiningen
     libisofs
     linphone # VoIP client
@@ -175,6 +174,7 @@ let
     btrfs-progs
     iptables
     jack2Full # audio daemon tools
+    jami-client-qt # GNU chat app & voip client
     lz4json # For decompressing Mozilla sessions
     nmap
     parted
