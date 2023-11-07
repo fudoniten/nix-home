@@ -267,7 +267,7 @@ in {
         zsh = {
           enableAutosuggestions = true;
           enableCompletion = true;
-          localVariables = env-variables;
+          sessionVariables = env-variables;
         };
       };
 
