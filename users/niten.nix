@@ -2,8 +2,7 @@
 { doom-emacs, niten-doom-config, ... }:
 
 # Local settings
-{ username, user-email, enable-gui, home-dir
-, enable-kitty-term ? true, ... }:
+{ username, user-email, enable-gui, home-dir, enable-kitty-term ? true, ... }:
 
 { pkgs, ... }:
 
@@ -95,86 +94,87 @@ let
     unifont
   ]);
 
-  common-packages = with pkgs; [
-    ant
-    asdf
-    bind # for dig
-    bundix # gemfile -> nix
-    byobu
-    cdrtools
-    cargo # rust
-    clj-kondo # Clojure linter
-    clojure
-    cmake
-    curl
-    doom-emacs-package
-    duf # fancy df
-    enca # encoding detector
-    file
-    fish
-    fortune
-    fzf
-    gcc
-    git
-    gnutls
-    gnupg
-    graphviz
-    guile
-    home-manager
-    inetutils
-    ipfs
-    jq # command-line JSON parser
-    leiningen
-    lsof
-    manix # nixos doc searcher
-    mkpasswd
-    mosh
-    mtr # network diagnosis tool
-    mqttui # CLI MQTT client
-    nil # nix lsp server
-    nixfmt # format nix files
-    nix-index # search by executable
-    nix-prefetch-git
-    nix-prefetch-github
-    openldap
-    openssl
-    openssl.out
-    pciutils
-    pv # dd with info
-    pwgen
-    ruby
-    rustc
-    statix # nix linter
-    stdenv
-    texlive.combined.scheme-basic
-    tio # Serial IO
-    tmux
-    unzip
-    wget
-    # yubikey-manager
-    # yubikey-personalization
-    youtube-dl
-    yq # yaml processor
-  ] ++ (optionals isLinux [
-    atop
-    binutils
-    btrfs-progs
-    iptables
-    jack2Full # audio daemon tools
-    jami-client-qt # GNU chat app & voip client
-    libisofs
-    linphone # VoIP client
-    lispPackages.quicklisp
-    lshw
-    lz4json # For decompressing Mozilla sessions
-    nmap
-    parted
-    python-with-packages
-    sbcl
-    supercollider # audio generation
-    usbutils
-    winetricks
-  ]);
+  common-packages = with pkgs;
+    [
+      ant
+      asdf
+      bind # for dig
+      bundix # gemfile -> nix
+      byobu
+      cdrtools
+      cargo # rust
+      clj-kondo # Clojure linter
+      clojure
+      cmake
+      curl
+      doom-emacs-package
+      duf # fancy df
+      enca # encoding detector
+      file
+      fish
+      fortune
+      fzf
+      gcc
+      git
+      gnutls
+      gnupg
+      graphviz
+      guile
+      home-manager
+      inetutils
+      ipfs
+      jq # command-line JSON parser
+      leiningen
+      lsof
+      manix # nixos doc searcher
+      mkpasswd
+      mosh
+      mtr # network diagnosis tool
+      mqttui # CLI MQTT client
+      nil # nix lsp server
+      nixfmt # format nix files
+      nix-index # search by executable
+      nix-prefetch-git
+      nix-prefetch-github
+      openldap
+      openssl
+      openssl.out
+      pciutils
+      pv # dd with info
+      pwgen
+      ruby
+      rustc
+      statix # nix linter
+      stdenv
+      texlive.combined.scheme-basic
+      tio # Serial IO
+      tmux
+      unzip
+      wget
+      # yubikey-manager
+      # yubikey-personalization
+      youtube-dl
+      yq # yaml processor
+    ] ++ (optionals isLinux [
+      atop
+      binutils
+      btrfs-progs
+      iptables
+      jack2Full # audio daemon tools
+      jami-client-qt # GNU chat app & voip client
+      libisofs
+      linphone # VoIP client
+      lispPackages.quicklisp
+      lshw
+      lz4json # For decompressing Mozilla sessions
+      nmap
+      parted
+      python-with-packages
+      sbcl
+      supercollider # audio generation
+      usbutils
+      winetricks
+    ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
     doomPrivateDir = niten-doom-config;
@@ -221,6 +221,12 @@ in {
         };
       };
 
+      fzf = {
+        enable = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+      };
+
       kitty = mkIf (isLinux && enable-gui) {
         enable = enable-kitty-term;
         settings = {
@@ -256,6 +262,12 @@ in {
           "${lead}+t" = "new_tab";
           "${lead}+alt+t" = "set_tab_title";
           "${lead}+x" = "detach_tab";
+        };
+
+        zsh = {
+          enableAutosuggestions = true;
+          enableCompletion = true;
+          localVariables = env-variables;
         };
       };
 
@@ -317,8 +329,9 @@ in {
       # };
 
       file = {
-        ".local/share/openttd/baseset" =
-          mkIf (enable-gui && isLinux) { source = "${pkgs.openttd-data}/data"; };
+        ".local/share/openttd/baseset" = mkIf (enable-gui && isLinux) {
+          source = "${pkgs.openttd-data}/data";
+        };
 
         # For nixified emacs
         ".emacs.d/init.el".text = ''
