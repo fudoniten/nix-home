@@ -42,7 +42,6 @@ let
       imagemagick
       jq # command-line JSON parser
       kitty # terminal
-      mattermost-desktop
       mosh
       mindustry
       minecraft
@@ -77,6 +76,7 @@ let
       gparted
       helvum # pipeaudio switch panel
       libreoffice
+      mattermost-desktop
       mplayer
       mumble
       playerctl
