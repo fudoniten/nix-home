@@ -37,7 +37,6 @@ let
   gui-packages = with pkgs;
     [
       # exodus # crypto wallet -- not found?
-      nyxt # browser
       signal-desktop
       spotify
 
@@ -71,6 +70,7 @@ let
       minecraft
       mplayer
       mumble
+      nyxt # browser
       openttd
       playerctl
       rhythmbox
