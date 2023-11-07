@@ -265,12 +265,6 @@ in {
         };
       };
 
-      zsh = {
-        enableAutosuggestions = true;
-        enableCompletion = true;
-        sessionVariables = env-variables;
-      };
-
       firefox = mkIf isLinux {
         enable = enable-gui;
         ## Some perm change error?
