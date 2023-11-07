@@ -5,8 +5,13 @@
 { pkgs, lib, username, user-email, enable-gui, home-dir
 , enable-kitty-term ? true, ... }:
 
-with lib;
+{ pkgs, ... }:
+
+with pkgs.lib;
 let
+
+  inherit (pkgs.stdenv) isLinux;
+
   env-variables = {
     ALTERNATE_EDITOR = "";
 
@@ -31,15 +36,10 @@ let
 
   gui-packages = with pkgs;
     [
-      abiword
       alacritty # terminal
       anki # flashcards
       # exodus # crypto wallet -- not found?
       faudio # direct-x audio?
-      gnome.dconf-editor # for gnome dconf config
-      gnome.gnome-tweaks
-      google-chrome
-      gparted
       helvum # pipeaudio switch panel
       imagemagick
       jq # command-line JSON parser
@@ -49,34 +49,41 @@ let
       mosh
       mindustry
       minecraft
-      mplayer
-      mumble # game chat
       nyxt # browser
       openttd
       pidgin
-      playerctl # media control cli
-      rhythmbox
       signal-desktop
       spotify
       spotify-player
       spotify-qt
       spotify-tui
       via # keyboard firmware tool
-      xclip # copy and paste
 
       # Matrix clients
       element-desktop # matrix client
       nheko
       fractal
       quaternion
-    ] ++ [
+    ] ++ (optionals isLinux ([
       gnomeExtensions.espresso
       gnomeExtensions.focus
       gnomeExtensions.forge
       gnomeExtensions.mpris-indicator-button
       gnomeExtensions.tweaks-in-system-menu
       gnomeExtensions.vitals
-    ];
+    ] ++ [
+      abiword
+      faudio
+      gnome.dconf-editor # for gnome dconf config
+      gnome.gnome-tweaks
+      google-chrome
+      gparted
+      mplayer
+      mumble
+      playerctl
+      rhythmbox
+      xclip
+    ]);
 
   font-packages = with pkgs; [
     cantarell-fonts
@@ -275,7 +282,7 @@ in {
       "Xft.lcdfilter" = "lcddefault";
     };
 
-    services = {
+    services = mkIf isLinux {
       emacs = {
         enable = true;
         package = doom-emacs-package;
@@ -343,7 +350,7 @@ in {
       sessionVariables = env-variables;
     };
 
-    systemd.user = {
+    systemd.user = mkIf isLinux {
       tmpfiles.rules =
         [ "d ${home-dir}/.emacs.d/.local/etc/eshell 700 ${username} - - -" ];
 
