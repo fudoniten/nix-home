@@ -131,8 +131,6 @@ let
     inetutils
     ipfs
     leiningen
-    libisofs
-    linphone # VoIP client
     lispPackages.quicklisp
     lsof
     lshw
@@ -175,6 +173,8 @@ let
     iptables
     jack2Full # audio daemon tools
     jami-client-qt # GNU chat app & voip client
+    libisofs
+    linphone # VoIP client
     lz4json # For decompressing Mozilla sessions
     nmap
     parted
