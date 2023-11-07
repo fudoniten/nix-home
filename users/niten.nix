@@ -154,7 +154,6 @@ let
     sbcl
     statix # nix linter
     stdenv
-    supercollider # audio generation
     texlive.combined.scheme-basic
     tio # Serial IO
     tmux
@@ -178,6 +177,7 @@ let
     lz4json # For decompressing Mozilla sessions
     nmap
     parted
+    supercollider # audio generation
   ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
@@ -295,7 +295,7 @@ in {
 
       gnome-keyring.enable = enable-gui;
 
-      supercollider = {
+      supercollider = mkIf isLinux {
         enable = true;
         port = 30300;
         memory = 4096;
