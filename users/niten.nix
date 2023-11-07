@@ -158,9 +158,7 @@ let
     tio # Serial IO
     tmux
     unzip
-    usbutils
     wget
-    winetricks
     # yubikey-manager
     # yubikey-personalization
     youtube-dl
@@ -178,6 +176,8 @@ let
     nmap
     parted
     supercollider # audio generation
+    usbutils
+    winetricks
   ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
