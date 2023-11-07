@@ -43,7 +43,6 @@ let
       jq # command-line JSON parser
       kitty # terminal
       mosh
-      minecraft
       nyxt # browser
       openttd
       pidgin
@@ -77,6 +76,7 @@ let
       libreoffice
       mattermost-desktop
       mindustry
+      minecraft
       mplayer
       mumble
       playerctl
