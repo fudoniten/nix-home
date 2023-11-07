@@ -199,7 +199,7 @@ in {
     #   overlays = mkIf (localOverlays != null) localOverlays;
     # };
 
-    gnome-manager.background = ./static/k3gy64wu8i5a1.png;
+    # gnome-manager.background = ./static/k3gy64wu8i5a1.png;
 
     programs = {
       bash = {
