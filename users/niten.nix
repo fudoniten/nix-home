@@ -2,7 +2,7 @@
 { doom-emacs, niten-doom-config, ... }:
 
 # Local settings
-{ pkgs, lib, username, user-email, enable-gui, home-dir
+{ username, user-email, enable-gui, home-dir
 , enable-kitty-term ? true, ... }:
 
 { pkgs, ... }:
