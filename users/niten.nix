@@ -37,7 +37,6 @@ let
   gui-packages = with pkgs;
     [
       # exodus # crypto wallet -- not found?
-      signal-desktop
       spotify
 
       # Matrix clients
@@ -74,6 +73,7 @@ let
       openttd
       playerctl
       rhythmbox
+      signal-desktop
       spotify-player
       spotify-qt
       spotify-tui
