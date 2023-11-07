@@ -39,7 +39,6 @@ let
       alacritty # terminal
       anki # flashcards
       # exodus # crypto wallet -- not found?
-      faudio # direct-x audio?
       helvum # pipeaudio switch panel
       imagemagick
       jq # command-line JSON parser
@@ -64,16 +63,16 @@ let
       nheko
       fractal
       quaternion
-    ] ++ (optionals isLinux ([
+    ] ++ (optionals isLinux [
       gnomeExtensions.espresso
       gnomeExtensions.focus
       gnomeExtensions.forge
       gnomeExtensions.mpris-indicator-button
       gnomeExtensions.tweaks-in-system-menu
       gnomeExtensions.vitals
-    ] ++ [
+
       abiword
-      faudio
+      faudio # direct-x audio?
       gnome.dconf-editor # for gnome dconf config
       gnome.gnome-tweaks
       google-chrome
@@ -83,7 +82,7 @@ let
       playerctl
       rhythmbox
       xclip
-    ]));
+    ]);
 
   font-packages = with pkgs; [
     cantarell-fonts
