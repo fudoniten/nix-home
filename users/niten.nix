@@ -82,7 +82,7 @@ let
       xclip
     ]);
 
-  font-packages = with pkgs; [
+  font-packages = optionals isLinux (with pkgs; [
     cantarell-fonts
     dejavu_fonts
     fira-code
@@ -94,7 +94,7 @@ let
     ubuntu_font_family
     ultimate-oldschool-pc-font-pack
     unifont
-  ];
+  ]);
 
   common-packages = with pkgs; [
     ant
