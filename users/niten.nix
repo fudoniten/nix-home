@@ -130,7 +130,6 @@ let
     home-manager
     inetutils
     ipfs
-    iptables
     jami-client-qt # GNU chat app & voip client
     leiningen
     libisofs
@@ -147,11 +146,9 @@ let
     nix-index # search by executable
     nix-prefetch-git
     nix-prefetch-github
-    nmap
     openldap
     openssl
     openssl.out
-    parted
     pciutils
     pv # dd with info
     pwgen
@@ -176,8 +173,11 @@ let
   ] ++ (optionals isLinux [
     atop
     btrfs-progs
+    iptables
     jack2Full # audio daemon tools
     lz4json # For decompressing Mozilla sessions
+    nmap
+    parted
   ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
