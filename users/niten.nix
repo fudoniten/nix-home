@@ -37,14 +37,9 @@ let
   gui-packages = with pkgs;
     [
       # exodus # crypto wallet -- not found?
-      imagemagick
-      mosh
       nyxt # browser
       signal-desktop
       spotify
-      spotify-player
-      spotify-qt
-      spotify-tui
 
       # Matrix clients
       element-desktop # matrix client
@@ -68,6 +63,7 @@ let
       google-chrome
       gparted
       helvum # pipeaudio switch panel
+      imagemagick
       kitty # terminal
       libreoffice
       mattermost-desktop
@@ -78,6 +74,9 @@ let
       openttd
       playerctl
       rhythmbox
+      spotify-player
+      spotify-qt
+      spotify-tui
       via # keyboard firmware tool
       xclip
     ]);
@@ -130,6 +129,7 @@ let
     lsof
     manix # nixos doc searcher
     mkpasswd
+    mosh
     mtr # network diagnosis tool
     mqttui # CLI MQTT client
     nil # nix lsp server
