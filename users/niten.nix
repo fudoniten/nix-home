@@ -223,7 +223,7 @@ in {
         };
       };
 
-      kitty = mkIf enable-gui {
+      kitty = mkIf (isLinux && enable-gui) {
         enable = enable-kitty-term;
         settings = {
           copy_on_select = "clipboard";
@@ -272,7 +272,7 @@ in {
       };
     };
 
-    xresources.properties = mkIf enable-gui {
+    xresources.properties = mkIf (isLinux && enable-gui) {
       "Xft.antialias" = 1;
       "Xft.autohint" = 0;
       # "Xft.dpi" = 192;
