@@ -125,7 +125,6 @@ let
     ipfs
     jq # command-line JSON parser
     leiningen
-    lispPackages.quicklisp
     lsof
     manix # nixos doc searcher
     mkpasswd
@@ -165,6 +164,7 @@ let
     jami-client-qt # GNU chat app & voip client
     libisofs
     linphone # VoIP client
+    lispPackages.quicklisp
     lshw
     lz4json # For decompressing Mozilla sessions
     nmap
