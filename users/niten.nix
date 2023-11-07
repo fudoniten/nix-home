@@ -102,7 +102,6 @@ let
   common-packages = with pkgs; [
     ant
     asdf
-    atop
     bind # for dig
     binutils
     btrfs-progs
@@ -176,6 +175,7 @@ let
     youtube-dl
     yq # yaml processor
   ] ++ (optionals isLinux [
+    atop
     jack2Full # audio daemon tools
     lz4json # For decompressing Mozilla sessions
   ]);
