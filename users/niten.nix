@@ -318,7 +318,7 @@ in {
 
       file = {
         ".local/share/openttd/baseset" =
-          mkIf enable-gui { source = "${pkgs.openttd-data}/data"; };
+          mkIf (enable-gui && isLinux) { source = "${pkgs.openttd-data}/data"; };
 
         # For nixified emacs
         ".emacs.d/init.el".text = ''
