@@ -133,7 +133,6 @@ let
     leiningen
     lispPackages.quicklisp
     lsof
-    lshw
     manix # nixos doc searcher
     mkpasswd
     mtr # network diagnosis tool
@@ -175,6 +174,7 @@ let
     jami-client-qt # GNU chat app & voip client
     libisofs
     linphone # VoIP client
+    lshw
     lz4json # For decompressing Mozilla sessions
     nmap
     parted
