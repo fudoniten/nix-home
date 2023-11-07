@@ -133,7 +133,6 @@ let
     inetutils
     ipfs
     iptables
-    jack2Full # audio daemon tools
     jami-client-qt # GNU chat app & voip client
     leiningen
     libisofs
@@ -141,7 +140,6 @@ let
     lispPackages.quicklisp
     lsof
     lshw
-    lz4json # For decompressing Mozilla sessions
     manix # nixos doc searcher
     mkpasswd
     mtr # network diagnosis tool
@@ -177,7 +175,10 @@ let
     # yubikey-personalization
     youtube-dl
     yq # yaml processor
-  ];
+  ] ++ (optionals isLinux [
+    jack2Full # audio daemon tools
+    lz4json # For decompressing Mozilla sessions
+  ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
     doomPrivateDir = niten-doom-config;
