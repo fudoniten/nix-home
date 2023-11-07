@@ -145,7 +145,6 @@ let
     pwgen
     ruby
     rustc
-    sbcl
     statix # nix linter
     stdenv
     texlive.combined.scheme-basic
@@ -171,6 +170,7 @@ let
     nmap
     parted
     python-with-packages
+    sbcl
     supercollider # audio generation
     usbutils
     winetricks
