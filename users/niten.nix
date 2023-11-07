@@ -259,7 +259,7 @@ in {
         };
       };
 
-      firefox = {
+      firefox = mkIf isLinux {
         enable = enable-gui;
         ## Some perm change error?
         # package = (pkgs.firefox.override {
