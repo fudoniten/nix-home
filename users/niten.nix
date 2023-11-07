@@ -36,28 +36,21 @@ let
 
   gui-packages = with pkgs;
     [
-      alacritty # terminal
-      anki # flashcards
       # exodus # crypto wallet -- not found?
       imagemagick
-      jq # command-line JSON parser
-      kitty # terminal
       mosh
       nyxt # browser
-      openttd
-      pidgin
       signal-desktop
       spotify
       spotify-player
       spotify-qt
       spotify-tui
-      via # keyboard firmware tool
 
       # Matrix clients
       element-desktop # matrix client
-      nheko
-      fractal
-      quaternion
+      #nheko
+      #fractal
+      #quaternion
     ] ++ (optionals isLinux [
       gnomeExtensions.espresso
       gnomeExtensions.focus
@@ -67,20 +60,25 @@ let
       gnomeExtensions.vitals
 
       abiword
+      alacritty # terminal
+      anki # flashcards
       faudio # direct-x audio?
       gnome.dconf-editor # for gnome dconf config
       gnome.gnome-tweaks
       google-chrome
       gparted
       helvum # pipeaudio switch panel
+      kitty # terminal
       libreoffice
       mattermost-desktop
       mindustry
       minecraft
       mplayer
       mumble
+      openttd
       playerctl
       rhythmbox
+      via # keyboard firmware tool
       xclip
     ]);
 
@@ -129,6 +127,7 @@ let
     home-manager
     inetutils
     ipfs
+    jq # command-line JSON parser
     leiningen
     lispPackages.quicklisp
     lsof
