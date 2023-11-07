@@ -39,7 +39,6 @@ let
       alacritty # terminal
       anki # flashcards
       # exodus # crypto wallet -- not found?
-      helvum # pipeaudio switch panel
       imagemagick
       jq # command-line JSON parser
       kitty # terminal
@@ -77,6 +76,7 @@ let
       gnome.gnome-tweaks
       google-chrome
       gparted
+      helvum # pipeaudio switch panel
       mplayer
       mumble
       playerctl
