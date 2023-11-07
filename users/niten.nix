@@ -83,7 +83,7 @@ let
       playerctl
       rhythmbox
       xclip
-    ]);
+    ]));
 
   font-packages = with pkgs; [
     cantarell-fonts
