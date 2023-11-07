@@ -100,12 +100,10 @@ let
     ant
     asdf
     bind # for dig
-    binutils
     bundix # gemfile -> nix
     byobu
     cdrtools
     cargo # rust
-    # cinny-desktop # matrix client -- obsolete SSL
     clj-kondo # Clojure linter
     clojure
     cmake
@@ -118,7 +116,6 @@ let
     fortune
     fzf
     gcc
-    # ghc # haskell # too fuckin big
     git
     gnutls
     gnupg
@@ -146,7 +143,6 @@ let
     pciutils
     pv # dd with info
     pwgen
-    python-with-packages
     ruby
     rustc
     sbcl
@@ -163,6 +159,7 @@ let
     yq # yaml processor
   ] ++ (optionals isLinux [
     atop
+    binutils
     btrfs-progs
     iptables
     jack2Full # audio daemon tools
@@ -173,6 +170,7 @@ let
     lz4json # For decompressing Mozilla sessions
     nmap
     parted
+    python-with-packages
     supercollider # audio generation
     usbutils
     winetricks
