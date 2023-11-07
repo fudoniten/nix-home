@@ -43,7 +43,6 @@ let
       jq # command-line JSON parser
       kitty # terminal
       mosh
-      mindustry
       minecraft
       nyxt # browser
       openttd
@@ -77,6 +76,7 @@ let
       helvum # pipeaudio switch panel
       libreoffice
       mattermost-desktop
+      mindustry
       mplayer
       mumble
       playerctl
