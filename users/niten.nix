@@ -2,11 +2,15 @@
 { doom-emacs, niten-doom-config, ... }:
 
 # Local settings
-{ pkgs, lib, username, user-email, enable-gui, home-dir
-, enable-kitty-term ? true, ... }:
+{ username, user-email, enable-gui, home-dir, enable-kitty-term ? true, ... }:
 
-with lib;
+{ pkgs, ... }:
+
+with pkgs.lib;
 let
+
+  inherit (pkgs.stdenv) isLinux;
+
   env-variables = {
     ALTERNATE_EDITOR = "";
 
@@ -31,10 +35,25 @@ let
 
   gui-packages = with pkgs;
     [
+      # exodus # crypto wallet -- not found?
+      spotify
+
+      # Matrix clients
+      element-desktop # matrix client
+      #nheko
+      #fractal
+      #quaternion
+    ] ++ (optionals isLinux [
+      gnomeExtensions.espresso
+      gnomeExtensions.focus
+      gnomeExtensions.forge
+      gnomeExtensions.mpris-indicator-button
+      gnomeExtensions.tweaks-in-system-menu
+      gnomeExtensions.vitals
+
       abiword
       alacritty # terminal
       anki # flashcards
-      # exodus # crypto wallet -- not found?
       faudio # direct-x audio?
       gnome.dconf-editor # for gnome dconf config
       gnome.gnome-tweaks
@@ -42,43 +61,26 @@ let
       gparted
       helvum # pipeaudio switch panel
       imagemagick
-      jq # command-line JSON parser
       kitty # terminal
       libreoffice
       mattermost-desktop
-      mosh
       mindustry
       minecraft
       mplayer
-      mumble # game chat
+      mumble
       nyxt # browser
       openttd
-      pidgin
-      playerctl # media control cli
+      playerctl
       rhythmbox
       signal-desktop
-      spotify
       spotify-player
       spotify-qt
       spotify-tui
       via # keyboard firmware tool
-      xclip # copy and paste
+      xclip
+    ]);
 
-      # Matrix clients
-      element-desktop # matrix client
-      nheko
-      fractal
-      quaternion
-    ] ++ [
-      gnomeExtensions.espresso
-      gnomeExtensions.focus
-      gnomeExtensions.forge
-      gnomeExtensions.mpris-indicator-button
-      gnomeExtensions.tweaks-in-system-menu
-      gnomeExtensions.vitals
-    ];
-
-  font-packages = with pkgs; [
+  font-packages = optionals isLinux (with pkgs; [
     cantarell-fonts
     dejavu_fonts
     fira-code
@@ -90,87 +92,89 @@ let
     ubuntu_font_family
     ultimate-oldschool-pc-font-pack
     unifont
-  ];
+  ]);
 
-  common-packages = with pkgs; [
-    ant
-    asdf
-    atop
-    bind # for dig
-    binutils
-    btrfs-progs
-    bundix # gemfile -> nix
-    byobu
-    cdrtools
-    cargo # rust
-    # cinny-desktop # matrix client -- obsolete SSL
-    clj-kondo # Clojure linter
-    clojure
-    cmake
-    curl
-    doom-emacs-package
-    duf # fancy df
-    enca # encoding detector
-    file
-    fish
-    fortune
-    fzf
-    gcc
-    # ghc # haskell # too fuckin big
-    git
-    gnutls
-    gnupg
-    graphviz
-    guile
-    home-manager
-    inetutils
-    ipfs
-    iptables
-    jack2Full # audio daemon tools
-    jami-client-qt # GNU chat app & voip client
-    leiningen
-    libisofs
-    linphone # VoIP client
-    lispPackages.quicklisp
-    lsof
-    lshw
-    lz4json # For decompressing Mozilla sessions
-    manix # nixos doc searcher
-    mkpasswd
-    mtr # network diagnosis tool
-    mqttui # CLI MQTT client
-    nil # nix lsp server
-    nixfmt # format nix files
-    nix-index # search by executable
-    nix-prefetch-git
-    nix-prefetch-github
-    nmap
-    openldap
-    openssl
-    openssl.out
-    parted
-    pciutils
-    pv # dd with info
-    pwgen
-    python-with-packages
-    ruby
-    rustc
-    sbcl
-    statix # nix linter
-    stdenv
-    supercollider # audio generation
-    texlive.combined.scheme-basic
-    tio # Serial IO
-    tmux
-    unzip
-    usbutils
-    wget
-    winetricks
-    # yubikey-manager
-    # yubikey-personalization
-    youtube-dl
-    yq # yaml processor
-  ];
+  common-packages = with pkgs;
+    [
+      ant
+      asdf
+      bind # for dig
+      bundix # gemfile -> nix
+      byobu
+      cdrtools
+      cargo # rust
+      clj-kondo # Clojure linter
+      clojure
+      cmake
+      curl
+      doom-emacs-package
+      duf # fancy df
+      enca # encoding detector
+      file
+      fish
+      fortune
+      fzf
+      gcc
+      git
+      gnutls
+      gnupg
+      graphviz
+      guile
+      home-manager
+      inetutils
+      ipfs
+      jq # command-line JSON parser
+      leiningen
+      lsof
+      manix # nixos doc searcher
+      mkpasswd
+      mosh
+      mtr # network diagnosis tool
+      mqttui # CLI MQTT client
+      nil # nix lsp server
+      nixfmt # format nix files
+      nix-index # search by executable
+      nix-prefetch-git
+      nix-prefetch-github
+      openldap
+      openssl
+      openssl.out
+      pciutils
+      pv # dd with info
+      pwgen
+      ruby
+      rustc
+      statix # nix linter
+      stdenv
+      texlive.combined.scheme-basic
+      tio # Serial IO
+      tmux
+      unzip
+      wget
+      # yubikey-manager
+      # yubikey-personalization
+      youtube-dl
+      yq # yaml processor
+    ] ++ (optionals isLinux [
+      atop
+      binutils
+      btrfs-progs
+      iptables
+      jack2Full # audio daemon tools
+      jami-client-qt # GNU chat app & voip client
+      libisofs
+      linphone # VoIP client
+      lispPackages.quicklisp
+      lshw
+      lz4json # For decompressing Mozilla sessions
+      nmap
+      parted
+      python-with-packages
+      sbcl
+      supercollider # audio generation
+      usbutils
+      winetricks
+    ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
     doomPrivateDir = niten-doom-config;
@@ -192,7 +196,7 @@ in {
     #   overlays = mkIf (localOverlays != null) localOverlays;
     # };
 
-    gnome-manager.background = ./static/k3gy64wu8i5a1.png;
+    # gnome-manager.background = ./static/k3gy64wu8i5a1.png;
 
     programs = {
       bash = {
@@ -217,7 +221,13 @@ in {
         };
       };
 
-      kitty = mkIf enable-gui {
+      fzf = {
+        enable = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+      };
+
+      kitty = mkIf (isLinux && enable-gui) {
         enable = enable-kitty-term;
         settings = {
           copy_on_select = "clipboard";
@@ -255,7 +265,7 @@ in {
         };
       };
 
-      firefox = {
+      firefox = mkIf isLinux {
         enable = enable-gui;
         ## Some perm change error?
         # package = (pkgs.firefox.override {
@@ -266,7 +276,7 @@ in {
       };
     };
 
-    xresources.properties = mkIf enable-gui {
+    xresources.properties = mkIf (isLinux && enable-gui) {
       "Xft.antialias" = 1;
       "Xft.autohint" = 0;
       # "Xft.dpi" = 192;
@@ -275,7 +285,7 @@ in {
       "Xft.lcdfilter" = "lcddefault";
     };
 
-    services = {
+    services = mkIf isLinux {
       emacs = {
         enable = true;
         package = doom-emacs-package;
@@ -287,7 +297,7 @@ in {
 
       gnome-keyring.enable = enable-gui;
 
-      supercollider = {
+      supercollider = mkIf isLinux {
         enable = true;
         port = 30300;
         memory = 4096;
@@ -313,8 +323,9 @@ in {
       # };
 
       file = {
-        ".local/share/openttd/baseset" =
-          mkIf enable-gui { source = "${pkgs.openttd-data}/data"; };
+        ".local/share/openttd/baseset" = mkIf (enable-gui && isLinux) {
+          source = "${pkgs.openttd-data}/data";
+        };
 
         # For nixified emacs
         ".emacs.d/init.el".text = ''
@@ -342,7 +353,7 @@ in {
       sessionVariables = env-variables;
     };
 
-    systemd.user = {
+    systemd.user = mkIf isLinux {
       tmpfiles.rules =
         [ "d ${home-dir}/.emacs.d/.local/etc/eshell 700 ${username} - - -" ];
 

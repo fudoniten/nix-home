@@ -2,7 +2,9 @@
 { ... }:
 
 # Local settings
-{ pkgs, lib, username, user-email, enable-gui, home-dir, ... }:
+{ username, user-email, enable-gui, home-dir, ... }:
+
+{ pkgs, lib, ... }:
 
 with lib;
 if !enable-gui then
