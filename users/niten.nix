@@ -302,7 +302,6 @@ in {
     home = {
       inherit username;
       homeDirectory = home-dir;
-      stateVersion = "22.05";
 
       packages = if enable-gui then
         (common-packages ++ gui-packages ++ font-packages)
