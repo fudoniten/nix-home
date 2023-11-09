@@ -175,7 +175,7 @@ let
       supercollider # audio generation
       usbutils
       winetricks
-    ]);
+    ]) ++ (optionals isDarwin [ bash ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
     doomPrivateDir = niten-doom-config;
