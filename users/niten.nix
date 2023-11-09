@@ -9,7 +9,7 @@
 with pkgs.lib;
 let
 
-  inherit (pkgs.stdenv) isLinux;
+  inherit (pkgs.stdenv) isLinux isDarwin;
 
   env-variables = {
     ALTERNATE_EDITOR = "";
