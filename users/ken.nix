@@ -7,13 +7,11 @@
 { pkgs, lib, ... }:
 
 with lib;
-if !enable-gui then {
-  home.stateVersion = "22.05";
-} else {
+if !enable-gui then
+  { }
+else {
   home = {
     inherit username;
-
-    stateVersion = "22.05";
 
     packages = with pkgs; [
       abiword

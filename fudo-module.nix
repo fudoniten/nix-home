@@ -46,11 +46,7 @@ in {
           enable-kitty-term = true;
         }))
       else
-        (nameValuePair username {
-          home = {
-            inherit username;
-            stateVersion = "22.11";
-          };
-        })) localUsers)) // rootConfig;
+        (nameValuePair username { home = { inherit username; }; })) localUsers))
+      // rootConfig;
   };
 }
