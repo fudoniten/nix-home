@@ -118,6 +118,7 @@ let
       git
       gnutls
       gnupg
+      go
       graphviz
       guile
       home-manager
