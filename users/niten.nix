@@ -9,7 +9,7 @@
 with pkgs.lib;
 let
 
-  inherit (pkgs.stdenv) isLinux;
+  inherit (pkgs.stdenv) isLinux isDarwin;
 
   env-variables = {
     ALTERNATE_EDITOR = "";
@@ -118,6 +118,7 @@ let
       git
       gnutls
       gnupg
+      go
       graphviz
       guile
       home-manager
@@ -174,7 +175,7 @@ let
       supercollider # audio generation
       usbutils
       winetricks
-    ]);
+    ]) ++ (optionals isDarwin [ bash ]);
 
   doom-emacs-package = pkgs.callPackage doom-emacs {
     doomPrivateDir = niten-doom-config;
