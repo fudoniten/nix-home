@@ -26,7 +26,14 @@ let
     DOOMLOCALDIR = "${config.xdg.configHome}/doom.local";
   };
 
-  emacsDependencies = with pkgs; [ pylint python311Packages.python-lsp-server ];
+  pythonWithPackages =
+    pkgs.python311.withPackages (pyPkgs: with pyPkgs; [ requests ]);
+
+  emacsDependencies = with pkgs; [
+    pylint
+    python311Packages.python-lsp-server
+    pythonWithPackages
+  ];
 
   emacsPackages = with pkgs.emacsPackages; [
     elpher
@@ -73,6 +80,7 @@ let
       nyxt # browser
       openttd
       playerctl
+      pythonWithPackages
       rhythmbox
       signal-desktop
       spotify-player
@@ -173,8 +181,6 @@ let
       lz4json # For decompressing Mozilla sessions
       nmap
       parted
-      pylint
-      python3
       sbcl
       supercollider # audio generation
       usbutils
