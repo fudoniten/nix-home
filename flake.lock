@@ -430,11 +430,11 @@
     "niten-doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1701737492,
-        "narHash": "sha256-3kKgBwqArq67F/2gcSJ0QlN6ryMgxt/eXrDntBxpxZA=",
+        "lastModified": 1701801322,
+        "narHash": "sha256-QGcuckYzhGVTtBIZ4tNq0Js5gWBz/NF84alHExYxfC0=",
         "ref": "refs/heads/master",
-        "rev": "3fca1d0dbaa8861f2efdeea4719a70b59e0fa9a5",
-        "revCount": 72,
+        "rev": "f483ecf2ed7d353cb40b792a849cbffd646d5794",
+        "revCount": 73,
         "type": "git",
         "url": "https://git.fudo.org/niten/doom-emacs.git"
       },
