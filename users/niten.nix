@@ -80,7 +80,6 @@ let
       nyxt # browser
       openttd
       playerctl
-      pythonWithPackages
       rhythmbox
       signal-desktop
       spotify-player
@@ -154,6 +153,7 @@ let
       pciutils
       pv # dd with info
       pwgen
+      pythonWithPackages
       ruby
       rustc
       statix # nix linter
