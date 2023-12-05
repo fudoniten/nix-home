@@ -23,9 +23,6 @@ let
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
   };
 
-  python-with-packages = pkgs.python3.withPackages
-    (pyPkgs: with pyPkgs; [ fastapi opencv4 python-multipart torch ]);
-
   emacs-packages = with pkgs.emacsPackages; [
     elpher
     flycheck-clj-kondo
@@ -171,7 +168,8 @@ let
       lz4json # For decompressing Mozilla sessions
       nmap
       parted
-      python-with-packages
+      pylint
+      python3
       sbcl
       supercollider # audio generation
       usbutils
