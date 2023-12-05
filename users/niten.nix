@@ -223,6 +223,9 @@ in {
           (let ((inserted-paths (split-string "${binPath}" path-separator)))
             (setq exec-path (append exec-path inserted-paths)))
 
+          (after! pylint
+            (setq pylint-command "${pkgs.pylint}/bin/pylint"))
+
           ;;;; TODO: check if this is actually needed
           ;; (setq package-archives nil)
           ;; (package-initialize)
