@@ -4,7 +4,7 @@
 # Local settings
 { username, user-email, enable-gui, home-dir, enable-kitty-term ? true, ... }:
 
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 with pkgs.lib;
 let
