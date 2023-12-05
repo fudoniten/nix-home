@@ -23,7 +23,7 @@ let
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
   };
 
-  emacsPackages = (with pkgs; [ pylint python3Packages.pylsp ])
+  emacsPackages = (with pkgs; [ pylint python311Packages.pylsp ])
     ++ (with pkgs.emacsPackages; [
       elpher
       flycheck-clj-kondo
