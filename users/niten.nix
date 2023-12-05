@@ -21,15 +21,19 @@ let
     EMACS_ORG_DIRECTORY = "~/Notes";
 
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
+
+    DOOMDIR = "${config.xdg.configHome}/doom";
+    DOOMLOCALDIR = "${config.xdg.configHome}/doom.local";
   };
 
-  emacsPackages = (with pkgs; [ pylint python311Packages.python-lsp-server ])
-    ++ (with pkgs.emacsPackages; [
-      elpher
-      flycheck-clj-kondo
-      spotify
-      use-package
-    ]);
+  emacsDependencies = with pkgs; [ pylint python311Packages.python-lsp-server ];
+
+  emacsPackages = with pkgs.emacsPackages; [
+    elpher
+    flycheck-clj-kondo
+    spotify
+    use-package
+  ];
 
   gui-packages = with pkgs;
     [
@@ -213,8 +217,11 @@ in {
           gitignore-mode = pkgs.emacsPackages.git-modes;
           gitconfig-mode = pkgs.emacsPackages.git-modes;
         };
-        extraConfig = ''
+        extraConfig = let binPath = strings.makeBinPath emacsDependencies;
+        in ''
           (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
+          (let ((inserted-paths (split-string "${binPath}" path-separator)))
+            (setq exec-path (append exec-path inserted-paths)))
 
           ;;;; TODO: check if this is actually needed
           ;; (setq package-archives nil)
