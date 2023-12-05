@@ -23,11 +23,13 @@ let
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
   };
 
-  emacs-packages = with pkgs.emacsPackages; [
+  emacsPackages = with pkgs.emacsPackages; [
     elpher
     flycheck-clj-kondo
     spotify
     use-package
+    pylint
+    pylsp
   ];
 
   gui-packages = with pkgs;
@@ -105,7 +107,7 @@ let
       clojure
       cmake
       curl
-      doom-emacs-package
+      # doom-emacs-package
       duf # fancy df
       enca # encoding detector
       file
@@ -176,18 +178,18 @@ let
       winetricks
     ]) ++ (optionals isDarwin [ bash ]);
 
-  doom-emacs-package = pkgs.callPackage doom-emacs {
-    doomPrivateDir = niten-doom-config;
-    extraPackages = emacs-packages;
-    emacsPackagesOverlay = final: prev: {
-      gitignore-mode = pkgs.emacsPackages.git-modes;
-      gitconfig-mode = pkgs.emacsPackages.git-modes;
-    };
-  };
+  # doom-emacs-package = pkgs.callPackage doom-emacs {
+  #   doomPrivateDir = niten-doom-config;
+  #   extraPackages = emacs-packages;
+  #   emacsPackagesOverlay = final: prev: {
+  #     gitignore-mode = pkgs.emacsPackages.git-modes;
+  #     gitconfig-mode = pkgs.emacsPackages.git-modes;
+  #   };
+  # };
 
 in {
 
-  imports = [ ../modules ];
+  imports = [ ../modules doom-emacs.hmModule ];
 
   config = {
     ## Necessary?
@@ -202,6 +204,23 @@ in {
       bash = {
         enable = true;
         enableVteIntegration = true;
+      };
+
+      doom-emacs = {
+        enable = true;
+        doomPrivateDir = niten-doom-config;
+        extraPackages = emacsPackages;
+        emacsPackagesOverlay = final: prev: {
+          gitignore-mode = pkgs.emacsPackages.git-modes;
+          gitconfig-mode = pkgs.emacsPackages.git-modes;
+        };
+        extraConfig = ''
+          (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
+
+          ;;;; TODO: check if this is actually needed
+          ;; (setq package-archives nil)
+          ;; (package-initialize)
+        '';
       };
 
       git = {
@@ -288,7 +307,6 @@ in {
     services = mkIf isLinux {
       emacs = {
         enable = true;
-        package = doom-emacs-package;
         client.enable = true;
         defaultEditor = true;
       };
@@ -327,14 +345,15 @@ in {
           source = "${pkgs.openttd-data}/data";
         };
 
-        # For nixified emacs
-        ".emacs.d/init.el".text = ''
-          (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
-          (load "default.el")
+        # # For nixified emacs
+        # # OBSOLETED by doom-emacs hmModule
+        # ".emacs.d/init.el".text = ''
+        #   (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
+        #   (load "default.el")
 
-          (setq package-archives nil)
-          (package-initialize)
-        '';
+        #   (setq package-archives nil)
+        #   (package-initialize)
+        # '';
 
         ".xprofile" = mkIf enable-gui {
           executable = true;

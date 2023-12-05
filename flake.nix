@@ -63,17 +63,18 @@
         inherit pkgs;
         modules = [
           gnome-manager.homeManagerModules.default
-            (import ./users/niten.nix inputs {
-              username = "niten";
-              user-email = "niten@fudo.org";
-              enable-gui = true;
-              home-dir = "/home/niten";
-              enable-kitty-term = false;
-            })
+          (import ./users/niten.nix inputs {
+            username = "niten";
+            user-email = "niten@fudo.org";
+            enable-gui = true;
+            home-dir = "/home/niten";
+            enable-kitty-term = false;
+          })
         ];
       };
 
-      mkModule = { username, user-email, enable-gui ? false, home-dir, enable-kitty-term ? false, ... }:
+      mkModule = { username, user-email, enable-gui ? false, home-dir
+        , enable-kitty-term ? false, ... }:
         import ./users/niten.nix inputs {
           inherit username user-email enable-gui home-dir enable-kitty-term;
         };
