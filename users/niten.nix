@@ -27,7 +27,7 @@ let
   };
 
   pythonWithPackages =
-    pkgs.python311.withPackages (pyPkgs: with pyPkgs; [ requests ]);
+    pkgs.python311.withPackages (pyPkgs: with pyPkgs; [ ratelimit requests ]);
 
   emacsDependencies = with pkgs; [
     pylint
