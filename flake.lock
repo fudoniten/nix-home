@@ -430,11 +430,11 @@
     "niten-doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1701801322,
-        "narHash": "sha256-QGcuckYzhGVTtBIZ4tNq0Js5gWBz/NF84alHExYxfC0=",
+        "lastModified": 1701970492,
+        "narHash": "sha256-xRdg4sADK/+NA/i9sfjZtmEg60GL/7OuoP82IqZuWaI=",
         "ref": "refs/heads/master",
-        "rev": "f483ecf2ed7d353cb40b792a849cbffd646d5794",
-        "revCount": 73,
+        "rev": "a371aad79026b00cfba4f305b3e0fe2918aa88c8",
+        "revCount": 75,
         "type": "git",
         "url": "https://git.fudo.org/niten/doom-emacs.git"
       },
@@ -491,11 +491,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1701540982,
-        "narHash": "sha256-5ajSy6ODgGmAbmymRdHnjfVnuVrACjI8wXoGVvrtvww=",
+        "lastModified": 1701615100,
+        "narHash": "sha256-7VI84NGBvlCTduw2aHLVB62NvCiZUlALLqBe5v684Aw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6386d8aafc28b3a7ed03880a57bdc6eb4465491d",
+        "rev": "e9f06adb793d1cca5384907b3b8a4071d5d7cb19",
         "type": "github"
       },
       "original": {

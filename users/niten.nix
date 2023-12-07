@@ -242,7 +242,7 @@ in {
         enable = true;
         userName = username;
         userEmail = user-email;
-        ignores = [ "*~" ];
+        ignores = [ "*~" ".DS_Store" ];
         extraConfig.pull.rebase = false;
       };
 
