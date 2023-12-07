@@ -27,9 +27,12 @@ let
   };
 
   pythonWithPackages =
-    pkgs.python311.withPackages (pyPkgs: with pyPkgs; [ ratelimit requests ]);
+    pkgs.python311.withPackages (pyPkgs: with pyPkgs; [
+      conda ratelimit requests
+    ]);
 
   emacsDependencies = with pkgs; [
+    conda
     pylint
     python311Packages.python-lsp-server
     pythonWithPackages
