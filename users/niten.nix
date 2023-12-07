@@ -14,7 +14,7 @@ let
   env-variables = {
     ALTERNATE_EDITOR = "";
 
-    DOOM_EMACS_SITE_PATH = "${config.xdg.configHome}/doom-site.d";
+    DOOM_EMACS_SITE_PATH = "${config.xdg.configHome}/doom-emacs/site.d";
 
     HISTCONTROL = "ignoredups:ignorespace";
 
@@ -27,9 +27,7 @@ let
   };
 
   pythonWithPackages =
-    pkgs.python310.withPackages (pyPkgs: with pyPkgs; [
-      ratelimit requests
-    ]);
+    pkgs.python310.withPackages (pyPkgs: with pyPkgs; [ ratelimit requests ]);
 
   emacsDependencies = with pkgs; [
     pylint
@@ -362,10 +360,10 @@ in {
           source = "${pkgs.openttd-data}/data";
         };
 
-        "${config.xdg.configHome}/doom-site.d" = {
-	  recursive = true;
-	  source = niten-doom-config;
-	};
+        "${config.xdg.configHome}/doom-emacs/site.d" = {
+          recursive = true;
+          source = niten-doom-config;
+        };
 
         # # For nixified emacs
         # # OBSOLETED by doom-emacs hmModule
