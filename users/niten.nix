@@ -362,7 +362,7 @@ in {
 
         "${config.xdg.configHome}/doom-emacs/site.d" = {
           recursive = true;
-          source = niten-doom-config;
+          source = "${niten-doom-config}/site.d";
         };
 
         # # For nixified emacs
