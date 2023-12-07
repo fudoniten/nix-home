@@ -22,8 +22,8 @@ let
 
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
 
-    DOOMDIR = "${config.xdg.configHome}/doom";
-    DOOMLOCALDIR = "${config.xdg.configHome}/doom.local";
+    # DOOMDIR = "${config.xdg.configHome}/doom";
+    # DOOMLOCALDIR = "${config.xdg.configHome}/doom.local";
   };
 
   pythonWithPackages =
