@@ -362,7 +362,10 @@ in {
           source = "${pkgs.openttd-data}/data";
         };
 
-        "${config.xdg.configHome}/doom-site.d".source = niten-doom-config;
+        "${config.xdg.configHome}/doom-site.d" = {
+	  recursive = true;
+	  source = niten-doom-config;
+	};
 
         # # For nixified emacs
         # # OBSOLETED by doom-emacs hmModule
