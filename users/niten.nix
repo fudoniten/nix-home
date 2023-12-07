@@ -27,7 +27,7 @@ let
   };
 
   pythonWithPackages =
-    pkgs.python311.withPackages (pyPkgs: with pyPkgs; [
+    pkgs.python310.withPackages (pyPkgs: with pyPkgs; [
       conda ratelimit requests
     ]);
 
