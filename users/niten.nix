@@ -38,6 +38,7 @@ let
   emacsPackages = with pkgs.emacsPackages; [
     elpher
     flycheck-clj-kondo
+    pylint
     spotify
     use-package
   ];
