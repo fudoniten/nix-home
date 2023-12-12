@@ -178,7 +178,7 @@ let
       linphone # VoIP client
       lispPackages.quicklisp
       lshw
-      lz4json # For decompressing Mozilla sessions
+      # lz4json # For decompressing Mozilla sessions # Umm...missing?
       nmap
       parted
       sbcl
