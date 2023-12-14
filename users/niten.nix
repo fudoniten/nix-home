@@ -36,6 +36,7 @@ let
   ];
 
   emacsPackages = with pkgs.emacsPackages; [
+    chatgpt-shell
     elpher
     flycheck-clj-kondo
     pylint
