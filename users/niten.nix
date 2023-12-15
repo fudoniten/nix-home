@@ -26,8 +26,14 @@ let
     # DOOMLOCALDIR = "${config.xdg.configHome}/doom.local";
   };
 
-  pythonWithPackages = pkgs.python311.withPackages
-    (pyPkgs: with pyPkgs; [ ratelimit requests pylint python-lsp-server ]);
+  pythonWithPackages = pkgs.python311.withPackages (pyPkgs:
+    with pyPkgs; [
+      ratelimit
+      requests
+      prettytable
+      pylint
+      python-lsp-server
+    ]);
 
   emacsDependencies = with pkgs; [
     python311Packages.pylint
