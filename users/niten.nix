@@ -45,6 +45,8 @@ let
     chatgpt-shell
     elpher
     flycheck-clj-kondo
+    md4rd
+    ox-gemini
     pylint
     spotify
     use-package
