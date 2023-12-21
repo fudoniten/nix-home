@@ -2,16 +2,18 @@
 { ... }:
 
 # Local settings
-{ pkgs, lib, username, user-email, enable-gui, home-dir, ... }:
+{ username, user-email, enable-gui, home-dir, ... }:
+
+{ pkgs, lib, ... }:
 
 with lib;
-if !enable-gui then {
-  home.stateVersion = "22.05";
-} else {
+if !enable-gui then
+  {
+
+  }
+else {
   home = {
     inherit username;
-
-    stateVersion = "22.05";
 
     packages = with pkgs; [
       abiword
@@ -35,13 +37,33 @@ if !enable-gui then {
       layout = "us";
       options = "";
     };
+
+    file = {
+      ".xprofile" = mkIf enable-gui {
+        executable = true;
+        source = pkgs.writeShellScript "${username}-xsession" ''
+          gdmauth=$XAUTHORITY
+          unset  XAUTHORITY
+          export XAUTHORITY
+          xauth merge "$gdmauth"
+
+          if [ -f $HOME/.xinitrc ]; then
+            bash --login -i $HOME/.xinitrc
+          fi
+
+          export XMODIFIERS="@im=fcitx5"
+          export XMODIFIER="@im=fcitx5"
+          export GTK_IM_MODULE="fcitx5"
+          export QT_IM_MODULE="fcitx5"
+        '';
+      };
+    };
   };
 
-  ## Sigh...have to wait for this
-  # i18n.inputMethod = {
-  #   enabled = "fcitx5";
-  #   fcitx5.addons = [ pkgs.fcitx5-rime ];
-  # };
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons fcitx5-gtk fcitx5-rime ];
+  };
 
   programs.firefox.enable = true;
 

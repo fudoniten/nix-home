@@ -2,7 +2,9 @@
 { doom-emacs, niten-doom-config, ... }:
 
 # Local settings
-{ pkgs, lib, username, user-email, home-dir, ... }:
+{ username, user-email, home-dir, ... }:
+
+{ pkgs, lib, ... }:
 
 with lib;
 let
@@ -69,7 +71,6 @@ in {
   };
 
   home = {
-    stateVersion = "22.05";
 
     packages = common-packages;
 
