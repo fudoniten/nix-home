@@ -144,6 +144,7 @@ let
       home-manager
       inetutils
       ipfs
+      jdk
       jq # command-line JSON parser
       leiningen
       lsof
