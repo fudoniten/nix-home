@@ -90,6 +90,7 @@ let
       mplayer
       mumble
       nyxt # browser
+      openal
       openttd
       playerctl
       rhythmbox
