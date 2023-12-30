@@ -82,6 +82,7 @@ let
       imagemagick
       kitty # terminal
       libreoffice
+      xorg.libXxf86vm
       mattermost-desktop
       mindustry
       minecraft
