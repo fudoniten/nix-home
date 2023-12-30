@@ -83,6 +83,7 @@ let
       kitty # terminal
       libreoffice
       xorg.libXxf86vm
+      xorg.libXxf86vm.dev
       mattermost-desktop
       mindustry
       minecraft
