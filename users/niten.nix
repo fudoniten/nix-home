@@ -262,7 +262,7 @@ in {
 
       gh = {
         enable = true;
-        enableGitCredentialHelper = true;
+        gitCredentialHelper.enable = true;
         settings = {
           editor = "emacsclient";
           git_protocol = "ssh";
