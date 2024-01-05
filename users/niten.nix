@@ -66,7 +66,7 @@ let
       gnomeExtensions.espresso
       gnomeExtensions.focus
       gnomeExtensions.forge
-      gnomeExtensions.mpris-indicator-button
+      gnomeExtensions.avatar
       gnomeExtensions.tweaks-in-system-menu
       gnomeExtensions.vitals
 
