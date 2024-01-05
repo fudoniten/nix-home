@@ -67,7 +67,6 @@ let
       gnomeExtensions.focus
       gnomeExtensions.forge
       gnomeExtensions.avatar
-      gnomeExtensions.tweaks-in-system-menu
       gnomeExtensions.vitals
 
       abiword
