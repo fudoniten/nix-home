@@ -4,7 +4,7 @@
 # Local settings
 { username, user-email, enable-gui, home-dir, enable-kitty-term ? true, ... }:
 
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 with pkgs.lib;
 let
@@ -14,22 +14,43 @@ let
   env-variables = {
     ALTERNATE_EDITOR = "";
 
-    DOOM_EMACS_SITE_PATH = "${niten-doom-config}/site.d";
+    DOOM_EMACS_SITE_PATH = "${config.xdg.configHome}/doom-emacs/site.d";
 
     HISTCONTROL = "ignoredups:ignorespace";
 
     EMACS_ORG_DIRECTORY = "~/Notes";
 
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
+
+    # DOOMDIR = "${config.xdg.configHome}/doom";
+    # DOOMLOCALDIR = "${config.xdg.configHome}/doom.local";
   };
 
-  emacsPackages = (with pkgs; [ pylint python311Packages.python-lsp-server ])
-    ++ (with pkgs.emacsPackages; [
-      elpher
-      flycheck-clj-kondo
-      spotify
-      use-package
+  pythonWithPackages = pkgs.python311.withPackages (pyPkgs:
+    with pyPkgs; [
+      ratelimit
+      requests
+      prettytable
+      pylint
+      python-lsp-server
     ]);
+
+  emacsDependencies = with pkgs; [
+    python311Packages.pylint
+    python311Packages.python-lsp-server
+    pythonWithPackages
+  ];
+
+  emacsPackages = with pkgs.emacsPackages; [
+    chatgpt-shell
+    elpher
+    flycheck-clj-kondo
+    md4rd
+    ox-gemini
+    pylint
+    spotify
+    use-package
+  ];
 
   gui-packages = with pkgs;
     [
@@ -61,12 +82,15 @@ let
       imagemagick
       kitty # terminal
       libreoffice
+      xorg.libXxf86vm
+      xorg.libXxf86vm.dev
       mattermost-desktop
       mindustry
       minecraft
       mplayer
       mumble
       nyxt # browser
+      openal
       openttd
       playerctl
       rhythmbox
@@ -123,6 +147,7 @@ let
       home-manager
       inetutils
       ipfs
+      jdk
       jq # command-line JSON parser
       leiningen
       lsof
@@ -142,6 +167,7 @@ let
       pciutils
       pv # dd with info
       pwgen
+      pythonWithPackages
       ruby
       rustc
       statix # nix linter
@@ -166,11 +192,9 @@ let
       linphone # VoIP client
       lispPackages.quicklisp
       lshw
-      lz4json # For decompressing Mozilla sessions
+      # lz4json # For decompressing Mozilla sessions # Umm...missing?
       nmap
       parted
-      pylint
-      python3
       sbcl
       supercollider # audio generation
       usbutils
@@ -213,8 +237,14 @@ in {
           gitignore-mode = pkgs.emacsPackages.git-modes;
           gitconfig-mode = pkgs.emacsPackages.git-modes;
         };
-        extraConfig = ''
+        extraConfig = let binPath = strings.makeBinPath emacsDependencies;
+        in ''
           (setenv "XLIB_SKIP_ARGB_VISUALS" "1")
+          (let ((inserted-paths (split-string "${binPath}" path-separator)))
+            (setq exec-path (append exec-path inserted-paths)))
+
+          (after! pylint
+            (setq pylint-command "${pkgs.pylint}/bin/pylint"))
 
           ;;;; TODO: check if this is actually needed
           ;; (setq package-archives nil)
@@ -226,7 +256,7 @@ in {
         enable = true;
         userName = username;
         userEmail = user-email;
-        ignores = [ "*~" ];
+        ignores = [ "*~" ".DS_Store" ];
         extraConfig.pull.rebase = false;
       };
 
@@ -342,6 +372,11 @@ in {
       file = {
         ".local/share/openttd/baseset" = mkIf (enable-gui && isLinux) {
           source = "${pkgs.openttd-data}/data";
+        };
+
+        "${config.xdg.configHome}/doom-emacs/site.d" = {
+          recursive = true;
+          source = "${niten-doom-config}/site.d";
         };
 
         # # For nixified emacs
