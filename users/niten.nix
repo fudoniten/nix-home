@@ -151,7 +151,6 @@ let
       leiningen
       lsof
       manix # nixos doc searcher
-      mkpasswd
       mosh
       mtr # network diagnosis tool
       mqttui # CLI MQTT client
@@ -192,6 +191,7 @@ let
       lispPackages.quicklisp
       lshw
       # lz4json # For decompressing Mozilla sessions # Umm...missing?
+      mkpasswd
       nmap
       parted
       sbcl
