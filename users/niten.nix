@@ -159,7 +159,6 @@ let
       nix-index # search by executable
       nix-prefetch-git
       nix-prefetch-github
-      openldap
       openssl
       openssl.out
       pciutils
