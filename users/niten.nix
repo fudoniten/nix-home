@@ -125,7 +125,7 @@ let
       byobu
       cdrtools
       cargo # rust
-      clj-kondo # Clojure linter
+      # clj-kondo # Clojure linter
       clojure
       cmake
       curl
