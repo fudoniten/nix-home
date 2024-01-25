@@ -161,7 +161,6 @@ let
       openssl
       openssl.out
       pciutils
-      python3Packages.pip
       pv # dd with info
       pwgen
       pythonWithPackages
