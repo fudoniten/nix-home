@@ -56,9 +56,6 @@ let
     [
       # exodus # crypto wallet -- not found?
       spotify
-
-      # Matrix clients
-      element-desktop # matrix client
       #nheko
       #fractal
       #quaternion
@@ -100,6 +97,8 @@ let
       via # keyboard firmware tool
       vial # another keyboard firmware tool
       xclip
+      # Matrix clients
+      element-desktop # matrix client
     ]);
 
   font-packages = optionals isLinux (with pkgs; [
