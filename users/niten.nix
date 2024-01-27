@@ -56,9 +56,6 @@ let
     [
       # exodus # crypto wallet -- not found?
       spotify
-
-      # Matrix clients
-      element-desktop # matrix client
       #nheko
       #fractal
       #quaternion
@@ -100,6 +97,8 @@ let
       via # keyboard firmware tool
       vial # another keyboard firmware tool
       xclip
+      # Matrix clients
+      element-desktop # matrix client
     ]);
 
   font-packages = optionals isLinux (with pkgs; [
@@ -125,7 +124,7 @@ let
       byobu
       cdrtools
       cargo # rust
-      clj-kondo # Clojure linter
+      # clj-kondo # Clojure linter
       clojure
       cmake
       curl
@@ -151,7 +150,6 @@ let
       leiningen
       lsof
       manix # nixos doc searcher
-      mkpasswd
       mosh
       mtr # network diagnosis tool
       mqttui # CLI MQTT client
@@ -160,7 +158,6 @@ let
       nix-index # search by executable
       nix-prefetch-git
       nix-prefetch-github
-      openldap
       openssl
       openssl.out
       pciutils
@@ -193,6 +190,7 @@ let
       lispPackages.quicklisp
       lshw
       # lz4json # For decompressing Mozilla sessions # Umm...missing?
+      mkpasswd
       nmap
       parted
       sbcl
