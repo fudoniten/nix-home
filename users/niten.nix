@@ -184,6 +184,7 @@ let
       atop
       binutils
       btrfs-progs
+      google-photos-uploader
       iptables
       jack2Full # audio daemon tools
       jami-client-qt # GNU chat app & voip client
