@@ -49,6 +49,7 @@ let
     ox-gemini
     pylint
     spotify
+    thrift
     use-package
   ];
 
