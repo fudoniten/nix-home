@@ -21,7 +21,9 @@ else {
       jq
       minecraft
       mumble
+      python
       pv
+      racket
       spotify
       xclip
     ];
