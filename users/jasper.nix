@@ -21,7 +21,7 @@ else {
       jq
       minecraft
       mumble
-      python
+      python3
       pv
       racket
       spotify
