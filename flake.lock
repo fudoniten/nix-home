@@ -3,7 +3,7 @@
     "clj-nix": {
       "inputs": {
         "devshell": "devshell",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "fudo-pkgs",
           "helpers",
@@ -27,8 +27,8 @@
     "clj2nix": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "nixpkgs": "nixpkgs",
-        "utils": "utils"
+        "nixpkgs": "nixpkgs_3",
+        "utils": "utils_2"
       },
       "locked": {
         "lastModified": 1673786922,
@@ -314,6 +314,24 @@
       }
     },
     "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
       "locked": {
         "lastModified": 1656928814,
         "narHash": "sha256-RIFfgBuKz6Hp89yRr7+NR5tzIAbn52h8vT6vXkYjZoM=",
@@ -347,21 +365,22 @@
     },
     "fudo-pkgs": {
       "inputs": {
+        "google-photo-uploader-flake": "google-photo-uploader-flake",
         "helpers": "helpers",
         "unstableNixpkgs": "unstableNixpkgs"
       },
       "locked": {
-        "lastModified": 1703103386,
-        "narHash": "sha256-+hQr7V6rVfG1wt49kkC3BgbLnsOkSfuJLCEo/ERjIfE=",
+        "lastModified": 1711254343,
+        "narHash": "sha256-QvI9zkfj9y/Glc44QOnWGpgA65yKAxgfXcRqb8/2KdQ=",
         "ref": "refs/heads/master",
-        "rev": "f975b9b4d0c0187cf70ff3f533486ca30c471083",
-        "revCount": 260,
+        "rev": "d57784249acac86ae0824a0644af6f7ab0e7d1e8",
+        "revCount": 295,
         "type": "git",
-        "url": "https://git.fudo.org/fudo-nix/pkgs.git"
+        "url": "https://fudo.dev/nix/pkgs.git"
       },
       "original": {
         "type": "git",
-        "url": "https://git.fudo.org/fudo-nix/pkgs.git"
+        "url": "https://fudo.dev/nix/pkgs.git"
       }
     },
     "gnome-manager": {
@@ -385,25 +404,64 @@
         "type": "github"
       }
     },
+    "gomod2nix": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1705314449,
+        "narHash": "sha256-yfQQ67dLejP0FLK76LKHbkzcQqNIrux6MFe32MMFGNQ=",
+        "owner": "nix-community",
+        "repo": "gomod2nix",
+        "rev": "30e3c3a9ec4ac8453282ca7f67fca9e1da12c3e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "gomod2nix",
+        "type": "github"
+      }
+    },
+    "google-photo-uploader-flake": {
+      "inputs": {
+        "gomod2nix": "gomod2nix",
+        "nixpkgs": "nixpkgs_2",
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1706383993,
+        "narHash": "sha256-9tW9gK/1TLQQhOZQUtcrvmeuYkHo+WMLH0EG1q1W8Nk=",
+        "ref": "refs/heads/master",
+        "rev": "6b3dea996c6409b157a821c3f30df087d098edfd",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://fudo.dev/public/google-photo-uploader.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://fudo.dev/public/google-photo-uploader.git"
+      }
+    },
     "helpers": {
       "inputs": {
         "clj-nix": "clj-nix",
         "clj2nix": "clj2nix",
-        "nixpkgs": "nixpkgs_2",
-        "utils": "utils_2"
+        "nixpkgs": "nixpkgs_4",
+        "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1683740681,
-        "narHash": "sha256-KmOssuvCVsOiSspVzpqW/OdPWMCbRieUUACDQcPs7cI=",
+        "lastModified": 1710949108,
+        "narHash": "sha256-cocKWzG2pk1ekJFYLCfQtK3IFgDBHnWvwFOYpCcpvqc=",
         "ref": "refs/heads/master",
-        "rev": "7930d2d726a4e434d27022ca84ae25cdc833cd72",
-        "revCount": 33,
+        "rev": "16e42021a2905bd2ada8f552584263da27dabb2a",
+        "revCount": 75,
         "type": "git",
-        "url": "https://git.fudo.org/fudo-public/nix-helpers.git"
+        "url": "https://fudo.dev/public/nix-helpers.git"
       },
       "original": {
         "type": "git",
-        "url": "https://git.fudo.org/fudo-public/nix-helpers.git"
+        "url": "https://fudo.dev/public/nix-helpers.git"
       }
     },
     "home-manager": {
@@ -413,11 +471,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704980875,
-        "narHash": "sha256-IPZmMjk5f4TBbEpzUFBc3OC1W6OwDNEXk2w/0uVXX1o=",
+        "lastModified": 1710888565,
+        "narHash": "sha256-s9Hi4RHhc6yut4EcYD50sZWRDKsugBJHSbON8KFwoTw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5f0ab0eedc6ede69beb8f45561ffefa54edc6e65",
+        "rev": "f33900124c23c4eca5831b9b5eb32ea5894375ce",
         "type": "github"
       },
       "original": {
@@ -436,11 +494,11 @@
         "rev": "97148ddf8ff2a2a70af1f08b38dd457e0384bd41",
         "revCount": 87,
         "type": "git",
-        "url": "https://git.fudo.org/niten/doom-emacs.git"
+        "url": "https://fudo.dev/niten/doom-emacs.git"
       },
       "original": {
         "type": "git",
-        "url": "https://git.fudo.org/niten/doom-emacs.git"
+        "url": "https://fudo.dev/niten/doom-emacs.git"
       }
     },
     "nix-straight": {
@@ -461,6 +519,37 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1658285632,
+        "narHash": "sha256-zRS5S/hoeDGUbO+L95wXG9vJNwsSYcl93XiD0HQBXLk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5342fc6fb59d0595d26883c3cadff16ce58e44f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1706098335,
+        "narHash": "sha256-r3dWjT8P9/Ah5m5ul4WqIWD8muj5F+/gbCdjiNVBKmU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a77ab169a83a4175169d78684ddd2e54486ac651",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-23.11",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1673785507,
         "narHash": "sha256-EPUT8yVdvJhhjhbgnFWXXd4IUPKSOmww2+z4AmOdyPI=",
         "owner": "NixOS",
@@ -474,7 +563,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1677624842,
         "narHash": "sha256-4DF9DbDuK4/+KYx0L6XcPBeDHUFVCtzok2fWtwXtb5w=",
@@ -489,13 +578,13 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_5": {
       "locked": {
-        "lastModified": 1704874635,
-        "narHash": "sha256-YWuCrtsty5vVZvu+7BchAxmcYzTMfolSPP5io8+WYCg=",
+        "lastModified": 1711124224,
+        "narHash": "sha256-l0zlN/3CiodvWDtfBOVxeTwYSRz93muVbXWSpaMjXxM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3dc440faeee9e889fe2d1b4d25ad0f430d449356",
+        "rev": "56528ee42526794d413d6f244648aaee4a7b56c0",
         "type": "github"
       },
       "original": {
@@ -623,7 +712,7 @@
         "gnome-manager": "gnome-manager",
         "home-manager": "home-manager",
         "niten-doom-config": "niten-doom-config",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_5"
       }
     },
     "rotate-text": {
@@ -673,6 +762,36 @@
         "type": "github"
       }
     },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "ts-fold": {
       "flake": false,
       "locked": {
@@ -691,11 +810,11 @@
     },
     "unstableNixpkgs": {
       "locked": {
-        "lastModified": 1693985761,
-        "narHash": "sha256-K5b+7j7Tt3+AqbWkcw+wMeqOAWyCD1MH26FPZyWXpdo=",
+        "lastModified": 1706191920,
+        "narHash": "sha256-eLihrZAPZX0R6RyM5fYAWeKVNuQPYjAkCUBr+JNvtdE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0bffda19b8af722f8069d09d8b6a24594c80b352",
+        "rev": "ae5c332cbb5827f6b1f02572496b141021de335f",
         "type": "github"
       },
       "original": {
@@ -705,6 +824,24 @@
       }
     },
     "utils": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1705309234,
+        "narHash": "sha256-uNRRNRKmJyCRC/8y1RqBkqWBLM034y4qN7EprSdmgyA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ef2e671c3b0c19053962c07dbda38332dcebf26",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
@@ -719,7 +856,7 @@
         "type": "github"
       }
     },
-    "utils_2": {
+    "utils_3": {
       "locked": {
         "lastModified": 1676283394,
         "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",

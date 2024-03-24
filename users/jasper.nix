@@ -33,7 +33,10 @@ else {
 
   programs.firefox.enable = true;
 
-  services.gnome-keyring.enable = true;
+  services = {
+    gnome-keyring.enable = true;
+    obs-studio.enable = true;
+  };
 
   accounts.email.accounts = {
     Fudo = {

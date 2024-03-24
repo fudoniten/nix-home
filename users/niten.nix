@@ -344,6 +344,8 @@ in {
 
       gnome-keyring.enable = enable-gui;
 
+      obs-studio.enable = true;
+
       supercollider = mkIf isLinux {
         enable = true;
         port = 30300;
