@@ -322,6 +322,8 @@ in {
         #   };
         # });
       };
+
+      obs-studio.enable = true;
     };
 
     xresources.properties = mkIf (isLinux && enable-gui) {
@@ -343,8 +345,6 @@ in {
       gpg-agent.enable = true;
 
       gnome-keyring.enable = enable-gui;
-
-      obs-studio.enable = true;
 
       supercollider = mkIf isLinux {
         enable = true;

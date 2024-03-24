@@ -31,12 +31,12 @@ else {
     keyboard.layout = "us";
   };
 
-  programs.firefox.enable = true;
-
-  services = {
-    gnome-keyring.enable = true;
+  programs = {
+    firefox.enable = true;
     obs-studio.enable = true;
   };
+
+  services = { gnome-keyring.enable = true; };
 
   accounts.email.accounts = {
     Fudo = {
