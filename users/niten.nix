@@ -100,6 +100,11 @@ let
       xclip
       # Matrix clients
       element-desktop # matrix client
+
+      # Video editors
+      libsForQt5.kdenlive
+      openshot
+      shotcut
     ]);
 
   font-packages = optionals isLinux (with pkgs; [

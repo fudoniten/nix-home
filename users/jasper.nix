@@ -26,6 +26,11 @@ else {
       racket
       spotify
       xclip
+
+      # Video editors
+      libsForQt5.kdenlive
+      openshot
+      shotcut
     ];
 
     keyboard.layout = "us";
