@@ -328,7 +328,7 @@ in {
         # });
       };
 
-      obs-studio.enable = true;
+      obs-studio.enable = isLinux && enable-gui;
     };
 
     xresources.properties = mkIf (isLinux && enable-gui) {
