@@ -81,7 +81,7 @@ let
       libreoffice
       xorg.libXxf86vm
       xorg.libXxf86vm.dev
-      mattermost-desktop
+      # mattermost-desktop # Element failing to build
       mindustry
       minecraft
       mplayer
