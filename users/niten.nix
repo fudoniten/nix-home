@@ -228,11 +228,11 @@ in {
 
     # gnome-manager.background = ./static/k3gy64wu8i5a1.png;
 
-    wayland.windowManager.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-      systemd.enable = true;
-    };
+    # wayland.windowManager.hyprland = {
+    #   enable = true;
+    #   xwayland.enable = true;
+    #   systemd.enable = true;
+    # };
 
     programs = {
       bash = {
