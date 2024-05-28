@@ -82,7 +82,7 @@ let
       libreoffice
       xorg.libXxf86vm
       xorg.libXxf86vm.dev
-      mattermost-desktop
+      # mattermost-desktop # Element failing to build
       mindustry
       minecraft
       mplayer
@@ -104,7 +104,7 @@ let
 
       # Video editors
       libsForQt5.kdenlive
-      openshot
+      openshot-qt
       shotcut
     ]);
 
@@ -228,6 +228,12 @@ in {
     # };
 
     # gnome-manager.background = ./static/k3gy64wu8i5a1.png;
+
+    # wayland.windowManager.hyprland = {
+    #   enable = true;
+    #   xwayland.enable = true;
+    #   systemd.enable = true;
+    # };
 
     programs = {
       bash = {

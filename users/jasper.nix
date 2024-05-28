@@ -29,7 +29,7 @@ else {
 
       # Video editors
       libsForQt5.kdenlive
-      openshot
+      openshot-qt
       shotcut
     ];
 
