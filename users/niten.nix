@@ -36,6 +36,7 @@ let
     ]);
 
   emacsDependencies = with pkgs; [
+    gopls
     python311Packages.pylint
     python311Packages.python-lsp-server
     pythonWithPackages

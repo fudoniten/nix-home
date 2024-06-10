@@ -11,7 +11,10 @@
       url = "git+https://fudo.dev/niten/doom-emacs.git";
       flake = false;
     };
-    fudo-pkgs.url = "git+https://fudo.dev/nix/pkgs.git";
+    fudo-pkgs = {
+      url = "git+https://fudo.dev/nix/pkgs.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
