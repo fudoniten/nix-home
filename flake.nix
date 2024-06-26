@@ -12,7 +12,7 @@
       flake = false;
     };
     fudo-pkgs = {
-      url = "github:fudoniten/fudo-nix-pks";
+      url = "github:fudoniten/fudo-nix-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     doom-emacs = {
