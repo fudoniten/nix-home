@@ -8,11 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niten-doom-config = {
-      url = "git+https://fudo.dev/niten/doom-emacs.git";
+      url = "github:fudoniten/doom-emacs-config";
       flake = false;
     };
     fudo-pkgs = {
-      url = "git+https://fudo.dev/nix/pkgs.git";
+      url = "github:fudoniten/fudo-nix-pks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     doom-emacs = {
